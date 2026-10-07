@@ -63,8 +63,9 @@
 }
 
   </style>
-  <link rel="stylesheet" href="css/mobile.css?v=20261007-travel-order-fixed-9" />
-  <link rel="preload" as="image" href="assets/intro/study-daylight.webp" fetchpriority="high" />
+  <link rel="stylesheet" href="css/mobile.css?v=20261008-phone-loading" />
+  <link rel="preload" as="image" href="assets/intro/study-daylight-mobile.webp" media="(max-width:900px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/intro/study-daylight.webp" media="(min-width:901px)" fetchpriority="high" />
 </head>
 <body class="is-intro">
   <div class="desk" aria-hidden="true"></div>
@@ -254,7 +255,7 @@
               </div>
               <figure class="profile__photo">
                 <span class="clip" aria-hidden="true"></span>
-                <img src="assets/about/photo-l.webp" alt="冯翠芝证件照" width="420" height="588" />
+                <img src="assets/about/photo-l.webp" alt="冯翠芝证件照" loading="lazy" decoding="async" width="420" height="588" />
                 <figcaption>FENG CUIZHI</figcaption>
               </figure>
             </div>
