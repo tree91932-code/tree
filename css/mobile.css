@@ -471,3 +471,16 @@
   .cinema__list button { flex:0 0 72px; width:72px; height:80px; aspect-ratio:auto; }
   .cinema__close { z-index:5; }
 }
+
+/* Two compact character cards per row on phones. */
+@media (max-width:900px) {
+  #projects .chars { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  #projects .char { min-width:0; }
+  #projects .char__label { padding:6px 7px; gap:2px 5px; flex-wrap:wrap; }
+  #projects .char__label b { font-size:14px; }
+  #projects .char__label i { font-size:10px; }
+  #projects .char__back { padding:8px; gap:4px; justify-content:flex-start; }
+  #projects .char__n { display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 5px; flex:none; font-size:16px; line-height:1.25; }
+  #projects .char__n small { margin-left:0; font-size:9px; overflow-wrap:anywhere; }
+  #projects .char__d { margin:0; font-size:11px; line-height:1.45; min-height:0; overflow-y:auto; }
+}
