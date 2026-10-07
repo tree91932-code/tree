@@ -444,3 +444,13 @@
 }
 
 .video-poster { display:contents; }
+
+/* Keep both the label and closed inner sheet inside the phone folder. */
+@media(max-width:900px) {
+ .intro .study-papers .folder:not(.is-open) .folder__inner { visibility:hidden; }
+ .intro .study-papers .folder__label { left:12%; right:12%; top:23%; bottom:14%; height:auto; min-height:0; max-height:63%; box-sizing:border-box; transform:none; padding:10px 9px; gap:3px; overflow:hidden; justify-content:space-between; }
+ .intro .study-papers .folder__title { font-size:clamp(18px,6vw,26px); line-height:.98; letter-spacing:0; flex-shrink:0; }
+ .intro .study-papers .folder__field { font-size:8px; line-height:1.3; padding-bottom:3px; flex-shrink:0; }
+ .intro .study-papers .folder__field small { font-size:6px; line-height:1.3; letter-spacing:.15em; }
+ .intro .study-papers .folder__field--hand { font-size:16px; line-height:1.1; }
+}
