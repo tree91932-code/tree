@@ -95,3 +95,8 @@
 }
 @media(prefers-reduced-motion:reduce) { .study-papers,.intro .study-scene,.intro .study-day-scene,.intro .study-overhead { transition:none; } }
 
+
+/* Restore the longer paper label on the desktop folder. */
+@media(min-width:901px) {
+ .intro .study-papers .folder__label { top:22%; bottom:12%; height:auto; }
+}
