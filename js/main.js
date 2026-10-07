@@ -10,6 +10,8 @@
   const ESC_MAP = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ESC_MAP[c]);
   const phoneThumbnail = path => matchMedia("(max-width:900px)").matches && ["assets/campus/outfit/02-real-s.webp","assets/campus/outfit/03-real-s.webp","assets/campus/outfit/04-real-s.webp","assets/campus/outfit/05-ai-s.webp","assets/campus/pixel/01-real-s.webp","assets/campus/pixel/02-real-s.webp","assets/campus/pixel/11-real-s.webp","assets/campus/snow/00-real-s.webp","assets/campus/snow/02-ai-s.webp","assets/campus/snow/03-real-s.webp","assets/campus/snow/05-real-s.webp","assets/campus/snow/06-real-s.webp","assets/campus/snow/x01-s.webp","assets/sijia/doc-00-s.webp","assets/youyou/party-05-s.webp","assets/youyou/party-06-s.webp"].includes(path) ? path.replace(/\.webp$/, "-mobile.webp") : path;
+  const PREVIEW_IMAGES = {"assets/video/e_lanju/poster.webp":"assets/video/e_lanju/poster-preview.webp","assets/video/e_nestle/poster.webp":"assets/video/e_nestle/poster-preview.webp","assets/video/e_reno/poster-phone.webp":"assets/video/e_reno/poster-phone-preview.webp","assets/video/news40/poster.webp":"assets/video/news40/poster-preview.webp","assets/video/oppo2/poster.webp":"assets/video/oppo2/poster-preview.webp","assets/video/oppo6/poster.webp":"assets/video/oppo6/poster-preview.webp","assets/video/pixel/poster.webp":"assets/video/pixel/poster-preview.webp","assets/video/sj1/poster.webp":"assets/video/sj1/poster-preview.webp","assets/video/sj2/poster.webp":"assets/video/sj2/poster-preview.webp","assets/video/sj3/poster.webp":"assets/video/sj3/poster-preview.webp","assets/video/wl1/poster.webp":"assets/video/wl1/poster-preview.webp","assets/video/wl28/poster.webp":"assets/video/wl28/poster-preview.webp","assets/video/wl3/poster.webp":"assets/video/wl3/poster-preview.webp","assets/video/wl4/poster.webp":"assets/video/wl4/poster-preview.webp","assets/video/wl5/poster.webp":"assets/video/wl5/poster-preview.webp","assets/video/wl6/poster.webp":"assets/video/wl6/poster-preview.webp","assets/video/wl7/poster.webp":"assets/video/wl7/poster-preview.webp","assets/video/wlsummer/poster.webp":"assets/video/wlsummer/poster-preview.webp","assets/video/w_fish/poster.webp":"assets/video/w_fish/poster-preview.webp","assets/video/w_jz/poster.webp":"assets/video/w_jz/poster-preview.webp","assets/video/w_lei/poster.webp":"assets/video/w_lei/poster-preview.webp","assets/video/w_street/poster.webp":"assets/video/w_street/poster-preview.webp","assets/video/w_xc/poster.webp":"assets/video/w_xc/poster-preview.webp","assets/video/yy4/poster.webp":"assets/video/yy4/poster-preview.webp"};
+  const previewThumbnail = path => PREVIEW_IMAGES[path] || phoneThumbnail(path);
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   let activeDialog = null;
@@ -56,7 +58,7 @@
       return M.images[group][name];
     });
 
-  const vinfo = (id) => ({ id, ...M.videos[id], ...D.VIDEO_INFO[id] });
+  const vinfo = (id) => { const v = { id, ...M.videos[id], ...D.VIDEO_INFO[id] }; v.poster = matchMedia("(max-width:900px)").matches ? v.poster.replace(/\.webp$/, "-mobile.webp") : previewThumbnail(v.poster); return v; };
   const isVertical = (v) => v.h > v.w;
 
   /* video playlists, keyed by name → [video ids] */
@@ -80,7 +82,7 @@
     return `
       <button class="vcard" data-orientation="${isVertical(v) ? "portrait" : "landscape"}" style="--ar:${(v.w / v.h).toFixed(4)}" data-vid="${id}" data-list="${list}" data-idx="${idx}" aria-label="播放：${esc(v.title)}">
         <span class="vcard__screen">
-          <picture class="video-poster"><source media="(max-width:900px)" srcset="${v.poster.replace(/\.webp$/, "-mobile.webp")}" /><img src="${v.poster}" alt="" loading="lazy" decoding="async" /></picture>
+          <picture class="video-poster"><img src="${v.poster}" alt="" loading="lazy" decoding="async" /></picture>
           ${scrubLayer(v)}
           <span class="vcard__ori">${isVertical(v) ? "竖屏" : "横屏"}</span>
           ${v.award ? `<span class="vcard__award">★ ${esc(v.award)}</span>` : ""}
@@ -112,7 +114,7 @@
     return `
       <button class="feature" data-vid="${id}" data-list="${list}" data-idx="0" aria-label="播放：${esc(v.title)}">
         <span class="feature__screen">
-          <picture class="video-poster"><source media="(max-width:900px)" srcset="${v.poster.replace(/\.webp$/, "-mobile.webp")}" /><img src="${v.poster}" alt="" loading="lazy" decoding="async" /></picture>
+          <picture class="video-poster"><img src="${v.poster}" alt="" loading="lazy" decoding="async" /></picture>
           ${scrubLayer(v)}
           <span class="play-dot"></span>
           <span class="vcard__dur">${fmtDur(v.dur)}</span>
@@ -187,7 +189,7 @@
               <button class="char" style="--i:${i}" aria-label="${esc(c.name)}：${esc(c.desc)}">
                 <span class="char__in">
                   <span class="char__face char__front">
-                    <img src="${phoneThumbnail(im.s)}" alt="" loading="lazy" decoding="async" />
+                    <img src="${previewThumbnail(im.s)}" alt="" loading="lazy" decoding="async" />
                     <span class="char__label"><b>${esc(c.name)}</b><i>${esc(c.en)}</i></span>
                   </span>
                   <span class="char__face char__back">
@@ -212,7 +214,7 @@
               const list = imgs(g.key);
               return `
               <button class="pola" style="--i:${i}" data-gal="${g.key}" data-title="${esc(g.title)}">
-                <span class="pola__img"><img src="${phoneThumbnail(list[0].s)}" alt="" loading="lazy" decoding="async" /><span class="pola__count">${list.length} P</span></span>
+                <span class="pola__img"><img src="${previewThumbnail(list[0].s)}" alt="" loading="lazy" decoding="async" /><span class="pola__count">${list.length} P</span></span>
                 <span class="pola__cap">${esc(g.title)}</span>
               </button>`;
             })
@@ -313,7 +315,7 @@
         link.textContent = `${set.linkText} ↗`;
       }
       $("#baThumbs").innerHTML = data.pairs
-        .map((p, i) => `<button data-pair="${i}" aria-label="第 ${i + 1} 组"><img src="${phoneThumbnail(p.ai.s)}" alt="" loading="lazy" decoding="async" /></button>`)
+        .map((p, i) => `<button data-pair="${i}" aria-label="第 ${i + 1} 组"><img src="${previewThumbnail(p.ai.s)}" alt="" loading="lazy" decoding="async" /></button>`)
         .join("");
       this.pair(0);
       this.renderMore(key, set, data);
@@ -445,7 +447,7 @@
     $("#nowShowing").innerHTML = `
       <button class="now" data-vid="w_lei" data-list="works-now" data-idx="0" aria-label="播放：${esc(v.title)}">
         <span class="now__screen">
-          <img src="${v.poster}" alt="" decoding="async" />
+          <img src="${v.poster}" alt="" loading="lazy" decoding="async" />
           ${scrubLayer(v)}
           <span class="play-dot"></span>
           <span class="vcard__dur">${fmtDur(v.dur)}</span>
@@ -506,8 +508,8 @@
         <button class="pin-card" style="--i:${i}" data-gal="${g.key}" data-title="${esc(g.title)}">
           <span class="tape"></span>
           <span class="pin-card__imgs">
-            <img class="pin-card__main" src="${phoneThumbnail(first.s)}" alt="" loading="lazy" decoding="async" width="${first.w}" height="${first.h}" />
-            ${others.length ? `<span class="pin-card__row" style="--n:${Math.min(3, others.length)}">${others.slice(0, 3).map((o) => `<img src="${phoneThumbnail(o.s)}" alt="" loading="lazy" decoding="async" />`).join("")}</span>` : ""}
+            <img class="pin-card__main" src="${previewThumbnail(first.s)}" alt="" loading="lazy" decoding="async" width="${first.w}" height="${first.h}" />
+            ${others.length ? `<span class="pin-card__row" style="--n:${Math.min(3, others.length)}">${others.slice(0, 3).map((o) => `<img src="${previewThumbnail(o.s)}" alt="" loading="lazy" decoding="async" />`).join("")}</span>` : ""}
           </span>
           ${list.length > 1 ? `<span class="pin-card__more">${list.length} P</span>` : ""}
           <span class="pin-card__tag">${esc(g.tag)}</span>
@@ -522,7 +524,7 @@
     $("#designBoard").innerHTML = `
       <div class="projector" data-reveal>
         <div class="projector__screen" id="projScreen" role="button" tabindex="0" aria-label="查看大图">
-          ${slides.map((s, i) => `<img src="${matchMedia("(max-width:900px)").matches ? phoneThumbnail(s.s) : s.l}" alt="《你的魔法书包》第 ${i + 1} 页" ${i ? 'loading="lazy"' : ""} decoding="async" class="${i ? "" : "is-on"}" />`).join("")}
+          ${slides.map((s, i) => `<img src="${previewThumbnail(s.s)}" alt="《你的魔法书包》第 ${i + 1} 页" ${i ? 'loading="lazy"' : ""} decoding="async" class="${i ? "" : "is-on"}" />`).join("")}
           <span class="projector__progress" id="projProgress"></span>
         </div>
         <div class="projector__info">
@@ -1240,18 +1242,35 @@
   addEventListener("resize", syncBackground);
 })();
 
-/* Warm the first images when a project or mobile section is selected. */
+/* Load nearby previews and anticipate the destination without fetching every gallery. */
 (() => {
- const warm = panel => { if (!matchMedia("(max-width:900px)").matches || !panel) return; panel.querySelectorAll('img').forEach((im,i) => { if(i < 4) im.loading='eager'; }); };
- document.querySelectorAll('.case-tab').forEach(tab => {
-  const preload = () => warm(document.getElementById(tab.getAttribute('aria-controls')));
-  tab.addEventListener('pointerenter',preload);
-  tab.addEventListener('pointerdown',preload,{passive:true});
-  tab.addEventListener('focus',preload);
+ const visible = image => image.getClientRects().length > 0;
+ const warm = (panel, anticipate = false) => {
+  if (!panel) return;
+  const candidates = [...panel.querySelectorAll('img[loading="lazy"]')].filter(image => anticipate || visible(image));
+  candidates.slice(0, 6).forEach(image => { image.fetchPriority = 'auto'; image.loading = 'eager'; });
+ };
+ const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+  if (!entry.isIntersecting) return;
+  entry.target.loading = 'eager';
+  observer.unobserve(entry.target);
+ }), {rootMargin:'400px 0px', threshold:0});
+ document.querySelectorAll('img[loading="lazy"]').forEach(image => observer.observe(image));
+ const destination = control => {
+  const id = control.getAttribute('aria-controls') || control.dataset.page || control.getAttribute('href')?.replace(/^#/, '');
+  return id ? document.getElementById(id) : null;
+ };
+ document.addEventListener('pointerover', event => {
+  const control = event.target.closest('.case-tab, .mobile-nav button, a[href^="#"]');
+  if (control) warm(destination(control), true);
+ }, {passive:true});
+ document.addEventListener('focusin', event => {
+  const control = event.target.closest('.case-tab, .mobile-nav button, a[href^="#"]');
+  if (control) warm(destination(control), true);
  });
- const observer = new MutationObserver(entries => { for(const entry of entries) {
-  const el=entry.target;
-  if(el.classList.contains('is-mobile-active') || el.classList.contains('mobile-sub-active')) requestAnimationFrame(() => warm(el));
- } });
- document.querySelectorAll('main.content > .sec,.projector,.pins').forEach(el => observer.observe(el,{attributes:true,attributeFilter:['class']}));
+ const changes = new MutationObserver(entries => {
+  const panels = new Set(entries.map(entry => entry.target.closest('.sec, .hero')));
+  requestAnimationFrame(() => panels.forEach(panel => warm(panel)));
+ });
+ document.querySelectorAll('main.content > .sec, .case, .work-row, .pins, .projector').forEach(panel => changes.observe(panel,{subtree:true,attributes:true,attributeFilter:['class','hidden']}));
 })();
