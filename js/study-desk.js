@@ -14,7 +14,25 @@
     lamp.querySelector('span').textContent = lightOn ? '开灯' : '关灯';
     mobileLamp.textContent = lightOn ? '开灯' : '关灯';
   }
-  function toggleLamp() { setLampState(!lightOn); }
+  let switchingLamp = false;
+  const lampImages = new Map();
+  async function toggleLamp() {
+    if (switchingLamp) return;
+    const nextState = !lightOn;
+    if (matchMedia('(max-width:900px)').matches) {
+      switchingLamp = true;
+      const url = nextState ? 'assets/intro/study-sunset-mobile.webp' : 'assets/intro/study-daylight-mobile.webp';
+      if (!lampImages.has(url)) {
+        const image = new Image();
+        image.src = url;
+        lampImages.set(url, image.decode().then(() => true, () => false));
+      }
+      const ready = await lampImages.get(url);
+      switchingLamp = false;
+      if (!ready) { lampImages.delete(url); return; }
+    }
+    setLampState(nextState);
+  }
   intro.addEventListener('study-lamp-reset', () => setLampState(false));
   setLampState(false);
   lamp.addEventListener('click',toggleLamp);

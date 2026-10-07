@@ -427,10 +427,10 @@
 
 /* Download only the current phone intro scene. */
 @media(max-width:900px) {
- .intro .study-scene,.intro .study-day-scene,.intro .study-overhead { background-image:none; }
- .intro.is-daytime .study-day-scene { background-image:url('../assets/intro/study-daylight-mobile.webp'); }
- .intro:not(.is-daytime) .study-scene { background-image:url('../assets/intro/study-sunset-mobile.webp'); }
- .intro.is-overhead .study-overhead { background-image:radial-gradient(ellipse at 15% 15%,#efc58018,transparent 60%),linear-gradient(#24160a18,#120d0938),url('../assets/intro/study-tabletop-overhead-mobile.webp'); }
+ .intro .study-scene { background-image:url('../assets/intro/study-sunset-mobile.webp'); }
+ .intro .study-day-scene { background-image:url('../assets/intro/study-daylight-mobile.webp'); }
+ .intro .study-scene { background-image:url('../assets/intro/study-sunset-mobile.webp'); }
+ .intro .study-overhead { background-image:radial-gradient(ellipse at 15% 15%,#efc58018,transparent 60%),linear-gradient(#24160a18,#120d0938),url('../assets/intro/study-tabletop-overhead-mobile.webp'); }
 }
 
 /* Fit the phone cover label inside the kraft folder. */
