@@ -2,8 +2,6 @@
   'use strict';
   const button = document.getElementById('studyMusic');
   const label = document.getElementById('studyMusicLabel');
-  // Do not expose or fetch background audio on phones.
-  if (matchMedia('(max-width:900px)').matches) { button.hidden = true; return; }
   const audio = new Audio('assets/audio/satie-gymnopedie-1.ogg');
   audio.id = 'gramophoneAudio';
   audio.preload = 'metadata';
