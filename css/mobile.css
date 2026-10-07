@@ -373,7 +373,7 @@
  .mobile-pages #hero .marquee__bulbs::after { display:none; }
  .mobile-pages #hero .hero__cta { width:100%; max-width:320px; gap:12px; flex-wrap:nowrap; }
  .mobile-pages #hero .hero__cta .btn { flex:1; min-width:0; padding:12px 10px; font-size:13px; border-radius:5px; }
- .mobile-pages #hero::after { content:'每一份创作，都值得被认真收藏'; display:block; margin-top:-9px; font-family:var(--f-serif); font-size:11px; letter-spacing:.1em; color:#c9b18f; }
+ .mobile-pages #hero::after { content:'晨间的新闻自己来编写 才算特别'; display:block; margin-top:-9px; font-family:var(--f-serif); font-size:11px; letter-spacing:.1em; color:#c9b18f; }
 }
 
 /* Balance the upper-right note with a quiet film keepsake on the left. */
