@@ -100,3 +100,7 @@
 @media(min-width:901px) {
  .intro .study-papers .folder__label { top:22%; bottom:12%; height:auto; }
 }
+
+/* Fixed gold smile artwork instead of system emoji glyphs. */
+.note-smile img, .desk-note .note-mini-smile img { display:block; width:100%; height:100%; object-fit:contain; }
+.note-smile img { padding:3px; box-sizing:border-box; }
