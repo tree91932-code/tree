@@ -442,3 +442,5 @@
  .intro .study-papers .folder__field--hand { font-size:16px; line-height:1.1; }
  .intro .study-papers .folder__stamp { font-size:11px; padding:3px 7px; border-width:2px; right:12px; bottom:18px; }
 }
+
+.video-poster { display:contents; }

@@ -79,7 +79,7 @@
     return `
       <button class="vcard" data-orientation="${isVertical(v) ? "portrait" : "landscape"}" style="--ar:${(v.w / v.h).toFixed(4)}" data-vid="${id}" data-list="${list}" data-idx="${idx}" aria-label="播放：${esc(v.title)}">
         <span class="vcard__screen">
-          <img src="${v.poster}" alt="" loading="lazy" decoding="async" />
+          <picture class="video-poster"><source media="(max-width:900px)" srcset="${v.poster.replace(/\.webp$/, "-mobile.webp")}" /><img src="${v.poster}" alt="" loading="lazy" decoding="async" /></picture>
           ${scrubLayer(v)}
           <span class="vcard__ori">${isVertical(v) ? "竖屏" : "横屏"}</span>
           ${v.award ? `<span class="vcard__award">★ ${esc(v.award)}</span>` : ""}
@@ -111,7 +111,7 @@
     return `
       <button class="feature" data-vid="${id}" data-list="${list}" data-idx="0" aria-label="播放：${esc(v.title)}">
         <span class="feature__screen">
-          <img src="${v.poster}" alt="" loading="lazy" decoding="async" />
+          <picture class="video-poster"><source media="(max-width:900px)" srcset="${v.poster.replace(/\.webp$/, "-mobile.webp")}" /><img src="${v.poster}" alt="" loading="lazy" decoding="async" /></picture>
           ${scrubLayer(v)}
           <span class="play-dot"></span>
           <span class="vcard__dur">${fmtDur(v.dur)}</span>
