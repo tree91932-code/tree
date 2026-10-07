@@ -272,6 +272,7 @@
   function selectCase(id, scroll) {
     if (id === currentCase && !scroll) return;
     currentCase = id;
+    $(`.case[data-case="${id}"] img`).slice(0, 4).forEach(im => { im.loading = "eager"; });
     $$(".case-tab").forEach((t) => {
       const on = t.dataset.case === id;
       t.classList.toggle("is-active", on);
@@ -520,7 +521,7 @@
     $("#designBoard").innerHTML = `
       <div class="projector" data-reveal>
         <div class="projector__screen" id="projScreen" role="button" tabindex="0" aria-label="查看大图">
-          ${slides.map((s, i) => `<img src="${s.l}" alt="《你的魔法书包》第 ${i + 1} 页" ${i ? 'loading="lazy"' : ""} decoding="async" class="${i ? "" : "is-on"}" />`).join("")}
+          ${slides.map((s, i) => `<img src="${matchMedia("(max-width:900px)").matches ? s.s : s.l}" alt="《你的魔法书包》第 ${i + 1} 页" ${i ? 'loading="lazy"' : ""} decoding="async" class="${i ? "" : "is-on"}" />`).join("")}
           <span class="projector__progress" id="projProgress"></span>
         </div>
         <div class="projector__info">
@@ -552,8 +553,16 @@
     let visible = false;
     let hover = false;
 
-    const go = (i) => {
-      idx = (i + slides.length) % slides.length;
+    let requestedSlide = 0;
+    const go = async (i) => {
+      const requested = ++requestedSlide;
+      const nextIndex = (i + slides.length) % slides.length;
+      const image = imgsEl[nextIndex];
+      image.loading = "eager";
+      try { await image.decode(); } catch {}
+      if (requested !== requestedSlide) return;
+      idx = nextIndex;
+      imgsEl[(idx + 1) % slides.length].loading = "eager";
       imgsEl.forEach((im, k) => im.classList.toggle("is-on", k === idx));
       dots.forEach((d, k) => d.classList.toggle("is-on", k === idx));
       $("#projCount").textContent = `${pad(idx + 1)} / ${pad(slides.length)}`;
@@ -891,6 +900,10 @@
     const hint = $(".intro__hint span", intro);
     let stage = "desk";
     let stageTimer;
+    const overheadImage = new Image();
+    overheadImage.fetchPriority = "low";
+    overheadImage.src = matchMedia("(max-width:900px)").matches ? "assets/intro/study-tabletop-overhead-mobile.webp" : "assets/intro/study-tabletop-overhead.webp";
+    const overheadReady = overheadImage.decode().catch(() => {});
     const setStage = (value) => {
       stage = value;
       intro.dataset.stage = value;
@@ -934,9 +947,13 @@
       play();
     }
 
-    folder.addEventListener("click", () => {
-      if (stage === "moving" || stage === "opening" || stage === "leaving") return;
+    folder.addEventListener("click", async () => {
+      if (stage === "preparing" || stage === "moving" || stage === "opening" || stage === "leaving") return;
       if (stage === "desk") {
+        setStage("preparing");
+        hint.textContent = "正在准备桌面…";
+        await overheadReady;
+        if (stage !== "preparing") return;
         setStage("moving");
         intro.classList.add("is-overhead");
         hint.textContent = "镜头移向档案袋…";
@@ -944,7 +961,7 @@
           setStage("overhead");
           hint.textContent = "再次点击档案袋，打开作品集";
           folder.setAttribute("aria-label", "再次点击档案袋，打开作品集");
-        }, reduced ? 0 : 2800);
+        }, reduced ? 0 : matchMedia("(max-width:900px)").matches ? 1600 : 2800);
         return;
       }
       setStage("opening");
@@ -1215,4 +1232,20 @@
   initScrollSpy();
   initIntro();
   addEventListener("resize", syncBackground);
+})();
+
+/* Warm the first images when a project or mobile section is selected. */
+(() => {
+ const warm = panel => { if (!panel) return; panel.querySelectorAll('img').forEach((im,i) => { if(i < 4) im.loading='eager'; }); };
+ document.querySelectorAll('.case-tab').forEach(tab => {
+  const preload = () => warm(document.getElementById(tab.getAttribute('aria-controls')));
+  tab.addEventListener('pointerenter',preload);
+  tab.addEventListener('pointerdown',preload,{passive:true});
+  tab.addEventListener('focus',preload);
+ });
+ const observer = new MutationObserver(entries => { for(const entry of entries) {
+  const el=entry.target;
+  if(el.classList.contains('is-mobile-active') || el.classList.contains('mobile-sub-active')) requestAnimationFrame(() => warm(el));
+ } });
+ document.querySelectorAll('main.content > .sec,.projector,.pins').forEach(el => observer.observe(el,{attributes:true,attributeFilter:['class']}));
 })();
