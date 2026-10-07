@@ -460,3 +460,14 @@
  .intro.is-overhead .study-scene,.intro.is-overhead .study-day-scene { filter:none; }
  .intro[data-stage="moving"] .study-papers,.intro[data-stage="moving"] .study-overhead { will-change:transform; }
 }
+
+/* Keep the phone video dialog opaque across its entire scrollable area. */
+@media (max-width:900px) {
+  .cinema { height:100vh; height:100dvh; box-sizing:border-box; background:#090603; isolation:isolate; -webkit-overflow-scrolling:touch; }
+  .cinema__backdrop { position:fixed; inset:0; background:#090603; backdrop-filter:none; animation:none; }
+  .cinema__curtain { display:none; }
+  .cinema__stage, .cinema.is-open .cinema__stage { opacity:1; transform:none; transition:none; flex:none; }
+  .cinema__list { display:flex; flex:none; gap:8px; width:100%; min-width:0; overflow-x:auto; overflow-y:hidden; padding:3px 2px; box-sizing:border-box; }
+  .cinema__list button { flex:0 0 72px; width:72px; height:80px; aspect-ratio:auto; }
+  .cinema__close { z-index:5; }
+}

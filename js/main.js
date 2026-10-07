@@ -773,7 +773,11 @@
         `<a href="${v.src}" download>下载视频</a>`;
       $$("#cinemaList button").forEach((b, i) => b.classList.toggle("is-current", i === idx));
       const cur = $("#cinemaList .is-current");
-      if (cur) cur.scrollIntoView({ block: "nearest" });
+      if (matchMedia("(max-width:900px)").matches) {
+        this.el.scrollTop = 0;
+        const strip = $("#cinemaList");
+        if (cur) strip.scrollLeft = Math.max(0, cur.offsetLeft - strip.offsetLeft - (strip.clientWidth - cur.offsetWidth) / 2);
+      } else if (cur) cur.scrollIntoView({ block: "nearest" });
       $("#cinemaCount").textContent = `${pad(idx + 1)} / ${pad(this.list.length)}`;
       $("#cinemaPrev").disabled = idx === 0;
       $("#cinemaNext").disabled = idx === this.list.length - 1;
