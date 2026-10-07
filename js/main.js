@@ -273,7 +273,7 @@
   function selectCase(id, scroll) {
     if (id === currentCase && !scroll) return;
     currentCase = id;
-    if (matchMedia("(max-width:900px)").matches) $(`.case[data-case="${id}"] img`).slice(0, 4).forEach(im => { im.loading = "eager"; });
+    if (matchMedia("(max-width:900px)").matches) $$(`.case[data-case="${id}"] img`).slice(0, 4).forEach(im => { im.loading = "eager"; });
     $$(".case-tab").forEach((t) => {
       const on = t.dataset.case === id;
       t.classList.toggle("is-active", on);
