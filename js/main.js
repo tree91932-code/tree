@@ -844,15 +844,21 @@
       image.onload = null;
       image.removeAttribute("src");
       image.style.opacity = "0";
+    } else {
+      const image = $("#lbImg");
+      image.onload = null;
+      image.src = list[idx].s;
+      image.alt = title + " · 第 " + (idx + 1) + " 张";
+      image.style.opacity = "1";
     }
     showLightbox(idx);
     enterDialog(lb.el);
   }
-  /* Desktop lightbox: decode before swapping, and keep only nearby images warm. */
-  const desktopLightboxCache = new Map();
-  let desktopLightboxRequest = 0;
-  function prepareDesktopImage(path, priority = 'low') {
-    if (desktopLightboxCache.has(path)) return desktopLightboxCache.get(path).ready;
+  /* Decode before swapping and keep nearby full-size images warm. */
+  const lightboxImageCache = new Map();
+  let lightboxImageRequest = 0;
+  function prepareLightboxImage(path, priority = 'low') {
+    if (lightboxImageCache.has(path)) return lightboxImageCache.get(path).ready;
     const image = new Image();
     image.decoding = 'async';
     image.fetchPriority = priority;
@@ -861,15 +867,15 @@
         try { await image.decode(); } catch {}
         resolve(image);
       };
-      image.onerror = () => { desktopLightboxCache.delete(path); reject(new Error('Image unavailable')); };
+      image.onerror = () => { lightboxImageCache.delete(path); reject(new Error('Image unavailable')); };
     });
-    desktopLightboxCache.set(path, {image, ready});
+    lightboxImageCache.set(path, {image, ready});
     image.src = path;
-    while (desktopLightboxCache.size > 6) desktopLightboxCache.delete(desktopLightboxCache.keys().next().value);
+    while (lightboxImageCache.size > (matchMedia("(max-width:900px)").matches ? 4 : 6)) lightboxImageCache.delete(lightboxImageCache.keys().next().value);
     return ready;
   }
-  async function showDesktopLightbox(i) {
-    const request = ++desktopLightboxRequest;
+  async function showPreparedLightbox(i) {
+    const request = ++lightboxImageRequest;
     const list = lb.list;
     const index = (i + list.length) % list.length;
     lb.idx = index;
@@ -877,8 +883,8 @@
     const img = $("#lbImg");
     lb.el.setAttribute('aria-busy', 'true');
     try {
-      await prepareDesktopImage(item.l, 'high');
-      if (request !== desktopLightboxRequest || lb.el.hidden || lb.list !== list) return;
+      await prepareLightboxImage(item.l, 'high');
+      if (request !== lightboxImageRequest || lb.el.hidden || lb.list !== list) return;
       img.onload = null;
       img.src = item.l;
       img.alt = lb.title + ' · 第 ' + (index + 1) + ' 张';
@@ -891,31 +897,19 @@
       if (current) current.scrollIntoView({block:'nearest',inline:'center'});
       lb.el.removeAttribute('aria-busy');
       if (list.length > 1) [index - 1, index + 1].forEach(next => {
-        prepareDesktopImage(list[(next + list.length) % list.length].l).catch(() => {});
+        prepareLightboxImage(list[(next + list.length) % list.length].l).catch(() => {});
       });
     } catch {
-      if (request !== desktopLightboxRequest || lb.el.hidden) return;
+      if (request !== lightboxImageRequest || lb.el.hidden) return;
       lb.el.removeAttribute('aria-busy');
       toast('图片暂时加载失败，请重试');
     }
   }
   function showLightbox(i) {
-    if (matchMedia("(min-width:901px)").matches) return showDesktopLightbox(i);
-    lb.idx = (i + lb.list.length) % lb.list.length;
-    const it = lb.list[lb.idx];
-    const img = $("#lbImg");
-    img.style.opacity = "0.3";
-    img.onload = () => (img.style.opacity = "1");
-    img.src = it.l;
-    img.alt = `${lb.title} · 第 ${lb.idx + 1} 张`;
-    $("#lbTitle").textContent = lb.title;
-    $("#lbCount").textContent = `${pad(lb.idx + 1)} / ${pad(lb.list.length)}`;
-    $$("#lbThumbs button").forEach((b, k) => b.classList.toggle("is-current", k === lb.idx));
-    const cur = $("#lbThumbs .is-current");
-    if (cur) cur.scrollIntoView({ block: "nearest", inline: "center" });
+    return showPreparedLightbox(i);
   }
   function closeLightbox() {
-    desktopLightboxRequest++;
+    lightboxImageRequest++;
     lb.el.removeAttribute("aria-busy");
     lb.el.hidden = true;
     body.classList.remove("is-locked");
