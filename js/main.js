@@ -835,10 +835,68 @@
     $("#lbThumbs").innerHTML = list.map((it, i) => `<button data-i="${i}"><img src="${it.s}" alt="" loading="lazy" /></button>`).join("");
     $("#lbThumbs").hidden = list.length < 2;
     $("#lbPrev").hidden = $("#lbNext").hidden = list.length < 2;
+    if (matchMedia("(min-width:901px)").matches) {
+      const image = $("#lbImg");
+      image.onload = null;
+      image.removeAttribute("src");
+      image.style.opacity = "0";
+    }
     showLightbox(idx);
     enterDialog(lb.el);
   }
+  /* Desktop lightbox: decode before swapping, and keep only nearby images warm. */
+  const desktopLightboxCache = new Map();
+  let desktopLightboxRequest = 0;
+  function prepareDesktopImage(path, priority = 'low') {
+    if (desktopLightboxCache.has(path)) return desktopLightboxCache.get(path).ready;
+    const image = new Image();
+    image.decoding = 'async';
+    image.fetchPriority = priority;
+    const ready = new Promise((resolve, reject) => {
+      image.onload = async () => {
+        try { await image.decode(); } catch {}
+        resolve(image);
+      };
+      image.onerror = () => { desktopLightboxCache.delete(path); reject(new Error('Image unavailable')); };
+    });
+    desktopLightboxCache.set(path, {image, ready});
+    image.src = path;
+    while (desktopLightboxCache.size > 6) desktopLightboxCache.delete(desktopLightboxCache.keys().next().value);
+    return ready;
+  }
+  async function showDesktopLightbox(i) {
+    const request = ++desktopLightboxRequest;
+    const list = lb.list;
+    const index = (i + list.length) % list.length;
+    lb.idx = index;
+    const item = list[index];
+    const img = $("#lbImg");
+    lb.el.setAttribute('aria-busy', 'true');
+    try {
+      await prepareDesktopImage(item.l, 'high');
+      if (request !== desktopLightboxRequest || lb.el.hidden || lb.list !== list) return;
+      img.onload = null;
+      img.src = item.l;
+      img.alt = lb.title + ' · 第 ' + (index + 1) + ' 张';
+      img.style.opacity = '1';
+      if (!reduced && img.animate) img.animate([{opacity:0.86},{opacity:1}], {duration:160,easing:'ease-out'});
+      $("#lbTitle").textContent = lb.title;
+      $("#lbCount").textContent = pad(index + 1) + ' / ' + pad(list.length);
+      $$("#lbThumbs button").forEach((button, k) => button.classList.toggle('is-current', k === index));
+      const current = $("#lbThumbs .is-current");
+      if (current) current.scrollIntoView({block:'nearest',inline:'center'});
+      lb.el.removeAttribute('aria-busy');
+      if (list.length > 1) [index - 1, index + 1].forEach(next => {
+        prepareDesktopImage(list[(next + list.length) % list.length].l).catch(() => {});
+      });
+    } catch {
+      if (request !== desktopLightboxRequest || lb.el.hidden) return;
+      lb.el.removeAttribute('aria-busy');
+      toast('图片暂时加载失败，请重试');
+    }
+  }
   function showLightbox(i) {
+    if (matchMedia("(min-width:901px)").matches) return showDesktopLightbox(i);
     lb.idx = (i + lb.list.length) % lb.list.length;
     const it = lb.list[lb.idx];
     const img = $("#lbImg");
@@ -853,6 +911,8 @@
     if (cur) cur.scrollIntoView({ block: "nearest", inline: "center" });
   }
   function closeLightbox() {
+    desktopLightboxRequest++;
+    lb.el.removeAttribute("aria-busy");
     lb.el.hidden = true;
     body.classList.remove("is-locked");
     leaveDialog(lb.el);
