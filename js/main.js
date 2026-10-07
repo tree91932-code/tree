@@ -9,6 +9,7 @@
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const ESC_MAP = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ESC_MAP[c]);
+  const phoneThumbnail = path => matchMedia("(max-width:900px)").matches && ["assets/campus/outfit/02-real-s.webp","assets/campus/outfit/03-real-s.webp","assets/campus/outfit/04-real-s.webp","assets/campus/outfit/05-ai-s.webp","assets/campus/pixel/01-real-s.webp","assets/campus/pixel/02-real-s.webp","assets/campus/pixel/11-real-s.webp","assets/campus/snow/00-real-s.webp","assets/campus/snow/02-ai-s.webp","assets/campus/snow/03-real-s.webp","assets/campus/snow/05-real-s.webp","assets/campus/snow/06-real-s.webp","assets/campus/snow/x01-s.webp","assets/sijia/doc-00-s.webp","assets/youyou/party-05-s.webp","assets/youyou/party-06-s.webp"].includes(path) ? path.replace(/\.webp$/, "-mobile.webp") : path;
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   let activeDialog = null;
@@ -186,7 +187,7 @@
               <button class="char" style="--i:${i}" aria-label="${esc(c.name)}：${esc(c.desc)}">
                 <span class="char__in">
                   <span class="char__face char__front">
-                    <img src="${im.s}" alt="" loading="lazy" decoding="async" />
+                    <img src="${phoneThumbnail(im.s)}" alt="" loading="lazy" decoding="async" />
                     <span class="char__label"><b>${esc(c.name)}</b><i>${esc(c.en)}</i></span>
                   </span>
                   <span class="char__face char__back">
@@ -211,7 +212,7 @@
               const list = imgs(g.key);
               return `
               <button class="pola" style="--i:${i}" data-gal="${g.key}" data-title="${esc(g.title)}">
-                <span class="pola__img"><img src="${list[0].s}" alt="" loading="lazy" decoding="async" /><span class="pola__count">${list.length} P</span></span>
+                <span class="pola__img"><img src="${phoneThumbnail(list[0].s)}" alt="" loading="lazy" decoding="async" /><span class="pola__count">${list.length} P</span></span>
                 <span class="pola__cap">${esc(g.title)}</span>
               </button>`;
             })
@@ -272,7 +273,7 @@
   function selectCase(id, scroll) {
     if (id === currentCase && !scroll) return;
     currentCase = id;
-    $(`.case[data-case="${id}"] img`).slice(0, 4).forEach(im => { im.loading = "eager"; });
+    if (matchMedia("(max-width:900px)").matches) $(`.case[data-case="${id}"] img`).slice(0, 4).forEach(im => { im.loading = "eager"; });
     $$(".case-tab").forEach((t) => {
       const on = t.dataset.case === id;
       t.classList.toggle("is-active", on);
@@ -312,7 +313,7 @@
         link.textContent = `${set.linkText} ↗`;
       }
       $("#baThumbs").innerHTML = data.pairs
-        .map((p, i) => `<button data-pair="${i}" aria-label="第 ${i + 1} 组"><img src="${p.ai.s}" alt="" loading="lazy" decoding="async" /></button>`)
+        .map((p, i) => `<button data-pair="${i}" aria-label="第 ${i + 1} 组"><img src="${phoneThumbnail(p.ai.s)}" alt="" loading="lazy" decoding="async" /></button>`)
         .join("");
       this.pair(0);
       this.renderMore(key, set, data);
@@ -505,8 +506,8 @@
         <button class="pin-card" style="--i:${i}" data-gal="${g.key}" data-title="${esc(g.title)}">
           <span class="tape"></span>
           <span class="pin-card__imgs">
-            <img class="pin-card__main" src="${first.s}" alt="" loading="lazy" decoding="async" width="${first.w}" height="${first.h}" />
-            ${others.length ? `<span class="pin-card__row" style="--n:${Math.min(3, others.length)}">${others.slice(0, 3).map((o) => `<img src="${o.s}" alt="" loading="lazy" decoding="async" />`).join("")}</span>` : ""}
+            <img class="pin-card__main" src="${phoneThumbnail(first.s)}" alt="" loading="lazy" decoding="async" width="${first.w}" height="${first.h}" />
+            ${others.length ? `<span class="pin-card__row" style="--n:${Math.min(3, others.length)}">${others.slice(0, 3).map((o) => `<img src="${phoneThumbnail(o.s)}" alt="" loading="lazy" decoding="async" />`).join("")}</span>` : ""}
           </span>
           ${list.length > 1 ? `<span class="pin-card__more">${list.length} P</span>` : ""}
           <span class="pin-card__tag">${esc(g.tag)}</span>
@@ -521,7 +522,7 @@
     $("#designBoard").innerHTML = `
       <div class="projector" data-reveal>
         <div class="projector__screen" id="projScreen" role="button" tabindex="0" aria-label="查看大图">
-          ${slides.map((s, i) => `<img src="${matchMedia("(max-width:900px)").matches ? s.s : s.l}" alt="《你的魔法书包》第 ${i + 1} 页" ${i ? 'loading="lazy"' : ""} decoding="async" class="${i ? "" : "is-on"}" />`).join("")}
+          ${slides.map((s, i) => `<img src="${matchMedia("(max-width:900px)").matches ? phoneThumbnail(s.s) : s.l}" alt="《你的魔法书包》第 ${i + 1} 页" ${i ? 'loading="lazy"' : ""} decoding="async" class="${i ? "" : "is-on"}" />`).join("")}
           <span class="projector__progress" id="projProgress"></span>
         </div>
         <div class="projector__info">
@@ -558,11 +559,13 @@
       const requested = ++requestedSlide;
       const nextIndex = (i + slides.length) % slides.length;
       const image = imgsEl[nextIndex];
-      image.loading = "eager";
-      try { await image.decode(); } catch {}
-      if (requested !== requestedSlide) return;
+      if (matchMedia("(max-width:900px)").matches) {
+        image.loading = "eager";
+        try { await image.decode(); } catch {}
+        if (requested !== requestedSlide) return;
+        imgsEl[(nextIndex + 1) % slides.length].loading = "eager";
+      }
       idx = nextIndex;
-      imgsEl[(idx + 1) % slides.length].loading = "eager";
       imgsEl.forEach((im, k) => im.classList.toggle("is-on", k === idx));
       dots.forEach((d, k) => d.classList.toggle("is-on", k === idx));
       $("#projCount").textContent = `${pad(idx + 1)} / ${pad(slides.length)}`;
@@ -902,8 +905,9 @@
     let stageTimer;
     const overheadImage = new Image();
     overheadImage.fetchPriority = "low";
-    overheadImage.src = matchMedia("(max-width:900px)").matches ? "assets/intro/study-tabletop-overhead-mobile.webp" : "assets/intro/study-tabletop-overhead.webp";
-    const overheadReady = overheadImage.decode().catch(() => {});
+    const phoneIntro = matchMedia("(max-width:900px)").matches;
+    if (phoneIntro) overheadImage.src = "assets/intro/study-tabletop-overhead-mobile.webp";
+    const overheadReady = phoneIntro ? overheadImage.decode().catch(() => {}) : Promise.resolve();
     const setStage = (value) => {
       stage = value;
       intro.dataset.stage = value;
@@ -950,10 +954,12 @@
     folder.addEventListener("click", async () => {
       if (stage === "preparing" || stage === "moving" || stage === "opening" || stage === "leaving") return;
       if (stage === "desk") {
-        setStage("preparing");
-        hint.textContent = "正在准备桌面…";
-        await overheadReady;
-        if (stage !== "preparing") return;
+        if (phoneIntro) {
+          setStage("preparing");
+          hint.textContent = "正在准备桌面…";
+          await overheadReady;
+          if (stage !== "preparing") return;
+        }
         setStage("moving");
         intro.classList.add("is-overhead");
         hint.textContent = "镜头移向档案袋…";
@@ -1236,7 +1242,7 @@
 
 /* Warm the first images when a project or mobile section is selected. */
 (() => {
- const warm = panel => { if (!panel) return; panel.querySelectorAll('img').forEach((im,i) => { if(i < 4) im.loading='eager'; }); };
+ const warm = panel => { if (!matchMedia("(max-width:900px)").matches || !panel) return; panel.querySelectorAll('img').forEach((im,i) => { if(i < 4) im.loading='eager'; }); };
  document.querySelectorAll('.case-tab').forEach(tab => {
   const preload = () => warm(document.getElementById(tab.getAttribute('aria-controls')));
   tab.addEventListener('pointerenter',preload);

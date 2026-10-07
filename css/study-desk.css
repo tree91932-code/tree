@@ -1,4 +1,4 @@
-.study-day-scene { position:absolute; inset:0; z-index:-3; background:url('../assets/intro/study-daylight.webp') center / cover no-repeat; opacity:0; pointer-events:none; transition:opacity 1.4s ease; }
+.study-day-scene { position:absolute; inset:0; z-index:-3; background:url('../assets/intro/study-daylight.png') center / cover no-repeat; opacity:0; pointer-events:none; transition:opacity 1.4s ease; }
 .intro.is-daytime .study-day-scene { opacity:1; }
 .intro.is-daytime .study-scene { opacity:0; }
 .intro.is-overhead .study-day-scene { opacity:0; }
