@@ -1,7 +1,7 @@
 window.MANIFEST = {
  "videos": {
   "oppo1": {
-   "src": "assets/media/oppo1.mp4",
+   "src": "assets/media/oppo1.mp4?v=20261007-hq",
    "file": "2、项目经历/1、OPPO黑龙江微信视频号AI创意宣传视频/1、小欧带你尔滨游，马年福气“马上”有.mp4",
    "w": 1440,
    "h": 2542,
@@ -14,7 +14,7 @@ window.MANIFEST = {
    "fh": 381
   },
   "oppo2": {
-   "src": "assets/media/oppo2.mp4",
+   "src": "assets/media/oppo2.mp4?v=20261007-hq",
    "file": "2、项目经历/1、OPPO黑龙江微信视频号AI创意宣传视频/2、OPPO新春五福小欧来了.mp4",
    "w": 1080,
    "h": 1906,
@@ -27,7 +27,7 @@ window.MANIFEST = {
    "fh": 381
   },
   "oppo3": {
-   "src": "assets/media/oppo3.mp4",
+   "src": "assets/media/oppo3.mp4?v=20261007-hq",
    "file": "2、项目经历/1、OPPO黑龙江微信视频号AI创意宣传视频/3、很丝滑，很N6.mp4",
    "w": 2160,
    "h": 3840,
@@ -40,7 +40,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "oppo4": {
-   "src": "assets/media/oppo4.mp4",
+   "src": "assets/media/oppo4.mp4?v=20261007-hq",
    "file": "2、项目经历/1、OPPO黑龙江微信视频号AI创意宣传视频/4、光学至上，世界近在眼前.mp4",
    "w": 1440,
    "h": 2560,
@@ -53,7 +53,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "oppo5": {
-   "src": "assets/media/oppo5.mp4",
+   "src": "assets/media/oppo5.mp4?v=20261007-hq",
    "file": "2、项目经历/1、OPPO黑龙江微信视频号AI创意宣传视频/5、一台总想背面朝上的手机.mp4",
    "w": 2160,
    "h": 3840,
@@ -66,7 +66,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "oppo6": {
-   "src": "assets/media/oppo6.mp4",
+   "src": "assets/media/oppo6.mp4?v=20261007-hq",
    "file": "2、项目经历/1、OPPO黑龙江微信视频号AI创意宣传视频/6、不追风潮，自成一派.mp4",
    "w": 3840,
    "h": 2160,
@@ -79,7 +79,7 @@ window.MANIFEST = {
    "fh": 216
   },
   "news40": {
-   "src": "assets/media/news40.mp4",
+   "src": "assets/media/news40.mp4?v=20261007-hq",
    "file": "2、项目经历/2、黑龙江大学新闻传播学院新闻学专业40周年AI视频/9、新闻学专业40周年视频.mp4",
    "w": 2560,
    "h": 1440,
@@ -92,7 +92,7 @@ window.MANIFEST = {
    "fh": 216
   },
   "pixel": {
-   "src": "assets/media/pixel.mp4",
+   "src": "assets/media/pixel.mp4?v=20261007-hq",
    "file": "2、项目经历/3、校园AI创意系列项目/AI 看黑大：像素黑大/成片视频.mp4",
    "w": 1920,
    "h": 1080,
@@ -105,11 +105,11 @@ window.MANIFEST = {
    "fh": 216
   },
   "longbao": {
-   "src": "assets/media/longbao.mp4",
+   "src": "assets/media/longbao.mp4?v=20261007-hq",
    "file": "2、项目经历/3、校园AI创意系列项目/AI 看黑大：像素黑大/龙宝/走路视频.mp4",
    "w": 704,
    "h": 1248,
-   "dur": 5.0,
+   "dur": 5,
    "codec": "h264",
    "poster": "assets/video/longbao/poster.webp",
    "sprite": "assets/video/longbao/sprite.webp",
@@ -118,7 +118,7 @@ window.MANIFEST = {
    "fh": 383
   },
   "yy1": {
-   "src": "assets/media/yy1.mp4",
+   "src": "assets/media/yy1.mp4?v=20261007-hq",
    "file": "2、项目经历/4、佑佑的足球经AI视频项目/1、佑佑YOU GOAL.mp4",
    "w": 2160,
    "h": 3840,
@@ -131,7 +131,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "yy2": {
-   "src": "assets/media/yy2.mp4",
+   "src": "assets/media/yy2.mp4?v=20261007-hq",
    "file": "2、项目经历/4、佑佑的足球经AI视频项目/2、哈尔滨vs延边.mp4",
    "w": 1440,
    "h": 2560,
@@ -144,7 +144,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "yy3": {
-   "src": "assets/media/yy3.mp4",
+   "src": "assets/media/yy3.mp4?v=20261007-hq",
    "file": "2、项目经历/4、佑佑的足球经AI视频项目/3、佛得角vs阿根廷.mp4",
    "w": 1440,
    "h": 2560,
@@ -157,7 +157,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "yy4": {
-   "src": "assets/media/yy4.mp4",
+   "src": "assets/media/yy4.mp4?v=20261007-hq",
    "file": "2、项目经历/4、佑佑的足球经AI视频项目/4、佑佑18岁生日快乐.mp4",
    "w": 1440,
    "h": 2560,
@@ -170,7 +170,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "yysum": {
-   "src": "assets/media/yysum.mp4",
+   "src": "assets/media/yysum.mp4?v=20261007-hq",
    "file": "2、项目经历/4、佑佑的足球经AI视频项目/总结视频.mp4",
    "w": 1080,
    "h": 1920,
@@ -183,7 +183,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "sj1": {
-   "src": "assets/media/sj1.mp4",
+   "src": "assets/media/sj1.mp4?v=20261007-hq",
    "file": "2、项目经历/5、思嘉的朋友们·猫咪主题公园项目/1、《有温度的亚布力》猫咪主题公园纪录片.mp4",
    "w": 1920,
    "h": 1080,
@@ -196,7 +196,7 @@ window.MANIFEST = {
    "fh": 216
   },
   "sj2": {
-   "src": "assets/media/sj2.mp4",
+   "src": "assets/media/sj2.mp4?v=20261007-hq",
    "file": "2、项目经历/5、思嘉的朋友们·猫咪主题公园项目/2、思嘉的朋友们7月14日试营业.mp4",
    "w": 1440,
    "h": 2560,
@@ -209,7 +209,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "sj3": {
-   "src": "assets/media/sj3.mp4",
+   "src": "assets/media/sj3.mp4?v=20261007-hq",
    "file": "2、项目经历/5、思嘉的朋友们·猫咪主题公园项目/3、试营业啦！.mp4",
    "w": 1440,
    "h": 2560,
@@ -222,7 +222,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "sj4": {
-   "src": "assets/media/sj4.mp4",
+   "src": "assets/media/sj4.mp4?v=20261007-hq",
    "file": "2、项目经历/5、思嘉的朋友们·猫咪主题公园项目/4、国企的社会责任.mp4",
    "w": 1440,
    "h": 2560,
@@ -235,7 +235,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "wlsummer": {
-   "src": "assets/media/wlsummer.mp4",
+   "src": "assets/media/wlsummer.mp4?v=20261007-hq",
    "file": "2、项目经历/6、“北国好风光，美在黑龙江”微信视频号文旅创造营/夏季文旅创造营总结视频/下一站，让我们相约大美龙江.mp4",
    "w": 2560,
    "h": 1440,
@@ -248,7 +248,7 @@ window.MANIFEST = {
    "fh": 216
   },
   "wl1": {
-   "src": "assets/media/wl1.mp4",
+   "src": "assets/media/wl1.mp4?v=20261007-hq",
    "file": "2、项目经历/6、“北国好风光，美在黑龙江”微信视频号文旅创造营/秋季文旅创造营AI创意视频/1、在雪乡，好像来到了小时候《冰雪奇缘》里的魔法世界.mp4",
    "w": 1920,
    "h": 1080,
@@ -261,7 +261,7 @@ window.MANIFEST = {
    "fh": 216
   },
   "wl2": {
-   "src": "assets/media/wl2.mp4",
+   "src": "assets/media/wl2.mp4?v=20261007-hq",
    "file": "2、项目经历/6、“北国好风光，美在黑龙江”微信视频号文旅创造营/秋季文旅创造营AI创意视频/2、挑战在哈尔滨极地公园里变魔术.mp4",
    "w": 1080,
    "h": 1920,
@@ -274,7 +274,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "wl3": {
-   "src": "assets/media/wl3.mp4",
+   "src": "assets/media/wl3.mp4?v=20261007-hq",
    "file": "2、项目经历/6、“北国好风光，美在黑龙江”微信视频号文旅创造营/秋季文旅创造营AI创意视频/3、挑战把伏尔加庄园抹在吐司上.mp4",
    "w": 1906,
    "h": 1080,
@@ -287,7 +287,7 @@ window.MANIFEST = {
    "fh": 218
   },
   "wl4": {
-   "src": "assets/media/wl4.mp4",
+   "src": "assets/media/wl4.mp4?v=20261007-hq",
    "file": "2、项目经历/6、“北国好风光，美在黑龙江”微信视频号文旅创造营/秋季文旅创造营AI创意视频/4、中秋节快到了，快和家人一起来世界欢乐城玩吧.mp4",
    "w": 1620,
    "h": 1080,
@@ -300,11 +300,11 @@ window.MANIFEST = {
    "fh": 256
   },
   "wl5": {
-   "src": "assets/media/wl5.mp4",
+   "src": "assets/media/wl5.mp4?v=20261007-hq",
    "file": "2、项目经历/6、“北国好风光，美在黑龙江”微信视频号文旅创造营/秋季文旅创造营AI创意视频/5、五大连池两日游的游戏攻略.mp4",
    "w": 1454,
    "h": 1080,
-   "dur": 46.0,
+   "dur": 46,
    "codec": "h264",
    "poster": "assets/video/wl5/poster.webp",
    "sprite": "assets/video/wl5/sprite.webp",
@@ -313,7 +313,7 @@ window.MANIFEST = {
    "fh": 285
   },
   "wl6": {
-   "src": "assets/media/wl6.mp4",
+   "src": "assets/media/wl6.mp4?v=20261007-hq",
    "file": "2、项目经历/6、“北国好风光，美在黑龙江”微信视频号文旅创造营/秋季文旅创造营AI创意视频/6、你将化身为何者，开启你的奇遇.mp4",
    "w": 1906,
    "h": 1080,
@@ -326,7 +326,7 @@ window.MANIFEST = {
    "fh": 218
   },
   "wl7": {
-   "src": "assets/media/wl7.mp4",
+   "src": "assets/media/wl7.mp4?v=20261007-hq",
    "file": "2、项目经历/6、“北国好风光，美在黑龙江”微信视频号文旅创造营/秋季文旅创造营AI创意视频/7、当人偶雕塑沉浸在音乐的世界里.mp4",
    "w": 1920,
    "h": 1080,
@@ -339,7 +339,7 @@ window.MANIFEST = {
    "fh": 216
   },
   "wl28": {
-   "src": "assets/media/wl28.mp4",
+   "src": "assets/media/wl28.mp4?v=20261007-hq",
    "file": "2、项目经历/6、“北国好风光，美在黑龙江”微信视频号文旅创造营/秋季文旅创造营AI创意视频/28、在五大连池博物馆看东北抗联故事.mp4",
    "w": 1440,
    "h": 1080,
@@ -352,7 +352,7 @@ window.MANIFEST = {
    "fh": 288
   },
   "w_tie": {
-   "src": "assets/media/w_tie.mp4",
+   "src": "assets/media/w_tie.mp4?v=20261007-hq",
    "file": "4、我的作品/1、AI视频创作/1、《老婆要贴贴》第31集.mp4",
    "w": 1080,
    "h": 1920,
@@ -365,7 +365,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "w_1999": {
-   "src": "assets/media/w_1999.mp4",
+   "src": "assets/media/w_1999.mp4?v=20261007-hq",
    "file": "4、我的作品/1、AI视频创作/2、《重生之我在1999当大佬》第84集.mp4",
    "w": 1080,
    "h": 1922,
@@ -378,7 +378,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "w_wife": {
-   "src": "assets/media/w_wife.mp4",
+   "src": "assets/media/w_wife.mp4?v=20261007-hq",
    "file": "4、我的作品/1、AI视频创作/3、《妻子的秘密》第69集.mp4",
    "w": 1080,
    "h": 1920,
@@ -391,7 +391,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "w_fire": {
-   "src": "assets/media/w_fire.mp4",
+   "src": "assets/media/w_fire.mp4?v=20261007-hq",
    "file": "4、我的作品/1、AI视频创作/4、《爱如烈火焚身》第47集.mp4",
    "w": 1080,
    "h": 1920,
@@ -404,7 +404,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "w_ny": {
-   "src": "assets/media/w_ny.mp4",
+   "src": "assets/media/w_ny.mp4?v=20261007-hq",
    "file": "4、我的作品/1、AI视频创作/5、《新年大战极品亲戚》第27集.mp4",
    "w": 1440,
    "h": 2560,
@@ -417,7 +417,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "w_sea": {
-   "src": "assets/media/w_sea.mp4",
+   "src": "assets/media/w_sea.mp4?v=20261007-hq",
    "file": "4、我的作品/1、AI视频创作/6、《海神新娘的复仇》第16集.mp4",
    "w": 1080,
    "h": 1920,
@@ -430,11 +430,11 @@ window.MANIFEST = {
    "fh": 384
   },
   "w_chuan": {
-   "src": "assets/media/w_chuan.mp4",
+   "src": "assets/media/w_chuan.mp4?v=20261007-hq",
    "file": "4、我的作品/1、AI视频创作/7、《穿越后我被宠上天》第27集.mp4",
    "w": 1440,
    "h": 2560,
-   "dur": 80.0,
+   "dur": 80,
    "codec": "h264",
    "poster": "assets/video/w_chuan/poster.webp",
    "sprite": "assets/video/w_chuan/sprite.webp",
@@ -443,7 +443,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "w_lei": {
-   "src": "assets/media/w_lei.mp4",
+   "src": "assets/media/w_lei.mp4?v=20261007-hq",
    "file": "4、我的作品/1、AI视频创作/8、样式雷家族的百年答卷.mp4",
    "w": 2560,
    "h": 1440,
@@ -456,7 +456,7 @@ window.MANIFEST = {
    "fh": 216
   },
   "w_street": {
-   "src": "assets/media/w_street.mp4",
+   "src": "assets/media/w_street.mp4?v=20261007-hq",
    "file": "4、我的作品/1、AI视频创作/9、街名不朽，冰城长歌.mp4",
    "w": 1920,
    "h": 1080,
@@ -469,7 +469,7 @@ window.MANIFEST = {
    "fh": 216
   },
   "w_sijia": {
-   "src": "assets/media/w_sijia.mp4",
+   "src": "assets/media/w_sijia.mp4?v=20261007-hq",
    "file": "4、我的作品/1、AI视频创作/10、思嘉和她的朋友们.mp4",
    "w": 1440,
    "h": 2508,
@@ -482,11 +482,11 @@ window.MANIFEST = {
    "fh": 376
   },
   "w_xc": {
-   "src": "assets/media/w_xc.mp4",
+   "src": "assets/media/w_xc.mp4?v=20261007-hq",
    "file": "4、我的作品/1、AI视频创作/13、新传点亮大学时光.mp4",
    "w": 2560,
    "h": 1440,
-   "dur": 81.0,
+   "dur": 81,
    "codec": "h264",
    "poster": "assets/video/w_xc/poster.webp",
    "sprite": "assets/video/w_xc/sprite.webp",
@@ -495,7 +495,7 @@ window.MANIFEST = {
    "fh": 216
   },
   "w_jz": {
-   "src": "assets/media/w_jz.mp4",
+   "src": "assets/media/w_jz.mp4?v=20261007-hq",
    "file": "4、我的作品/1、AI视频创作/14、江中牌健胃消食片.mp4",
    "w": 2880,
    "h": 2160,
@@ -508,7 +508,7 @@ window.MANIFEST = {
    "fh": 288
   },
   "w_chef": {
-   "src": "assets/media/w_chef.mp4",
+   "src": "assets/media/w_chef.mp4?v=20261007-hq",
    "file": "4、我的作品/1、AI视频创作/15、神厨陨落，废柴新生.mp4",
    "w": 544,
    "h": 960,
@@ -521,7 +521,7 @@ window.MANIFEST = {
    "fh": 381
   },
   "w_fish": {
-   "src": "assets/media/w_fish.mp4",
+   "src": "assets/media/w_fish.mp4?v=20261007-hq",
    "file": "4、我的作品/1、AI视频创作/16、小测试：金鱼转场.mp4",
    "w": 1080,
    "h": 1920,
@@ -534,7 +534,7 @@ window.MANIFEST = {
    "fh": 384
   },
   "e_trip": {
-   "src": "assets/media/e_trip.mp4",
+   "src": "assets/media/e_trip.mp4?v=20261007-hq",
    "file": "4、我的作品/4、视频剪辑/1、美美的出片假期.mp4",
    "w": 1080,
    "h": 1664,
@@ -547,7 +547,7 @@ window.MANIFEST = {
    "fh": 333
   },
   "e_reno": {
-   "src": "assets/media/e_reno.mp4",
+   "src": "assets/media/e_reno.mp4?v=20261007-hq",
    "file": "4、我的作品/4、视频剪辑/2、当我拥有一台Peno15后，我的朋友圈变成了这样.mp4",
    "w": 576,
    "h": 768,
@@ -560,7 +560,7 @@ window.MANIFEST = {
    "fh": 288
   },
   "e_nestle": {
-   "src": "assets/media/e_nestle.mp4",
+   "src": "assets/media/e_nestle.mp4?v=20261007-hq",
    "file": "4、我的作品/4、视频剪辑/3、雀巢茶萃广告：厨神餐厅.mp4",
    "w": 3840,
    "h": 2160,
@@ -573,11 +573,11 @@ window.MANIFEST = {
    "fh": 216
   },
   "e_lanju": {
-   "src": "assets/media/e_lanju.mp4",
+   "src": "assets/media/e_lanju.mp4?v=20261007-hq",
    "file": "4、我的作品/4、视频剪辑/9、榄菊电蚊拍广告：奇怪的恋爱.mp4",
    "w": 1920,
    "h": 1080,
-   "dur": 30.0,
+   "dur": 30,
    "codec": "h264",
    "poster": "assets/video/e_lanju/poster.webp",
    "sprite": "assets/video/e_lanju/sprite.webp",
