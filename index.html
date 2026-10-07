@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>冯翠芝 · 个人档案室 | AI 视频创作者 · 视频剪辑</title>
+  <meta name="description" content="冯翠芝的个人作品集：AI 视频创作、视频剪辑、文旅 IP 项目与设计作品。" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23b3362b'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23f3ead6' font-family='serif'%3E芝%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/fonts/fonts.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/intro-scene.css" />
+  <link rel="stylesheet" href="css/study-desk.css" />
+  <link rel="stylesheet" href="css/text-editor.css" />
+  <style id="archive-decor-styles">
+/* Small keepsakes around the illuminated archive sign. */
+.hero { isolation: isolate; }
+.archive-props { position: absolute; inset: 0; pointer-events: none; user-select: none; z-index: -1; }
+.archive-props::before { content: ""; position: absolute; inset: 0 -20px; background: radial-gradient(ellipse at 50% 42%, #e8b04a0b, transparent 66%); }
+.archive-photo { position: absolute; top: 82px; left: 5%; width: 134px; padding: 9px 9px 10px; background: linear-gradient(135deg, #eee4cf, #d9ceb6); color: #665340; transform: rotate(-9deg); box-shadow: 3px 9px 15px #0006, inset 0 0 0 1px #fff4; }
+.archive-photo::before { content: ""; position: absolute; inset: 7px; background: #c5b48c; transform: rotate(7deg) translate(5px, 2px); z-index: -1; box-shadow: 1px 3px 8px #0004; }
+.archive-photo img { width: 100%; height: 88px; object-fit: cover; filter: sepia(.28) saturate(.65); display: block; }
+.archive-photo__tape { position: absolute; width: 64px; height: 23px; top: -11px; left: 34px; transform: rotate(4deg); background: repeating-linear-gradient(90deg, #b89a5b55 0 2px, #d4b87c55 2px 4px), #d4bc8580; box-shadow: 0 1px 2px #0002; clip-path: polygon(3% 0,97% 0,100% 18%,96% 35%,100% 60%,97% 100%,0 100%,3% 72%,0 40%); }
+.archive-photo__caption { display: block; margin-top: 8px; font: 16px/1.1 var(--f-hand); }
+.archive-photo__no { display: block; margin-top: 5px; font: 7px var(--f-mono); letter-spacing: .15em; opacity: .65; }
+.archive-clock { position: absolute; top: 102px; right: 6%; width: 104px; height: 104px; padding: 8px; border-radius: 50%; background: linear-gradient(135deg, #c5a15a, #5c4126 45%, #c4a26a 78%, #725333); box-shadow: 2px 7px 14px #0007, inset 0 0 0 2px #cbaa6b70; }
+.archive-clock__face { display: block; position: relative; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, #e7d9b7, #c9b990); box-shadow: inset 0 0 8px #5c412660; }
+.archive-clock__face::before { content: ""; position: absolute; inset: 6px; border: 3px dotted #6f5840; border-radius: 50%; }
+.archive-clock i, .archive-clock b { position: absolute; bottom: 50%; left: calc(50% - 1.5px); width: 3px; background: #49382a; transform-origin: center bottom; border-radius: 2px; }
+.archive-clock i { height: 24px; transform: rotate(55deg); }
+.archive-clock b { height: 30px; transform: rotate(-60deg); width: 2px; }
+.archive-clock em { position: absolute; left: calc(50% - 3px); top: calc(50% - 3px); width: 6px; height: 6px; border-radius: 50%; background: #85572c; }
+.archive-clock small { position: absolute; top: 64%; left: 0; width: 100%; font: 5px var(--f-mono); letter-spacing: .04em; color: #786346; }
+.archive-film { position: absolute; bottom: 94px; left: 3%; width: 116px; height: 108px; transform: rotate(-13deg); }
+.archive-film__reel { width: 98px; height: 98px; position: relative; filter: drop-shadow(3px 7px 4px #0008); }
+.archive-film__tail { position: absolute; width: 136px; height: 28px; top: 65px; left: 30px; border: 6px solid #2c2118; border-left: 0; border-right: 0; background: repeating-linear-gradient(90deg, #ad825347 0 27px, #19120e 27px 30px); transform: rotate(12deg); box-shadow: 0 4px 6px #0005; }
+.archive-film__tail::after { content: ""; position: absolute; inset: -5px 0; background: repeating-linear-gradient(90deg, #b59864 0 3px, transparent 3px 9px) top / 100% 3px no-repeat, repeating-linear-gradient(90deg, #b59864 0 3px, transparent 3px 9px) bottom / 100% 3px no-repeat; opacity: .65; }
+.archive-film__label { display: block; white-space: nowrap; margin: 9px 0 0 -10px; color: #bca57b; font: 8px var(--f-mono); letter-spacing: .12em; }
+.archive-note { position: absolute; bottom: 85px; right: 4%; width: 168px; padding: 20px 14px 12px; color: #4b402d; background: repeating-linear-gradient(0deg, transparent 0 21px, #8e785f18 21px 22px), linear-gradient(135deg, #e2d4a5, #c8b981); transform: rotate(7deg); box-shadow: 3px 7px 12px #0005; }
+.archive-note::after { content: ""; position: absolute; right: 0; bottom: 0; border: 8px solid transparent; border-right-color: #92805c; border-bottom-color: #92805c; }
+.archive-note small { display: block; text-align: center; font: 7px var(--f-mono); letter-spacing: .13em; color: #897548; }
+.archive-note > span:not(.archive-note__pin) { display: block; margin-top: 10px; text-align: center; font: 21px/1.35 var(--f-hand-cn); }
+.archive-note em { display: block; margin-top: 7px; text-align: center; font: 18px var(--f-hand); }
+.archive-note__pin { position: absolute; width: 10px; height: 10px; border-radius: 50%; top: 6px; left: calc(50% - 5px); background: radial-gradient(circle at 30% 25%, #da8470, #98392c 65%); box-shadow: 1px 3px 3px #0005; }
+.archive-sprig { position: absolute; bottom: 62px; right: -12px; width: 100px; height: 145px; transform: rotate(19deg); filter: drop-shadow(2px 4px 2px #0006); }
+@media (min-width: 901px) and (max-width: 1100px) {
+  .archive-photo { left: 1%; width: 112px; top: 100px; }
+  .archive-photo img { height: 70px; }
+  .archive-clock { right: 1%; width: 86px; height: 86px; top: 120px; }
+  .archive-film { left: 0; transform: rotate(-13deg) scale(.8); transform-origin: left bottom; }
+  .archive-note { right: 0; width: 146px; }
+  .archive-note > span:not(.archive-note__pin) { font-size: 18px; }
+  .archive-sprig { right: -20px; width: 76px; }
+}
+@media (max-width: 900px) {
+  .archive-props { position: relative; inset: auto; width: 100%; height: 92px; order: 2; margin-top: -4px; }
+  .archive-photo, .archive-clock, .archive-film { display: none; }
+  .archive-note { bottom: 4px; right: calc(50% - 99px); width: 198px; padding: 10px 18px; transform: rotate(-3deg); }
+  .archive-note small, .archive-note__pin { display: none; }
+  .archive-note > span:not(.archive-note__pin) { font-size: 19px; margin: 0; text-align: center; }
+  .archive-note br { display: none; }
+  .archive-note em { font-size: 16px; margin-top: 2px; }
+  .archive-sprig { bottom: -3px; right: calc(50% - 131px); height: 104px; width: 75px; }
+}
+
+  </style>
+  <link rel="stylesheet" href="css/mobile.css?v=20261007-travel-order-fixed-9" />
+</head>
+<body class="is-intro">
+  <div class="desk" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ 开场：桌面上的档案袋 ============ -->
+  <div class="intro is-daytime" id="intro">
+    <div class="study-scene" aria-hidden="true"></div>
+    <div class="study-day-scene" aria-hidden="true"></div>
+    <div class="study-overhead" aria-hidden="true"></div>
+    <div class="study-haze" aria-hidden="true"></div>
+    <div class="study-props">
+      <button class="desk-lamp-switch" id="deskLampSwitch" aria-label="关灯，切换日落" aria-pressed="false"><span>关灯</span></button>
+    </div>
+    <button class="study-lamp-mobile" id="mobileLampSwitch" aria-label="关灯，切换日落" aria-pressed="false">关灯</button>
+    <dialog class="study-note-dialog" id="studyNoteDialog" aria-labelledby="studyNoteTitle" aria-describedby="studyNoteText">
+      <button class="note-close" id="studyNoteClose" aria-label="收起便签">×</button>
+      <h2 id="studyNoteTitle">给你的一张小便签</h2><p id="studyNoteText">你好呀，很高兴认识你</p>
+      <span class="note-smile" role="img" aria-label="笑脸">☺</span>
+      <span class="note-signature">冯翠芝</span>
+    </dialog>
+    <button class="study-music" id="studyMusic" aria-pressed="false" aria-label="播放书房音乐"><span class="study-record" aria-hidden="true"></span><span id="studyMusicLabel">播放音乐</span></button>
+    <div class="lamp lamp--intro" aria-hidden="true">
+      <span class="lamp__wire"></span>
+      <span class="lamp__cap"></span>
+      <span class="lamp__shade"></span>
+      <span class="lamp__bulb"></span>
+      <span class="lamp__cone"></span>
+    </div>
+    <div class="bulb-hang" aria-hidden="true"><span></span></div>
+
+    <div class="study-papers">
+    <button class="folder" id="folder" aria-label="打开个人档案">
+      <span class="folder__back"></span>
+      <span class="folder__inner">
+        <span class="folder__inner-title">INDEX · 目录</span>
+        <span class="folder__inner-line">01 关于我</span>
+        <span class="folder__inner-line">02 荣誉奖项</span>
+        <span class="folder__inner-line">03 实习经历</span>
+        <span class="folder__inner-line">04 项目经历</span>
+        <span class="folder__inner-line">05 我的作品</span>
+        <span class="folder__inner-line">06 设计美工</span>
+        <span class="folder__inner-line">07 联系我</span>
+      </span>
+      <span class="folder__cover">
+        <span class="folder__front">
+        <span class="folder__tab">ABOUT ME</span>
+        <span class="folder__clip"></span>
+        <span class="folder__head">
+          <span>CONFIDENTIAL · PORTFOLIO</span>
+          <span>NO. FCZ-2026</span>
+        </span>
+        <span class="folder__label">
+          <span class="folder__tape"></span>
+          <span class="folder__title">Personal<br />File</span>
+          <span class="folder__field"><small>NAME</small>冯翠芝 · FENG CUIZHI</span>
+          <span class="folder__field"><small>ROLE</small>AI 视频创作者 / 视频剪辑</span>
+          <span class="folder__field folder__field--hand"><small>STATUS</small>Creating…</span>
+        </span>
+        <span class="folder__postmark">HLJU<br />2026</span>
+        <span class="folder__stamp">NOW SHOWING</span>
+        <span class="folder__paperclip"></span>
+        </span>
+        <span class="folder__reverse" aria-hidden="true"></span>
+      </span>
+    </button>
+    <button class="desk-note" id="deskNote" aria-label="打开问候便签"><span class="note-mini-smile" aria-hidden="true">☺</span><span>给你的便签</span><small>点开看看</small></button>
+    </div>
+    <p class="intro__hint" aria-live="polite"><span>点击档案袋</span></p>
+    <button class="intro__skip" id="introSkip">跳过开场 →</button>
+    <button class="study-back" id="studyBack">← 返回书桌</button>
+  </div>
+
+  <!-- ============ 移动端顶栏 ============ -->
+  <header class="topbar">
+    <a href="#top" class="topbar__name">冯翠芝 <em>Portfolio</em></a>
+    <button class="topbar__menu" id="menuBtn" aria-label="打开目录" aria-expanded="false" aria-controls="idx"><span></span><span></span><span></span></button>
+  </header>
+
+  <div class="layout">
+    <!-- ============ 左：目录（档案左页） ============ -->
+    <aside class="idx" id="idx">
+      <div class="idx__paper">
+        <span class="idx__clip" aria-hidden="true"></span>
+        <a class="idx__brand" href="#top">
+          <span class="idx__fileno">FILE NO. FCZ-2026</span>
+          <strong>冯翠芝</strong>
+          <em>Feng Cuizhi</em>
+          <span class="idx__role">AI 视频创作者 · 视频剪辑</span>
+        </a>
+
+        <div class="idx__label"><span>INDEX</span><span>目录</span></div>
+        <nav class="idx__nav" id="idxNav">
+          <span class="idx__marker" aria-hidden="true"></span>
+          <a href="#about" data-sec="about"><b>01</b><span>关于我</span><i>About</i></a>
+          <a href="#honors" data-sec="honors"><b>02</b><span>荣誉奖项</span><i>Honors</i></a>
+          <a href="#experience" data-sec="experience"><b>03</b><span>实习经历</span><i>Experience</i></a>
+          <div class="idx__sub" aria-label="实习经历二级目录">
+            <a href="#job-tencent" data-no="01">腾讯区域发展部</a>
+            <a href="#job-bluefocus" data-no="02">蓝色光标 · BlueNeoAI</a>
+          </div>
+          <a href="#projects" data-sec="projects"><b>04</b><span>项目经历</span><i>Projects</i></a>
+          <div class="idx__sub" id="idxSub"></div>
+          <a href="#works" data-sec="works"><b>05</b><span>我的作品</span><i>Works</i></a>
+          <div class="idx__sub" id="idxWorksSub" aria-label="我的作品二级目录"></div>
+          <a href="#design" data-sec="design"><b>06</b><span>设计美工</span><i>Design</i></a>
+          <a href="#contact" data-sec="contact"><b>07</b><span>联系我</span><i>Contact</i></a>
+        </nav>
+
+        <div class="idx__foot">
+          <a class="idx__dl" href="downloads/%E5%86%AF%E7%BF%A0%E8%8A%9D%E7%AE%80%E5%8E%86.pdf" target="_blank" rel="noopener">简历 PDF ↗</a>
+          <a class="idx__dl" href="downloads/%E4%BD%9C%E5%93%81%E9%9B%86.pdf" target="_blank" rel="noopener">作品集 PDF ↗</a>
+          <button class="idx__replay" id="replayIntro">重看开场</button>
+        </div>
+      </div>
+      <div class="idx__film" aria-hidden="true"><span id="filmFill"></span></div>
+    </aside>
+
+    <!-- ============ 右：内容 ============ -->
+    <main class="content" id="top">
+
+      <!-- HERO：个人档案室 -->
+      <section class="hero" id="hero">
+        <div class="archive-props" aria-hidden="true">
+          <div class="archive-clock"><span class="archive-clock__face"><i></i><b></b><em></em><small>STILL CREATING</small></span></div>
+          <div class="archive-film">
+            <span class="archive-film__tail"></span>
+            <svg viewBox="0 0 120 120" class="archive-film__reel"><defs><radialGradient id="reelMetal"><stop stop-color="#dac9a5"/><stop offset=".7" stop-color="#887657"/><stop offset="1" stop-color="#c2ae87"/></radialGradient></defs><circle cx="60" cy="60" r="56" fill="url(#reelMetal)" stroke="#574632" stroke-width="3"/><circle cx="60" cy="60" r="49" fill="none" stroke="#ead8ae" stroke-opacity=".35"/><g fill="#21170f" stroke="#b09b73" stroke-width="2"><circle cx="60" cy="27" r="13"/><circle cx="91" cy="50" r="13"/><circle cx="79" cy="87" r="13"/><circle cx="41" cy="87" r="13"/><circle cx="29" cy="50" r="13"/><circle cx="60" cy="60" r="8"/></g></svg>
+            <span class="archive-film__label">STORIES IN THE MAKING</span>
+          </div>
+          <div class="archive-note"><span class="archive-note__pin"></span><small>A NOTE FOR YOU</small><span>我的地球<br />online档案</span><em>😊</em></div>
+          <svg class="archive-sprig" viewBox="0 0 140 180"><g fill="none" stroke="#89946b" stroke-width="2"><path d="M64 174Q78 93 105 14M76 121Q37 97 21 61M84 95Q121 78 130 48M94 58Q74 40 73 18"/></g><g fill="#6e8059" stroke="#b2b48a" stroke-width=".6"><ellipse cx="91" cy="53" rx="10" ry="23" transform="rotate(-20 91 53)"/><ellipse cx="105" cy="35" rx="9" ry="22" transform="rotate(27 105 35)"/><ellipse cx="83" cy="83" rx="10" ry="22" transform="rotate(-27 83 83)"/><ellipse cx="110" cy="82" rx="10" ry="24" transform="rotate(48 110 82)"/><ellipse cx="52" cy="98" rx="10" ry="24" transform="rotate(-48 52 98)"/><ellipse cx="31" cy="72" rx="9" ry="21" transform="rotate(-30 31 72)"/><ellipse cx="75" cy="29" rx="8" ry="20" transform="rotate(-10 75 29)"/></g></svg>
+        </div>
+        <div class="lamp lamp--hero" id="heroLamp" aria-hidden="true">
+          <span class="lamp__wire"></span>
+          <span class="lamp__cap"></span>
+          <span class="lamp__shade"></span>
+          <span class="lamp__bulb"></span>
+          <span class="lamp__cone"></span>
+        </div>
+        <div class="marquee" data-reveal>
+          <div class="marquee__bulbs" aria-hidden="true"></div>
+          <div class="marquee__board">
+            <h1 class="marquee__title">个人档案室</h1>
+            <p class="marquee__sub">AI 视频创作者 · 视频剪辑</p>
+          </div>
+        </div>
+        <div class="hero__cta" data-reveal>
+          <a class="btn btn--red" href="#about">关于我</a>
+          <a class="btn btn--ghost" href="#contact">联系我</a>
+        </div>
+        <p class="hero__scroll" aria-hidden="true"><span></span>SCROLL</p>
+      </section>
+
+      <!-- 01 关于我 -->
+      <section class="sec" id="about" data-sec="about">
+        <header class="sec-head" data-reveal>
+          <span class="sec-head__no">01</span>
+          <div class="sec-head__t"><p>ABOUT ME</p><h2>关于我</h2></div>
+          <p class="sec-head__note">A human in progress · 仍在探索中的创作者</p>
+        </header>
+
+        <div class="about">
+          <!-- 档案页 -->
+          <article class="sheet profile" data-reveal="drop">
+            <span class="tape tape--tl"></span><span class="tape tape--tr"></span>
+            <header class="profile__head">
+              <h3>PERSONAL PROFILE</h3>
+              <span>个人档案 · No.0127</span>
+            </header>
+            <div class="profile__body">
+              <div class="profile__info">
+                <h4>Basic Information</h4>
+                <table class="profile__table">
+                  <tr><th>姓名</th><td>冯翠芝</td><th>院校</th><td>黑龙江大学</td></tr>
+                  <tr><th>学历</th><td>本科</td><th>入学</th><td>2023.09 – 至今</td></tr>
+                  <tr><th>意向</th><td colspan="3">AI 视频创作者 、视频剪辑</td></tr>
+                  <tr><th>证书</th><td colspan="3">CET-4 · 普通话二级乙等</td></tr>
+                </table>
+                <h4>Academic</h4>
+                <ul class="profile__grades">
+                  <li><b data-count="8.9" data-decimals="1">0</b><small>/10</small><span>绩点</span></li>
+                  <li data-text-edit-locked><b>6<small>/77</small></b><span>专业排名·前5%</span></li>
+                  <li data-text-edit-locked><b>3</b><small>年</small><span>连续荣获校级奖学金</span></li>
+                </ul>
+              </div>
+              <figure class="profile__photo">
+                <span class="clip" aria-hidden="true"></span>
+                <img src="assets/about/photo-l.webp" alt="冯翠芝证件照" width="420" height="588" />
+                <figcaption>FENG CUIZHI</figcaption>
+              </figure>
+            </div>
+            <div class="profile__intro">
+              <h4>Hello</h4>
+              <p>我是冯翠芝，黑龙江大学本科在读。用 <mark>AI 生成 + 剪辑叙事</mark> 讲故事：做过 30 余集 AI 真人短剧和漫剧、50 余集 AI 解说漫，独立完成院庆水墨 AI 漫剧，也作为项目组长统筹两大文旅 IP 的内容生产与传播。</p>
+            </div>
+            <span class="stamp stamp--archived" data-stamp>ARCHIVED</span>
+            <div class="tag-hang" aria-hidden="true">
+              <span class="tag-hang__string"></span>
+              <span class="tag-hang__card">WELCOME<br />TO MY<br />LITTLE WORLD.<em>take a look around</em></span>
+            </div>
+          </article>
+
+          <!-- 能力票根 -->
+          <button class="ticket" id="ticket" data-reveal="drop" aria-label="放大查看能力票根">
+            <span class="ticket__paper">
+            <span class="ticket__side">CAPABILITY TICKET · ADMIT ONE · 2026</span>
+            <span class="ticket__main">
+              <span class="ticket__top"><span>NO. 0127</span><span>2026</span></span>
+              <span class="ticket__title">THINGS<br />I CAN DO.</span>
+              <span class="ticket__subtitle">CAPABILITY TICKET</span>
+              <span class="ticket__row"><b>01</b><span><i>AI VIDEO</i>AI 真人短剧 / 漫剧<br />AI 宣传片 · AI 文旅短视频</span></span>
+              <span class="ticket__row"><b>02</b><span><i>EDITING</i>剪映 · Premiere<br />纪录片 · 影视广告剪辑</span></span>
+              <span class="ticket__row"><b>03</b><span><i>DESIGN</i>Photoshop · Illustrator<br />海报 · PPT · 表情包</span></span>
+              <span class="ticket__row"><b>04</b><span><i>PLANNING</i>项目统筹 · 营销策划<br />新闻摄影 · 内容运营</span></span>
+              <span class="ticket__tools"><i>TOOLS I OFTEN USE</i>即梦 · 可灵 · Vidu · Runway · Midjourney · LiblibAI · Nano Banana</span>
+              <span class="ticket__foot"><span class="barcode"></span><span class="ticket__admit">ADMIT ONE</span></span>
+            </span>
+            </span>
+            <span class="ticket__zoom">点击放大 ⤢</span>
+          </button>
+
+          <!-- 成绩单 -->
+          <article class="sheet sheet--lined transcript" data-reveal="drop">
+            <span class="tape tape--tc"></span>
+            <h3>主修课程 <em>Transcript</em></h3>
+            <ul class="transcript__list" id="transcript">
+              <li data-score="99"><span>腾讯视频号内容创作与运营</span><i></i><b>99</b></li>
+              <li data-score="98"><span>消费者行为与营销策略</span><i></i><b>98</b></li>
+              <li data-score="97"><span>新媒体广告</span><i></i><b>97</b></li>
+              <li data-score="97"><span>融媒体创意写作</span><i></i><b>97</b></li>
+              <li data-score="97"><span>品牌文化</span><i></i><b>97</b></li>
+              <li data-score="96"><span>数字营销</span><i></i><b>96</b></li>
+              <li data-score="95"><span>市场调查与分析</span><i></i><b>95</b></li>
+            </ul>
+            <p class="hand">厚积薄发</p>
+          </article>
+
+          <!-- 小票 -->
+          <div class="receipt-wrap" data-reveal="print">
+          <article class="receipt">
+            <h3>THINGS I LIKE</h3>
+            <p class="receipt__meta">ORDER #2003 · 业余时间</p>
+            <ul>
+              <li><span>01 唱歌 SINGING</span><b>♪</b></li>
+              <li><span>02 摄影 PHOTOGRAPHY</span><b>◉</b></li>
+              <li><span>03 跑步 RUNNING</span><b>➶</b></li>
+              <li><span>04 羽毛球 BADMINTON</span><b>✦</b></li>
+              <li><span>05 乒乓球 PING-PONG</span><b>●</b></li>
+              <li><span>06 吉他 GUITAR</span><b>♫</b></li>
+            </ul>
+            <p class="receipt__total"><span>TOTAL</span><b>A HUMAN<br />IN PROGRESS</b></p>
+            <span class="barcode barcode--wide"></span>
+            <p class="receipt__thx">THANK YOU · COME AGAIN</p>
+          </article>
+          </div>
+
+          <!-- 胶片条 -->
+          <div class="filmstrip" data-reveal="drop" aria-label="AI 视觉作品胶片">
+            <div class="filmstrip__track" id="filmstrip"></div>
+            <p class="filmstrip__cap">“用 AI 重新看一遍熟悉的校园”</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 荣誉 -->
+      <section class="sec" id="honors" data-sec="honors">
+        <header class="sec-head" data-reveal>
+          <span class="sec-head__no">02</span>
+          <div class="sec-head__t"><p>HONORS</p><h2>荣誉奖项</h2></div>
+          <p class="sec-head__note">奖状墙 · Hall of Fame</p>
+        </header>
+        <div class="honors" id="honors-wall"></div>
+      </section>
+
+      <!-- 03 实习经历 -->
+      <section class="sec" id="experience" data-sec="experience">
+        <header class="sec-head" data-reveal>
+          <span class="sec-head__no">03</span>
+          <div class="sec-head__t"><p>EXPERIENCE</p><h2>实习经历</h2></div>
+          <p class="sec-head__note">两段实习 · 从 AI 剧组到文旅 IP 项目组长</p>
+        </header>
+
+        <div class="jobs">
+          <article class="job" id="job-tencent" data-reveal="drop">
+            <div class="badge badge--tencent">
+              <span class="badge__lanyard" aria-hidden="true"></span>
+              <span class="badge__hole" aria-hidden="true"></span>
+              <span class="badge__org">TENCENT · 腾讯区域发展部</span>
+              <span class="badge__name">冯翠芝</span>
+              <span class="badge__role">运营宣传实习生</span>
+              <span class="badge__date">2026.06.02 — 2026.08.31</span>
+              <span class="barcode"></span>
+              <span class="badge__tag">INTERN</span>
+            </div>
+            <div class="sheet job__doc">
+              <p class="job__kicker">黑龙江哈尔滨鑫成文化传播有限公司</p>
+              <h3>腾讯区域发展部 · 运营宣传实习生</h3>
+              <p class="job__lead">作为<strong>项目团队组长</strong>对接亚布力旅游投资集团公司，完成「佑佑的足球经」「思嘉的朋友们·猫咪主题公园」两大文旅 IP 项目的内容生产与传播。</p>
+              <ul class="job__list">
+                <li>统筹表情包、AI 短剧、推文、短视频、媒体宣发等核心模块</li>
+                <li>完成熊猫佑佑生日、公园试营业、正式营业等关键节点的营销策划与落地传播</li>
+                <li>参与主视觉、角色设定、纪录片剪辑与新闻稿撰写</li>
+              </ul>
+              <div class="job__stats">
+                <div><b data-count="6000" data-suffix="万+">0</b><span>两大项目全网曝光</span></div>
+                <div><b data-count="103">0</b><span>条/次媒体报道</span></div>
+                <div><b data-count="44">0</b><span>条短视频制作</span></div>
+              </div>
+              <div class="job__links">
+                <a href="#projects" data-case-link="youyou">→ 佑佑的足球经</a>
+                <a href="#projects" data-case-link="sijia">→ 思嘉的朋友们</a>
+              </div>
+              <span class="stamp stamp--red" data-stamp>项目组长</span>
+            </div>
+          </article>
+
+          <article class="job" id="job-bluefocus" data-reveal="drop">
+            <div class="badge badge--blue">
+              <span class="badge__lanyard" aria-hidden="true"></span>
+              <span class="badge__hole" aria-hidden="true"></span>
+              <span class="badge__org">BLUEFOCUS · BlueNeoAI</span>
+              <span class="badge__name">冯翠芝</span>
+              <span class="badge__role">精品剧组实习生</span>
+              <span class="badge__date">2025.12.26 — 2026.06.01</span>
+              <span class="barcode"></span>
+              <span class="badge__tag">INTERN</span>
+            </div>
+            <div class="sheet job__doc">
+              <p class="job__kicker">北京蓝色光标（数字）传媒集团</p>
+              <h3>BlueNeoAI 精品剧组实习生</h3>
+              <p class="job__lead">熟练运用即梦、可灵、Vidu、Nano Banana、Runway 等 AI 工具，完成在抖音、红果、YouTube 等国内外社媒平台的 AI 剧集传播。</p>
+              <ul class="job__list">
+                <li><strong>短剧制作：</strong>上线《粘人老公天天要贴贴》《重生之我在 1999 当大佬》《海神新娘的复仇》等 AI 短剧</li>
+                <li><strong>工具调研：</strong>调研 AI 创意工具、跟进技术迭代，沉淀可分享的技术知识库</li>
+              </ul>
+              <div class="job__stats">
+                <div><b data-count="30" data-suffix="+">0</b><span>集 AI 真人短剧和漫剧</span></div>
+                <div><b data-count="50" data-suffix="+">0</b><span>集 AI 解说漫</span></div>
+                <div><b data-count="1" data-suffix="w+">0</b><span>各短剧播放量</span></div>
+              </div>
+              <div class="job__links">
+                <a href="#works" data-row-link="drama">→ 看 AI 短剧作品</a>
+              </div>
+              <span class="stamp stamp--blue" data-stamp>AI 剧组</span>
+            </div>
+          </article>
+        </div>
+
+      </section>
+
+      <!-- 03 项目经历 -->
+      <section class="sec" id="projects" data-sec="projects">
+        <header class="sec-head" data-reveal>
+          <span class="sec-head__no">04</span>
+          <div class="sec-head__t"><p>PROJECTS</p><h2>项目经历</h2></div>
+          <p class="sec-head__note">六份案卷 · 点击标签翻阅</p>
+        </header>
+        <div class="cases" data-reveal>
+          <div class="cases__tabs" id="caseTabs" role="tablist"></div>
+          <div class="cases__body" id="caseBody"></div>
+        </div>
+      </section>
+
+      <!-- 04 我的作品 -->
+      <section class="sec" id="works" data-sec="works">
+        <header class="sec-head" data-reveal>
+          <span class="sec-head__no">05</span>
+          <div class="sec-head__t"><p>SCREENING ROOM</p><h2>我的作品</h2></div>
+          <p class="sec-head__note">全部作品按分类展开 · 点击封面播放视频</p>
+        </header>
+        <div class="now-showing" id="nowShowing" data-reveal></div>
+        <div id="workRows"></div>
+      </section>
+
+      <!-- 05 设计美工 -->
+      <section class="sec" id="design" data-sec="design">
+        <header class="sec-head" data-reveal>
+          <span class="sec-head__no">06</span>
+          <div class="sec-head__t"><p>DESIGN BOARD</p><h2>设计美工</h2></div>
+          <p class="sec-head__note">策划案 · 海报 · 信息图 · 平面广告</p>
+        </header>
+        <div class="board" id="designBoard"></div>
+      </section>
+
+      <!-- 07 联系 -->
+      <section class="sec" id="contact" data-sec="contact">
+        <header class="sec-head" data-reveal>
+          <span class="sec-head__no">07</span>
+          <div class="sec-head__t"><p>CONTACT</p><h2>联系我</h2></div>
+          <p class="sec-head__note">谢谢观看 · 期待与你合作</p>
+        </header>
+        <div class="contact">
+          <article class="postcard" data-reveal="drop">
+            <div class="postcard__left">
+              <p class="postcard__kicker">POST CARD · 明信片</p>
+              <h3 class="postcard__title">Thanks for<br />watching!</h3>
+              <p class="postcard__msg">如果这些作品让你停留了一会儿，<br />那就让我们聊聊下一个故事吧。</p>
+              <p class="postcard__sign">—— 冯翠芝</p>
+            </div>
+            <div class="postcard__right">
+              <span class="postcard__stamp" aria-hidden="true"><span>HLJU<br />2026</span></span>
+              <span class="postcard__postmark" aria-hidden="true">HARBIN · CHINA</span>
+              <button class="postcard__line" data-copy="18819057060"><small>TEL 电话</small><b>188 1905 7060</b><i>复制</i></button>
+              <button class="postcard__line" data-copy="2505280245@qq.com"><small>MAIL 邮箱</small><b>2505280245@qq.com</b><i>复制</i></button>
+              <button class="postcard__line" data-copy="f2505280245"><small>WECHAT 微信</small><b>f2505280245</b><i>复制</i></button>
+              <div class="postcard__actions">
+                <a class="btn btn--red" href="mailto:2505280245@qq.com?subject=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E5%86%AF%E7%BF%A0%E8%8A%9D">写一封邮件 ✉</a>
+                <a class="btn btn--ghost-dark" href="downloads/%E5%86%AF%E7%BF%A0%E8%8A%9D%E7%AE%80%E5%8E%86.pdf" target="_blank" rel="noopener">下载简历</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <footer class="credits">
+          <p class="credits__end">THE END</p>
+          <p>制作 · 剪辑 · 设计 &nbsp;冯翠芝</p>
+          <p>© 2026 Feng Cuizhi · Still Rolling</p>
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <!-- ============ 放映厅（视频弹窗） ============ -->
+  <div class="cinema" id="cinema" role="dialog" aria-modal="true" aria-labelledby="cinemaTitle" tabindex="-1" hidden>
+    <div class="cinema__backdrop" data-close></div>
+    <div class="cinema__curtain cinema__curtain--l" aria-hidden="true"></div>
+    <div class="cinema__curtain cinema__curtain--r" aria-hidden="true"></div>
+    <div class="cinema__stage">
+      <div class="cinema__screen" id="cinemaScreen">
+        <video id="cinemaVideo" controls playsinline preload="metadata"></video>
+        <div class="cinema__error" id="cinemaError" hidden></div>
+      </div>
+      <aside class="cinema__info">
+        <p class="cinema__kicker" id="cinemaKicker"></p>
+        <h3 id="cinemaTitle"></h3>
+        <p class="cinema__tags" id="cinemaTags"></p>
+        <p class="cinema__note" id="cinemaNote"></p>
+        <div class="cinema__links" id="cinemaLinks"></div>
+        <div class="cinema__list" id="cinemaList"></div>
+        <div class="cinema__nav">
+          <button id="cinemaPrev" aria-label="上一部">← 上一部</button>
+          <span id="cinemaCount"></span>
+          <button id="cinemaNext" aria-label="下一部">下一部 →</button>
+        </div>
+      </aside>
+    </div>
+    <button class="cinema__close" data-close aria-label="关闭">✕<span>ESC</span></button>
+  </div>
+
+  <!-- ============ 图片灯箱 ============ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lbTitle" tabindex="-1" hidden>
+    <div class="lightbox__backdrop" data-close></div>
+    <figure class="lightbox__fig">
+      <img id="lbImg" alt="" />
+      <figcaption><b id="lbTitle"></b><span id="lbCount"></span></figcaption>
+    </figure>
+    <button class="lightbox__prev" id="lbPrev" aria-label="上一张">‹</button>
+    <button class="lightbox__next" id="lbNext" aria-label="下一张">›</button>
+    <div class="lightbox__thumbs" id="lbThumbs"></div>
+    <button class="lightbox__close" data-close aria-label="关闭">✕</button>
+  </div>
+
+  <!-- ============ 票根放大 ============ -->
+  <div class="ticket-zoom" id="ticketZoom" role="dialog" aria-modal="true" aria-label="能力票根" tabindex="-1" hidden>
+    <div class="ticket-zoom__backdrop" data-close></div>
+    <div class="ticket-zoom__holder" id="ticketHolder"></div>
+    <button class="lightbox__close" data-close aria-label="关闭">✕</button>
+    <p class="ticket-zoom__hint">移动鼠标查看票根 · 点击空白处收起</p>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+  <script src="js/manifest.js?v=20261007-reno-cover"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/honors-order.js"></script>
+  <script src="js/mobile-pages.js?v=20261007-nav-single-5"></script>
+  <script src="js/gramophone.js"></script>
+  <script src="js/study-desk.js"></script>
+  <script src="js/text-editor.js"></script>
+</body>
+</html>

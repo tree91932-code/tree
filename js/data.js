@@ -1,0 +1,278 @@
+/* 网站全部文案内容。来源：冯翠芝简历.pdf / 作品集.pdf / 两份结案报告 / 各项目文件夹 */
+(function () {
+  const ma = (host, id) => `https://${host}.ma3you.cn/html/content_show/index.html?v=20250213&article_id=${id}#/`;
+
+  /* 每条视频的展示信息：title 标题，type 类型，note 说明，link 在线观看 */
+  const VIDEO_INFO = {
+    oppo1: { title: "小欧带你尔滨游，马年福气“马上”有", type: "AI 短视频", note: "五福年货节活动 · 独立制作 OPPO 黑龙江视频号 AI 宣传视频", link: ma(4291491, "bw4awDa") },
+    oppo2: { title: "OPPO 新春五福小欧来了", type: "AI 短视频", note: "五福年货节活动 · 独立制作 OPPO 黑龙江视频号 AI 宣传视频", link: ma(4291491, "bpdq9Wp") },
+    oppo3: { title: "很丝滑，很 N6", type: "AI 短视频", note: "产品节点：OPPO Find N6 · 独立制作", link: ma(3303329, "bpdq95l") },
+    oppo4: { title: "光学至上，世界近在眼前", type: "AI 短视频", note: "产品节点：OPPO Find X9 Ultra · 独立制作", link: ma(3303329, "AXL0a24") },
+    oppo5: { title: "一台总想背面朝上的手机", type: "拍摄 + 剪辑", note: "产品节点：OPPO K15 Pro 系列 · 拍摄并剪辑手机宣传视频", link: ma(4291491, "OEMWXdY") },
+    oppo6: { title: "不追风潮，自成一派", type: "AI 短视频", note: "产品节点：OPPO K15 Pro 系列 · 拍摄并剪辑手机宣传视频" },
+
+    news40: { title: "新闻学专业 40 周年视频", type: "水墨风格 AI 漫剧", note: "全程由本人独自一人生成并制作，在新闻传播学科创建四十周年暨新闻传播学院建院二十周年 · 面向未来人才培养研讨会上播放。", link: ma(4291491, "RjoJa3a") },
+
+    pixel: { title: "AI 看黑大：像素黑大", type: "AI 短视频", note: "使用 AI 技术生成雪天“像素黑大”视频，发布于学校官方视频号。", link: ma(3303329, "O7w894z") },
+    longbao: { title: "像素吉祥物 · 龙宝走路", type: "AI 角色动画", note: "为“像素黑大”设计的像素风吉祥物龙宝行走动画。" },
+
+    yy1: { title: "佑佑 YOU GOAL", type: "AI 漫剧", note: "负责并生成亚旅投集团合作项目《佑佑的足球经》短视频", link: ma(4526052, "b5yPzKG") },
+    yy2: { title: "哈尔滨 vs 延边", type: "AI 漫剧", note: "负责并生成亚旅投集团合作项目《佑佑的足球经》短视频", link: ma(4526052, "Oz04ody") },
+    yy3: { title: "佛得角 vs 阿根廷", type: "AI 漫剧", note: "《佑佑的足球经》系列短视频" },
+    yy4: { title: "佑佑 18 岁生日快乐", type: "视频剪辑", note: "剪辑项目《佑佑的足球经》短视频 · 熊猫佑佑生日节点", link: ma(4526492, "O8k8232") },
+    yysum: { title: "佑佑足球经 · 全季收官总结视频", type: "总结视频", note: "项目全季收官总结视频" },
+
+    sj1: { title: "《有温度的亚布力》猫咪主题公园纪录片", type: "纪录片剪辑", note: "剪辑项目总纪录片，记录公园从零到一的建设过程。", link: ma(4526492, "OEQ03BD") },
+    sj2: { title: "思嘉的朋友们 7 月 14 日试营业！", type: "视频剪辑", note: "试营业节点宣传短视频", link: ma(4291491, "R2NY748") },
+    sj3: { title: "试营业啦！", type: "视频剪辑", note: "试营业节点宣传短视频", link: ma(4291491, "b5yPBvW") },
+    sj4: { title: "国企的社会责任", type: "视频剪辑", note: "《思嘉的朋友们·猫咪主题公园》短视频", link: ma(4291491, "O7w8YPK") },
+
+    wlsummer: { title: "下一站，让我们相约大美龙江", type: "拍摄 + 剪辑", note: "2024 夏季文旅创造营期间独立拍摄剪辑的文旅宣传视频", link: ma(4526492, "bpMDl4B") },
+    wl1: { title: "在雪乡，好像来到了小时候《冰雪奇缘》里的魔法世界", type: "AI 文旅短视频", note: "雪乡新势力创作营期间独立产出的 AI 文旅宣传视频", link: ma(4291491, "b5yP9WK") },
+    wl2: { title: "挑战在哈尔滨极地公园里变魔术", type: "AI 文旅短视频", note: "2025 秋季文旅创造营 AI 文旅视频", link: ma(3303329, "bZoBVxx") },
+    wl3: { title: "挑战把伏尔加庄园抹在吐司上", type: "AI 文旅短视频", note: "2025 秋季文旅创造营 AI 文旅视频", link: ma(3303329, "OkDeLgD") },
+    wl4: { title: "中秋节快到了，快和家人一起来世界欢乐城玩吧", type: "AI 文旅短视频", note: "2025 秋季文旅创造营 AI 文旅视频", link: ma(3303329, "bDx6458") },
+    wl5: { title: "五大连池两日游的游戏攻略", type: "AI 文旅短视频", note: "2025 秋季文旅创造营 AI 文旅视频", link: ma(3303329, "AW87VrX") },
+    wl6: { title: "你将化身为何者，开启你的奇遇", type: "AI 文旅短视频", note: "2025 秋季文旅创造营 AI 文旅视频", link: ma(3303329, "beKzgPd") },
+    wl7: { title: "当人偶雕塑沉浸在音乐的世界里", type: "AI 文旅短视频", note: "2025 秋季文旅创造营 AI 文旅视频" },
+    wl28: { title: "在五大连池博物馆看东北抗联故事", type: "AI 文旅短视频", note: "2025 秋季文旅创造营 AI 文旅视频" },
+
+    w_tie: { title: "《老婆要贴贴》第 31 集", type: "AI 真人短剧", note: "BlueNeoAI 精品剧组共同制作，本人参与剧集制作", link: ma(4526052, "bKldKGx") },
+    w_1999: { title: "《重生之我在 1999 当大佬》第 84 集", type: "AI 漫剧", note: "BlueNeoAI 精品剧组共同制作，本人参与剧集制作", link: ma(4526368, "bDrVyZZ") },
+    w_wife: { title: "《妻子的秘密》第 69 集", type: "AI 漫剧", note: "BlueNeoAI 精品剧组共同制作，本人参与剧集制作", link: ma(4526368, "AXj4rEk") },
+    w_fire: { title: "《爱如烈火焚身》第 47 集", type: "AI 漫剧", note: "BlueNeoAI 精品剧组共同制作，本人参与剧集制作", link: ma(4526368, "RYLXrJL") },
+    w_ny: { title: "《新年大战极品亲戚》第 27 集", type: "AI 真人解说漫", note: "BlueNeoAI 精品剧组共同制作，本人参与剧集制作", link: ma(4526368, "b5yPzYV") },
+    w_sea: { title: "《海神新娘的复仇》第 16 集", type: "AI 真人解说漫 · 英文", note: "面向海外平台的英文剧集，本人参与剧集制作", link: ma(4526368, "bJzP9MZ") },
+    w_chuan: { title: "《穿越后我被宠上天》第 27 集", type: "AI 真人解说漫", note: "BlueNeoAI 精品剧组共同制作，本人参与剧集制作", link: ma(4526368, "A0kBjlk") },
+    w_lei: { title: "样式雷家族的百年答卷", type: "AI 真人穿越短剧", note: "2026 年全国大学生计算机设计大赛作品。作为团队组长生成全片 AI 视频部分，荣获国家级三等奖。", link: ma(4526052, "A0kBj4J"), award: "国家级三等奖" },
+    w_street: { title: "街名不朽，冰城长歌", type: "AI 真人短剧", note: "第四届黑龙江省社科普及短视频大赛参赛作品，负责生成并制作成片。", link: ma(4526052, "bKldK6G") },
+    w_sijia: { title: "思嘉和她的朋友们", type: "AI 漫剧", note: "负责并生成亚旅投集团合作项目《思嘉的朋友们·猫咪主题公园》短视频", link: ma(4526052, "bDrVymW") },
+    w_xc: { title: "新传点亮大学时光", type: "AI 创意短片", note: "新闻传播学院主题 AI 创意短片" },
+    w_jz: { title: "江中牌健胃消食片", type: "AI 品牌广告", note: "课程品牌广告 AI 视频作业，小组中负责生成 AI 视频并制作成片。", link: ma(4526052, "bKldKVa") },
+    w_chef: { title: "神厨陨落，废柴新生", type: "AI 短剧", note: "AI 短剧创作练习" },
+    w_fish: { title: "小测试：金鱼转场", type: "AI 转场实验", note: "AI 视频转场效果的创意小测试" },
+
+    e_trip: { title: "美美的出片假期", type: "视频剪辑", note: "OPPO Reno15 黑龙江影像寻光计划 · 担任校园影像女主角，创作短视频发布至抖音个人账号", link: ma(3303329, "Ov4PxzN") },
+    e_reno: { title: "当我拥有一台 Reno15 后，我的朋友圈变成了这样", type: "视频剪辑", note: "OPPO Reno15 黑龙江影像寻光计划 · 校园影像女主角活动作品", link: ma(4291491, "Ag7ZPqE") },
+    e_nestle: { title: "雀巢茶萃广告：厨神餐厅", type: "影视广告", note: "创意星球学院奖参赛作品，获 2024 年创意星球春季学院奖影视广告优秀奖", link: ma(4526492, "Ag7ZrW8"), award: "学院奖优秀奖" },
+    e_lanju: { title: "榄菊电蚊拍广告：奇怪的恋爱", type: "影视广告", note: "创意星球学院奖参赛作品，获 2025 年创意星球春季学院奖榄菊实效创意奖", link: ma(4526492, "AW4aQ95"), award: "榄菊实效创意奖" },
+  };
+
+  const PROJECTS = [
+    {
+      id: "oppo",
+      no: "01",
+      tab: "OPPO 黑龙江",
+      title: "OPPO 黑龙江微信视频号 AI 创意宣传视频",
+      date: "2026.01 – 2026.04",
+      role: "制作人",
+      client: "OPPO 黑龙江官方视频号",
+      summary: "负责 OPPO 黑龙江官方账号的 AI 手机宣传视频制作，覆盖五福年货节、Find N6、K15 Pro、Find X9 Ultra 等多个产品节点。",
+      metrics: [
+        { value: "6", unit: "条", label: "累计上线视频" },
+        { value: "4+", unit: "个", label: "覆盖产品节点" },
+        { value: "数百级", unit: "", label: "单条点赞与转发" },
+      ],
+      tags: ["五福年货节", "Find N6", "K15 Pro", "Find X9 Ultra"],
+      color: "#2f6b4f",
+      reels: [{ title: "上线作品", sub: "6 条 · 竖屏为主", videos: ["oppo1", "oppo2", "oppo3", "oppo4", "oppo5", "oppo6"] }],
+    },
+    {
+      id: "news40",
+      no: "02",
+      tab: "新闻学 40 周年",
+      title: "黑龙江大学新闻传播学院新闻学专业 40 周年 AI 视频",
+      date: "2025.12",
+      role: "制作人",
+      client: "黑龙江大学新闻传播学院",
+      summary: "负责制作新闻学专业 40 周年的 AI 宣传视频。视频全程由本人独自一人生成并制作，在新闻传播学科创建四十周年暨新闻传播学院建院二十周年 · 面向未来人才培养研讨会上播放并传播。",
+      metrics: [
+        { value: "1", unit: "人", label: "独立生成 + 制作" },
+        { value: "4'24\"", unit: "", label: "水墨风 AI 漫剧时长" },
+        { value: "40", unit: "周年", label: "院庆研讨会现场播放" },
+      ],
+      tags: ["水墨风格", "AI 漫剧", "院庆宣传"],
+      color: "#3b3b3b",
+      feature: "news40",
+    },
+    {
+      id: "campus",
+      no: "03",
+      tab: "校园 AI 创意",
+      title: "校园 AI 创意系列项目 · AI 看黑大",
+      date: "2024.11 – 2025.12",
+      role: "负责人",
+      client: "黑龙江大学官方公众号 / 视频号",
+      summary: "在学校全媒体中心团队里策划并执行“AI 看黑大”系列项目：用 AI 把校园地标生成为冰雕建筑、秋景水墨与粉色童话风景观、雪天像素风视频等视觉作品，均发布于学校官方公众号和视频号。",
+      metrics: [
+        { value: "1.4", unit: "万+", label: "单条阅读量" },
+        { value: "3", unit: "个", label: "AI 创意企划" },
+        { value: "37", unit: "张", label: "AI 视觉作品" },
+      ],
+      tags: ["AI 图片", "AI 视频", "校园宣传"],
+      color: "#3a6ea5",
+      campus: true,
+    },
+    {
+      id: "youyou",
+      no: "04",
+      tab: "佑佑的足球经",
+      title: "佑佑的足球经 · 文旅 IP 项目",
+      date: "2026.06 – 2026.08",
+      role: "项目组长",
+      client: "亚布力旅游投资集团 · 腾讯区域发展部实习项目",
+      summary: "以亚布力熊猫“佑佑”为主角的足球主题文旅 IP。负责主视觉、AI 漫剧、短视频、直播、推文与媒体宣发的统筹，完成熊猫佑佑 18 岁生日会等关键节点的营销策划与落地传播。",
+      metrics: [
+        { value: "6000", unit: "万+", label: "全网整体曝光" },
+        { value: "67", unit: "条", label: "马上红礼盒达人内容" },
+        { value: "30", unit: "次", label: "媒体报道" },
+      ],
+      tags: ["AI 漫剧", "主视觉", "直播", "媒体宣发"],
+      color: "#5b2a86",
+      board: [
+        { k: "主视觉设计", v: "2 套" },
+        { k: "马上红礼盒项目", v: "67 条", d: "抖音 32 · 视频号 25 · 小红书 10" },
+        { k: "短视频制作", v: "22 条" },
+        { k: "腾讯小程序直播", v: "2 次", d: "7.18 佑佑生日会 · 8.8 思嘉生日会" },
+        { k: "公众号推文", v: "4 篇" },
+        { k: "媒体报道", v: "30 次", d: "央广网 · 人民网 · 中国旅游新闻网 · 中新社黑龙江 · 黑龙江日报 · 腾讯…" },
+        { k: "线下嘉年华物料", v: "2 套" },
+        { k: "全季收官总结视频", v: "1 条" },
+      ],
+      gallery: [
+        { title: "主视觉设计", key: "youyou.kv" },
+        { title: "生日会 · 线下物料", key: "youyou.party" },
+        { title: "足球表情贴纸", key: "youyou.sticker" },
+      ],
+      reels: [{ title: "AI 漫剧 & 短视频", sub: "竖屏 · 视频号 / 抖音", videos: ["yysum", "yy1", "yy2", "yy3", "yy4"] }],
+    },
+    {
+      id: "sijia",
+      no: "05",
+      tab: "思嘉的朋友们",
+      title: "思嘉的朋友们 · 猫咪主题公园",
+      date: "2026.06 – 2026.08",
+      role: "项目组长",
+      client: "亚布力旅游投资集团 · 腾讯区域发展部实习项目",
+      summary: "为亚布力森林动物园打造的“思嘉的朋友们”猫咪主题公园 IP。从角色设定、场景主视觉、表情包到 AI 漫剧、纪录片、直播与新闻稿，完成公园试营业、正式营业等节点的传播。",
+      metrics: [
+        { value: "6000", unit: "万+", label: "全网整体曝光" },
+        { value: "73", unit: "条", label: "媒体报道" },
+        { value: "22", unit: "条", label: "短视频制作" },
+      ],
+      tags: ["IP 角色设定", "表情包", "纪录片", "AI 漫剧"],
+      color: "#b4553a",
+      board: [
+        { k: "主视觉设计", v: "1 套" },
+        { k: "表情包设计", v: "2 套", d: "佑佑 · 思嘉" },
+        { k: "短视频", v: "22 条" },
+        { k: "直播", v: "2 次", d: "思嘉生日直播 · 猫咪主题公园开园仪式" },
+        { k: "公众号推文", v: "9 条" },
+        { k: "媒体报道", v: "73 条", d: "新华网 · 央广网 · 半月谈 · 黑龙江卫视 · 中国新闻网…" },
+        { k: "新闻稿撰写", v: "2 条", d: "思嘉生日会 · 正式营业" },
+        { k: "纪录片", v: "1 条" },
+      ],
+      characters: [
+        { name: "思嘉", en: "SIJIA", key: "sijia.sijia", desc: "傻白甜、温柔、善良、有爱心。佑佑的姐姐，整个亚布力森林动物园的核心人物。" },
+        { name: "雕哥", en: "DIAO GE", key: "sijia.diaoge", desc: "摇滚青年，酷帅、高冷、话少，外冷内热，喜欢小动物。" },
+        { name: "慢慢", en: "MAN MAN", key: "sijia.manman", desc: "速度极快的闪电侠，腿比脑子快，爱搞恶作剧。" },
+        { name: "笨笨", en: "BEN BEN", key: "sijia.benben", desc: "纯吃货，邋遢大王，不愿意分享食物。虽然叫笨笨，实际上是数学天才。" },
+        { name: "兔子", en: "RABBIT", key: "sijia.tuzi", desc: "路人甲，没有名字，不会说话。" },
+        { name: "神秘人", en: "???", key: "sijia.shenmi", desc: "总是隐藏在动物园的角落，偷偷羡慕着动物们的生活——实际上是一只流浪猫。" },
+      ],
+      gallery: [
+        { title: "思嘉的衣橱 · 12 套造型", key: "sijia.sijia" },
+        { title: "亚布力森林动物园 & 角色的家", key: "sijia.zoo+sijia.home" },
+        { title: "表情包设计", key: "sijia.emoji" },
+        { title: "节日海报", key: "design.festival" },
+      ],
+      reels: [
+        { title: "纪录片 & 宣传短片", sub: "横屏纪录片 + 竖屏短视频", videos: ["sj1", "w_sijia", "sj2", "sj3", "sj4"] },
+      ],
+    },
+    {
+      id: "wenlv",
+      no: "06",
+      tab: "文旅创造营",
+      title: "“北国好风光，美在黑龙江”微信视频号文旅创造营",
+      date: "2024.07 – 2024.08 / 2025.09 – 2025.10",
+      role: "成员",
+      client: "黑龙江省文旅厅 × 高校师生",
+      summary: "由黑龙江省文旅厅联合多所高校师生发起的文旅短视频项目，负责省内景点的短视频策划、拍摄与传播。夏季营荣获“优秀视频证书”，秋季营荣获“火爆视频奖”——全场唯一的最高奖项。",
+      metrics: [
+        { value: "1.2", unit: "亿+", label: "活动全网播放量" },
+        { value: "火爆视频奖", unit: "", label: "2025 秋季营最高奖" },
+        { value: "优秀视频", unit: "", label: "2024 夏季营证书" },
+      ],
+      tags: ["文旅宣传", "AI 文旅", "拍摄剪辑"],
+      color: "#2a6f86",
+      reels: [
+        { title: "2025 秋季营 · AI 创意视频", sub: "横屏为主 · 含雪乡新势力创作营作品", videos: ["wl1", "wl2", "wl3", "wl4", "wl5", "wl6", "wl7", "wl28"] },
+        { title: "2024 夏季营 · 总结视频", sub: "独立拍摄 + 剪辑", videos: ["wlsummer"] },
+      ],
+    },
+  ];
+
+  const CAMPUS_SETS = [
+    { key: "snow", name: "我的学校是冰雪世界", en: "ICE WORLD", desc: "用 AI 把校园地标生成为晶莹的冰雕建筑。", link: "https://mp.weixin.qq.com/s/L1FNfbFu4t1AUyG4HudkjA", linkText: "公众号原文" },
+    { key: "outfit", name: "今天，和母校一起换装", en: "NEW OUTFIT", desc: "秋景水墨与粉色棉花糖童话风，让熟悉的校园“换一身新衣服”。", link: "https://mp.weixin.qq.com/s/G4uogw2R30PdFjIBMCkHaQ", linkText: "公众号原文" },
+    { key: "pixel", name: "像素黑大", en: "PIXEL HLJU", desc: "雪天里的像素风黑大，配合像素吉祥物“龙宝”与成片视频。", video: "pixel" },
+  ];
+
+  const WORK_ROWS = [
+    {
+      id: "drama",
+      title: "AI 短剧 · 漫剧",
+      en: "AI SHORT DRAMA",
+      sub: "北京蓝色光标 BlueNeoAI 精品剧组 · 抖音 / 红果 / YouTube",
+      videos: ["w_tie", "w_1999", "w_wife", "w_fire", "w_ny", "w_sea", "w_chuan"],
+    },
+    {
+      id: "ai",
+      title: "AI 创意短片",
+      en: "AI FILMS",
+      sub: "比赛作品 · 品牌广告 · 创意实验",
+      videos: ["w_lei", "w_street", "w_xc", "w_jz", "w_sijia", "w_chef", "w_fish"],
+    },
+    {
+      id: "edit",
+      title: "视频剪辑 · 影视广告",
+      en: "EDITING & ADS",
+      sub: "拍摄、剪辑与广告创意",
+      videos: ["e_nestle", "e_lanju", "e_trip", "e_reno"],
+    },
+  ];
+
+  const DESIGN = [
+    { key: "design.magic", title: "《你的魔法书包》", sub: "Canva 可画品牌策划案", note: "担任组长，制作所有 PPT 画面。荣获 2025 年黑龙江省大学生广告创新创意设计大赛策划类二等奖。", tag: "策划案 · PPT", size: "wide" },
+    { key: "design.sports", title: "黑龙江大学运动会直播封面", sub: "全媒体中心图片直播", note: "校运会图片直播首图封面设计，本次直播浏览量高达 75w+。", tag: "直播封面", link: "https://m.alltuu.com/album/1430257542/?menu=live" },
+    { key: "design.festival", title: "思嘉的朋友们 · 节日海报", sub: "猫咪主题公园项目", note: "为项目节日节点设计的系列海报。", tag: "海报" },
+    { key: "design.drama", title: "解密微短剧", sub: "如何在短视频和电视剧的丛林中杀出重围", note: "第九届中国数据大赛参赛作品，制作了全程图文。", tag: "数据新闻 · 信息图" },
+    { key: "design.gaokao", title: "高考学校系列海报", sub: "黑龙江大学", note: "为高考季设计的学校系列海报产品。", tag: "系列海报" },
+    { key: "design.hlju83", title: "黑大 83 周年宣传图 & 聘书", sub: "全媒体中心设计项目", note: "黑龙江大学 83 周年全媒体中心宣传图、全媒体中心摄影工作室聘书设计。", tag: "宣传图 · 证书" },
+    { key: "design.xinxiangyin", title: "《从一张纸巾，到一份故事》", sub: "心相印平面广告", note: "创意星球学院奖参赛作品。", tag: "平面广告" },
+    { key: "design.langsheng", title: "《拥有选择权的文具》", sub: "朗圣药业平面广告", note: "第 17 届全国大学生广告艺术大赛参赛作品。", tag: "平面广告" },
+  ];
+
+  const HONORS = [
+    { level: "national", year: "2026", title: "全国大学生计算机设计大赛", prize: "国家级三等奖", note: "作品《样式雷家族的百年答卷》" },
+    { level: "national", year: "第 17 届", title: "全国大学生广告艺术大赛", prize: "国家级三等奖", note: "作品《初雪见暖阳》" },
+    { level: "province", year: "2025", title: "微信视频号秋季文旅创造营", prize: "火爆视频奖", note: "全场唯一的最高奖项" },
+    { level: "province", year: "2024", title: "微信视频号夏季文旅创造营", prize: "优秀视频证书" },
+    { level: "province", year: "2025", title: "中国大学生广告艺术节学院奖 · 春季", prize: "榄菊实效创意奖", note: "作品《奇怪的恋爱》" },
+    { level: "province", year: "2024", title: "创意星球春季学院奖 · 影视广告", prize: "优秀奖", note: "作品《厨神餐厅》" },
+    { level: "province", year: "2025", title: "黑龙江省大学生广告创新创意设计大赛", prize: "策划类二等奖", note: "作品《你的魔法书包》" },
+    { level: "province", year: "2025", title: "黑龙江省大学生广告创新创意设计大赛", prize: "微电影广告类二等奖", note: "作品《我有一件舍不得丢掉的外套》" },
+    { level: "province", year: "2025", title: "黑龙江省大学生广告创新创意设计大赛", prize: "广播类二等奖", note: "作品《找不到的光头侠客》" },
+    { level: "province", year: "第八届", title: "黑龙江省大学生网络文化节", prize: "网创梦工厂类二等奖", note: "作品《AI看黑大：我的学校是冰雪世界》" },
+    { level: "province", year: "第八届", title: "黑龙江省大学生网络文化节", prize: "网图新视界类二等奖", note: "作品《在Z21进藏列车的40个小时》" },
+    { level: "province", year: "2024", title: "“文明龙江”主题公益广告", prize: "音频类铜奖", note: "作品《以史为鉴筑国防，心中防线永不忘》" },
+    { level: "school", year: "2024–2025", title: "黑龙江大学", prize: "优秀学生干部" },
+    { level: "school", year: "2023–2024", title: "黑龙江大学", prize: "优秀团员" },
+    { level: "school", year: "连续三年", title: "黑龙江大学校级奖学金", prize: "二等 / 三等奖学金" },
+    { level: "cert", year: "证书", title: "大学英语四级", prize: "CET-4" },
+    { level: "cert", year: "证书", title: "普通话水平测试", prize: "二级乙等" },
+  ];
+
+  window.SITE_DATA = { VIDEO_INFO, PROJECTS, CAMPUS_SETS, WORK_ROWS, DESIGN, HONORS };
+})();
