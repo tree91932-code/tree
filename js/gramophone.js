@@ -1,65 +1,44 @@
 (() => {
   'use strict';
-  const introButton = document.getElementById('studyMusic');
-  if (!introButton) return;
-  const siteButton = introButton.cloneNode(true);
-  siteButton.id = 'siteMusic';
-  siteButton.querySelector('#studyMusicLabel').id = 'siteMusicLabel';
-  document.body.append(siteButton);
-  const buttons = [introButton, siteButton];
-  const labels = buttons.map(button => button.querySelector('[id$="MusicLabel"]'));
-  const audio = new Audio('assets/audio/a-kind-of-hope.m4a');
+  const button = document.getElementById('studyMusic');
+  const label = document.getElementById('studyMusicLabel');
+  const audio = new Audio('assets/audio/satie-gymnopedie-1.ogg');
   audio.id = 'gramophoneAudio';
   audio.preload = 'none';
   audio.loop = true;
   audio.volume = .8;
   audio.hidden = true;
   document.body.append(audio);
-  let wanted = false, pending = false, generation = 0;
-  const cinema = document.getElementById('cinema');
-  const blocked = () => document.hidden || (cinema && !cinema.hidden) || [...document.querySelectorAll('video')].some(video => !video.paused && !video.muted && !video.ended);
+  let pending = false, generation = 0;
   function sync() {
-    const text = wanted ? (blocked() ? '音乐已开启' : '暂停音乐') : '播放音乐';
-    buttons.forEach((button, index) => {
-      button.setAttribute('aria-pressed', String(wanted));
-      button.setAttribute('aria-label', wanted ? '暂停背景音乐' : '播放背景音乐');
-      button.title = 'A Kind Of Hope — Scott Buckley · CC BY 4.0';
-      labels[index].textContent = text;
-    });
+    const on = !audio.paused;
+    button.setAttribute('aria-pressed', String(on));
+    button.setAttribute('aria-label', on ? '暂停书房音乐' : '播放书房音乐');
+    button.title = '萨蒂 · 第一号吉姆诺佩蒂 / 钢琴：Robin Alciatore / Musopen';
+    label.textContent = on ? '暂停音乐' : '播放音乐';
   }
-  function reconcile() {
-    if (!wanted || blocked()) {
-      generation++;
-      pending = false;
-      audio.pause();
-      sync();
-      return;
-    }
-    if (!audio.paused || pending) { sync(); return; }
+  function stop() { generation++; pending = false; audio.pause(); sync(); }
+  button.addEventListener('click', async () => {
+    if (!audio.paused || pending) return stop();
     const token = ++generation;
     pending = true;
-    audio.play().then(() => {
-      if (token !== generation) { if (!wanted || blocked()) audio.pause(); return; }
-      if (!wanted || blocked()) { audio.pause(); return; }
-      sync();
-    }).catch(error => {
-      if (token === generation && error.name !== 'AbortError') {
-        wanted = false;
-        sync();
-        labels.forEach(label => { label.textContent = '点击继续音乐'; });
+    try {
+      await audio.play();
+      if (token !== generation || !document.body.classList.contains('is-intro') || document.hidden) {
+        if (token === generation) stop();
+        return;
       }
-    }).finally(() => { if (token === generation) pending = false; });
-  }
-  buttons.forEach(button => button.addEventListener('click', () => { wanted = !wanted; reconcile(); }));
+      sync();
+    } catch (error) {
+      if (token === generation && error.name !== 'AbortError') label.textContent = '点击重试';
+    } finally { if (token === generation) pending = false; }
+  });
   audio.addEventListener('pause', sync);
   audio.addEventListener('play', sync);
-  // Changing sections or opening the archive never stops the music.
-  if (cinema) new MutationObserver(reconcile).observe(cinema, {attributes:true,attributeFilter:['hidden']});
-  ['play','pause','ended','volumechange'].forEach(type => document.addEventListener(type, event => {
-    if (event.target.tagName === 'VIDEO') reconcile();
-  }, true));
-  document.addEventListener('visibilitychange', reconcile);
-  window.addEventListener('pagehide', () => { generation++; pending = false; audio.pause(); });
-  window.addEventListener('pageshow', reconcile);
+  new MutationObserver(() => {
+    if (!document.body.classList.contains('is-intro')) stop();
+  }).observe(document.body, {attributes:true,attributeFilter:['class']});
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
+  window.addEventListener('pagehide', stop);
   sync();
 })();
