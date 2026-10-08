@@ -986,15 +986,22 @@
       }, instant ? 0 : 700);
     };
     const play = () => {
+      const returningToDesk = phoneIntro && intro.classList.contains("is-overhead");
       clearTimeout(stageTimer);
-      setStage("desk");
-      hint.textContent = "点击档案袋";
+      setStage(returningToDesk ? "moving" : "desk");
+      hint.textContent = returningToDesk ? "镜头返回书桌…" : "点击档案袋";
       folder.setAttribute("aria-label", "点击档案袋，转到正上方");
       intro.classList.remove("is-leaving");
       intro.classList.remove("is-overhead");
       intro.classList.add("is-daytime");
       intro.dispatchEvent(new Event("study-lamp-reset"));
       folder.classList.remove("is-open");
+      if (returningToDesk) {
+        stageTimer = setTimeout(() => {
+          setStage("desk");
+          hint.textContent = "点击档案袋";
+        }, reduced ? 0 : 850);
+      }
       lamp.classList.add("is-off");
       lamp.classList.remove("is-flicker");
       setTimeout(() => {
@@ -1027,7 +1034,7 @@
           setStage("overhead");
           hint.textContent = "再次点击档案袋，打开作品集";
           folder.setAttribute("aria-label", "再次点击档案袋，打开作品集");
-        }, reduced ? 0 : matchMedia("(max-width:900px)").matches ? 1600 : 2800);
+        }, reduced ? 0 : phoneIntro ? 850 : 2800);
         return;
       }
       setStage("opening");
@@ -1037,7 +1044,7 @@
     });
     $("#introSkip").addEventListener("click", () => finish(true));
     $("#studyBack").addEventListener("click", () => {
-      if (stage === "opening" || stage === "leaving") return;
+      if ((phoneIntro && stage === "moving") || stage === "opening" || stage === "leaving") return;
       play();
       folder.focus({ preventScroll: true });
     });
