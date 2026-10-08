@@ -2,11 +2,11 @@
   'use strict';
   const button = document.getElementById('studyMusic');
   const label = document.getElementById('studyMusicLabel');
-  const audio = new Audio('assets/audio/satie-gymnopedie-1.ogg');
+  const audio = new Audio('assets/audio/debussy-reverie.ogg');
   audio.id = 'gramophoneAudio';
   audio.preload = 'metadata';
   audio.loop = true;
-  audio.volume = .55;
+  audio.volume = .45;
   audio.hidden = true;
   document.body.append(audio);
   let pending = false, generation = 0;
@@ -14,7 +14,7 @@
     const on = !audio.paused;
     button.setAttribute('aria-pressed',String(on));
     button.setAttribute('aria-label',on ? '暂停书房音乐' : '播放书房音乐');
-    button.title = '萨蒂 · 第一号吉姆诺佩蒂 / 钢琴：Robin Alciatore / Musopen';
+    button.title = '德彪西 · 梦幻曲（Rêverie） / 钢琴独奏';
     label.textContent = on ? '暂停音乐' : '播放音乐';
   }
   function stop() { generation++; pending = false; audio.pause(); sync(); }
