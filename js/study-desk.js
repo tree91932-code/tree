@@ -21,7 +21,7 @@
     const nextState = !lightOn;
     if (matchMedia('(max-width:900px)').matches) {
       switchingLamp = true;
-      const url = nextState ? 'assets/intro/study-sunset-mobile.webp' : 'assets/intro/study-daylight-mobile.webp';
+      const url = nextState ? 'assets/intro/study-sunset-pendant-mobile.webp' : 'assets/intro/study-daylight-pendant-mobile.webp';
       if (!lampImages.has(url)) {
         const image = new Image();
         image.src = url;

@@ -151,7 +151,8 @@
   .study-music { left: 16px; bottom: max(16px, env(safe-area-inset-bottom)); padding: 10px 12px; min-height: 44px; }
   .intro .intro__skip { right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); min-height: 44px; font-size: 12px; color: var(--cream); }
   .study-back { left: 16px; bottom: 76px; min-height: 44px; }
-  .study-lamp-mobile { left: 16px; top: max(16px, env(safe-area-inset-top)); min-height: 44px; }
+  .intro .study-lamp-mobile { display: flex; align-items: flex-end; justify-content: center; left: 4%; top: max(8%, env(safe-area-inset-top)); width: 34%; height: 21%; min-height: 44px; padding: 0 0 5px; border: 0; background: none; border-radius: 16px; color: #f3dfba; font-size: 11px; letter-spacing: .15em; text-shadow: 0 1px 5px #100903b3; z-index: 3; }
+  .intro.is-daytime .study-lamp-mobile { color: #63472d; text-shadow: 0 1px 4px #fff4dbb3; }
   .study-papers .desk-note { padding: 10px 5px; }
 }
 
@@ -427,9 +428,8 @@
 
 /* Download only the current phone intro scene. */
 @media(max-width:900px) {
- .intro .study-scene { background-image:url('../assets/intro/study-sunset-mobile.webp'); }
- .intro .study-day-scene { background-image:url('../assets/intro/study-daylight-mobile.webp'); }
- .intro .study-scene { background-image:url('../assets/intro/study-sunset-mobile.webp'); }
+ .intro .study-scene { background-image:url('../assets/intro/study-sunset-pendant-mobile.webp'); background-position:left top; }
+ .intro .study-day-scene { background-image:url('../assets/intro/study-daylight-pendant-mobile.webp'); background-position:left top; }
  .intro .study-overhead { background-image:radial-gradient(ellipse at 15% 15%,#efc58018,transparent 60%),linear-gradient(#24160a18,#120d0938),url('../assets/intro/study-tabletop-overhead-mobile.webp'); }
 }
 
