@@ -1,0 +1,4 @@
+A Kind Of Hope by Scott Buckley - released under CC BY 4.0.
+Source: https://www.scottbuckley.com.au/library/a-kind-of-hope/
+License: https://creativecommons.org/licenses/by/4.0/
+Changes: AAC 128 kbps, integrated loudness adjusted to -18 LUFS, peak limited to -2 dBTP.
