@@ -153,7 +153,7 @@
   .intro .study-music .study-record { display: none; }
   .intro .intro__skip { right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); min-height: 44px; font-size: 12px; color: var(--cream); }
   .study-back { left: 16px; bottom: 76px; min-height: 44px; }
-  .intro .study-lamp-mobile { display: flex; align-items: flex-end; justify-content: center; left: 4%; top: max(8%, env(safe-area-inset-top)); width: 34%; height: 21%; min-height: 44px; padding: 0 0 5px; border: 0; background: none; border-radius: 16px; color: #fff; font-size: 11px; letter-spacing: .15em; text-shadow: 0 1px 2px #000, 0 2px 5px #000000b3; z-index: 3; }
+  .intro .study-lamp-mobile { display: flex; align-items: flex-end; justify-content: center; left: 4%; top: max(8%, env(safe-area-inset-top)); width: 34%; height: 21%; min-height: 44px; padding: 0 0 5px; border: 0; background: none; border-radius: 16px; font-family: var(--f-serif); color: rgba(246, 236, 216, .85); font-size: 12px; letter-spacing: .15em; text-shadow: 0 2px 9px #000; z-index: 3; }
   .study-papers .desk-note { padding: 10px 5px; }
 }
 
