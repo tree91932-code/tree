@@ -275,7 +275,7 @@
   function selectCase(id, scroll) {
     if (id === currentCase && !scroll) return;
     currentCase = id;
-    if (matchMedia("(max-width:900px)").matches) $$(`.case[data-case="${id}"] img`).slice(0, 4).forEach(im => { im.loading = "eager"; });
+    if (matchMedia("(max-width:900px)").matches && !body.classList.contains("is-intro") && $("#projects").classList.contains("is-mobile-active")) $$(`.case[data-case="${id}"] img`).slice(0, 4).forEach(im => { im.loading = "eager"; });
     $$(".case-tab").forEach((t) => {
       const on = t.dataset.case === id;
       t.classList.toggle("is-active", on);
@@ -341,11 +341,11 @@
         more.innerHTML = `
           <div class="campus__pixel">
             <div class="pixel-tv">
-              <video src="${v.src}" poster="${v.poster}" muted loop playsinline autoplay preload="metadata"></video>
+              <video ${matchMedia("(max-width:900px)").matches ? 'data-src' : 'src'}="${v.src}" poster="${v.poster}" muted loop playsinline ${matchMedia("(max-width:900px)").matches ? 'preload="none"' : 'autoplay preload="metadata"'}></video>
               <button class="pixel-tv__btn" data-vid="pixel" data-list="campus-pixel" data-idx="0">▶ 有声观看成片 · ${fmtDur(v.dur)}</button>
             </div>
             <div class="gameboy">
-              <div class="gameboy__screen"><video src="${lb.src}" poster="${lb.poster}" muted loop playsinline autoplay preload="metadata"></video></div>
+              <div class="gameboy__screen"><video ${matchMedia("(max-width:900px)").matches ? 'data-src' : 'src'}="${lb.src}" poster="${lb.poster}" muted loop playsinline ${matchMedia("(max-width:900px)").matches ? 'preload="none"' : 'autoplay preload="metadata"'}></video></div>
               <p><b>LONG BAO</b><br />像素吉祥物 · 龙宝<br />行走动画 5s LOOP</p>
             </div>
           </div>`;
@@ -742,7 +742,7 @@
         .join("");
       $("#cinemaList").hidden = this.list.length < 2;
       requestAnimationFrame(() => requestAnimationFrame(() => this.el.classList.add("is-open")));
-      this.load(idx, reduced ? 0 : 800);
+      this.load(idx, reduced || matchMedia("(max-width:900px)").matches ? 0 : 800);
       enterDialog(this.el);
     },
     load(idx, delay = 0) {
@@ -967,7 +967,7 @@
     overheadImage.fetchPriority = "low";
     const phoneIntro = matchMedia("(max-width:900px)").matches;
     if (phoneIntro) overheadImage.src = "assets/intro/study-tabletop-overhead-mobile.webp";
-    const overheadReady = phoneIntro ? overheadImage.decode().catch(() => {}) : Promise.resolve();
+    if (phoneIntro) overheadImage.decode().catch(() => {});
     const setStage = (value) => {
       stage = value;
       intro.dataset.stage = value;
@@ -1021,12 +1021,6 @@
     folder.addEventListener("click", async () => {
       if (stage === "preparing" || stage === "moving" || stage === "opening" || stage === "leaving") return;
       if (stage === "desk") {
-        if (phoneIntro) {
-          setStage("preparing");
-          hint.textContent = "正在准备桌面…";
-          await overheadReady;
-          if (stage !== "preparing") return;
-        }
         setStage("moving");
         intro.classList.add("is-overhead");
         hint.textContent = "镜头移向档案袋…";
@@ -1187,6 +1181,7 @@
   function initGlobalEvents() {
     let raf = 0;
     addEventListener("pointermove", (e) => {
+      if (e.pointerType !== "mouse" || matchMedia("(max-width:900px)").matches) return;
       if (raf) return;
       raf = requestAnimationFrame(() => {
         raf = 0;
@@ -1309,10 +1304,16 @@
 
 /* Load nearby previews and anticipate the destination without fetching every gallery. */
 (() => {
- const visible = image => image.getClientRects().length > 0;
+ const phone = () => matchMedia('(max-width:900px)').matches;
+ const visible = image => {
+  if (!image.getClientRects().length) return false;
+  if (!phone()) return true;
+  const rect = image.getBoundingClientRect();
+  return rect.bottom > -120 && rect.top < innerHeight + 240 && rect.right > 0 && rect.left < innerWidth;
+ };
  const warm = (panel, anticipate = false) => {
-  if (!panel) return;
-  const candidates = [...panel.querySelectorAll('img[loading="lazy"]')].filter(image => anticipate || visible(image));
+  if (!panel || (phone() && document.body.classList.contains('is-intro'))) return;
+  const candidates = [...panel.querySelectorAll('img[loading="lazy"]')].filter(image => (anticipate && !phone()) || visible(image));
   candidates.slice(0, 6).forEach(image => { image.fetchPriority = 'auto'; image.loading = 'eager'; });
  };
  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
@@ -1333,9 +1334,13 @@
   const control = event.target.closest('.case-tab, .mobile-nav button, a[href^="#"]');
   if (control) warm(destination(control), true);
  });
+ const panels = new Set();
+ let warmFrame = 0;
  const changes = new MutationObserver(entries => {
-  const panels = new Set(entries.map(entry => entry.target.closest('.sec, .hero')));
-  requestAnimationFrame(() => panels.forEach(panel => warm(panel)));
+  if (phone() && document.body.classList.contains('is-intro')) return;
+  entries.forEach(entry => panels.add(entry.target.closest('.sec, .hero')));
+  if (warmFrame) return;
+  warmFrame = requestAnimationFrame(() => { warmFrame = 0; panels.forEach(panel => warm(panel)); panels.clear(); });
  });
  document.querySelectorAll('main.content > .sec, .case, .work-row, .pins, .projector').forEach(panel => changes.observe(panel,{subtree:true,attributes:true,attributeFilter:['class','hidden']}));
 })();
