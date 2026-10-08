@@ -145,7 +145,7 @@
 @media (max-width: 700px) {
   .intro { height: 100svh; padding: 0; overflow: hidden; }
   .study-day-scene, .study-scene { background-position: 59% center; }
-  .study-papers { left: 50%; top: 74%; width: min(320px, 82vw, 45svh); transform: translate(-50%, -50%) perspective(1400px) rotateX(64deg) rotateZ(-4deg) scale(.82); transform-origin: center; }
+  .study-papers { left: 50%; top: 73.5%; width: min(320px, 82vw, 45svh); transform: translate(-50%, -50%) perspective(1100px) rotateX(58deg) rotateZ(-3deg) scale(.86); transform-origin: center; }
   .intro.is-overhead .study-papers { left: 50%; top: 48%; width: min(420px, 88vw, 70svh); transform: translate(-50%, -50%) perspective(1400px) rotateX(0deg) rotateZ(-3deg); }
   .intro .intro__hint, .intro.is-overhead .intro__hint { left: 50%; bottom: 17%; width: calc(100% - 40px); white-space: normal; font-size: 12px; }
   .intro .study-music { left: 16px; bottom: max(16px, env(safe-area-inset-bottom)); padding: 10px 12px; min-height: 44px; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; text-shadow: 0 1px 3px #241408b3, 0 2px 8px #24140880; }
@@ -153,8 +153,7 @@
   .intro .study-music .study-record { display: none; }
   .intro .intro__skip { right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); min-height: 44px; font-size: 12px; color: var(--cream); }
   .study-back { left: 16px; bottom: 76px; min-height: 44px; }
-  .intro .study-lamp-mobile { display: flex; align-items: flex-end; justify-content: center; left: 4%; top: max(8%, env(safe-area-inset-top)); width: 34%; height: 21%; min-height: 44px; padding: 0 0 5px; border: 0; background: none; border-radius: 16px; color: #f3dfba; font-size: 11px; letter-spacing: .15em; text-shadow: 0 1px 5px #100903b3; z-index: 3; }
-  .intro.is-daytime .study-lamp-mobile { color: #63472d; text-shadow: 0 1px 4px #fff4dbb3; }
+  .intro .study-lamp-mobile { display: flex; align-items: flex-end; justify-content: center; left: 4%; top: max(8%, env(safe-area-inset-top)); width: 34%; height: 21%; min-height: 44px; padding: 0 0 5px; border: 0; background: none; border-radius: 16px; color: #fff; font-size: 11px; letter-spacing: .15em; text-shadow: 0 1px 2px #000, 0 2px 5px #000000b3; z-index: 3; }
   .study-papers .desk-note { padding: 10px 5px; }
 }
 
@@ -472,6 +471,19 @@
   .cinema__list { display:flex; flex:none; gap:8px; width:100%; min-width:0; overflow-x:auto; overflow-y:hidden; padding:3px 2px; box-sizing:border-box; }
   .cinema__list button { flex:0 0 72px; width:72px; height:80px; aspect-ratio:auto; }
   .cinema__close { z-index:5; }
+}
+
+/* Leave room for the folder tab and give each paper object its own depth. */
+@media (max-width:700px) {
+  .intro .study-papers .folder { width:60%; filter:none; transform-style:preserve-3d; }
+  .intro .study-papers .folder::before { content:''; position:absolute; inset:3px; border-radius:4px 14px 14px 4px; transform:translateZ(-2px); box-shadow:5px 9px 7px #24120850, 12px 20px 24px -8px #24120865; pointer-events:none; }
+  .intro .study-papers .folder__back { transform:translate(3px,4px); box-shadow:1px 1px 0 #a18456, 2px 3px 0 #80603c, 3px 5px 0 #67492e, 5px 8px 6px #24120860; }
+  .intro .study-papers .folder:not(.is-open) .folder__cover { transform:translateZ(5px) rotateX(-1.5deg); box-shadow:inset 0 1px 1px #fff1c980, inset -1px -2px 2px #69482366, 1px 2px 3px #24120840; }
+  .intro .study-papers .desk-note { left:80%; right:auto; top:58%; width:20%; padding:8px 4px; transform:rotateZ(8deg) rotateX(-3deg) translateZ(3px); transform-style:preserve-3d; border-color:#c7ad80; background:linear-gradient(145deg,#fff9e9ee,#e6d4b2ee),url('../assets/tex/paper.webp'); box-shadow:inset 0 1px 0 #fffdf3, 1px 2px 0 #e3d4b7, 2px 4px 0 #ccb998, 3px 6px 0 #b69b74, 5px 9px 6px #24120855, 9px 15px 16px #24120838; }
+  .intro .study-papers .desk-note:hover { transform:rotateZ(6deg) rotateX(-3deg) translateZ(3px); }
+  .intro .study-papers .desk-note .note-mini-smile { width:21px; height:21px; margin-bottom:4px; }
+  .intro .study-papers .desk-note span:not(.note-mini-smile) { font-size:8px; letter-spacing:0; }
+  .intro .study-papers .desk-note small { font-size:6px; letter-spacing:0; }
 }
 
 /* Hide the room's lamp control when the camera is above the folder. */
