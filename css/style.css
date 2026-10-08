@@ -1536,3 +1536,8 @@ body.is-watching .lamp .lamp__cone, body.is-watching .lamp .lamp__bulb { opacity
 @media(max-width:600px) { #design #designBoard .pins.mobile-subpanel { columns:2 145px; column-gap:12px; } }
 @media(max-width:360px) { #design #designBoard .pins.mobile-subpanel { columns:1; } }
 
+
+/* Desktop home quote replaces the scroll hint. */
+@media(min-width:901px) {
+ .hero__scroll { font-family:var(--f-serif); font-size:14px; letter-spacing:.08em; line-height:1.6; color:rgba(246,236,216,.75); max-width:calc(100% - 64px); text-align:center; }
+}
