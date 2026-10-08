@@ -503,7 +503,7 @@
   .intro.is-overhead .study-scene,.intro.is-overhead .study-day-scene { transform:translate3d(0,-2%,0) scale(1.08); opacity:0; filter:none; }
   .intro .study-overhead { transform:translate3d(0,2%,0) scale(1.06); opacity:0; filter:none; transition:transform .85s cubic-bezier(.4,0,.2,1),opacity .55s ease; }
   .intro.is-overhead .study-overhead { transform:translate3d(0,0,0) scale(1); opacity:1; }
-  .intro.is-daytime .study-overhead { filter:none; }
+  .intro.is-daytime .study-overhead { filter:brightness(1.25) saturate(.85); }
   .intro[data-stage="moving"] .study-scene,.intro[data-stage="moving"] .study-day-scene { will-change:transform,opacity; }
 }
 @media (max-width:900px) and (prefers-reduced-motion:reduce) {
