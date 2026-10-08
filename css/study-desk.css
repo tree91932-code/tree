@@ -148,3 +148,13 @@ body.is-intro #siteMusic, body.is-locked #siteMusic { display:none; }
  body.is-intro .music-edge, body.is-locked .music-edge { display:none; }
  .music-edge button:focus-visible { outline:2px solid #cdaa72; outline-offset:3px; }
 }
+/* Desktop control echoes a small brass-trimmed vinyl record. */
+@media(min-width:901px) {
+ .music-edge { width:50px; height:50px; }
+ .music-edge .music-edge__toggle { position:relative; width:50px; height:50px; padding:9px; border:2px solid #b6935e; color:#f0d4a1; background:repeating-radial-gradient(circle at center,#30241b 0 2px,#241b14 2px 4px); box-shadow:0 4px 12px #170b0733,inset 0 0 0 3px #d7b57c30; transition:transform .2s,box-shadow .2s,border-color .2s; }
+ .music-edge .music-edge__toggle::before { content:''; position:absolute; inset:12px; border-radius:50%; background:radial-gradient(circle at 35% 25%,#d2aa68,#9e783e); box-shadow:0 0 0 1px #f7d79c55; }
+ .music-edge .music-edge__toggle svg { position:relative; z-index:1; width:28px; height:28px; }
+ .music-edge .music-edge__toggle svg>circle { stroke:#e3c58b80; }
+ .music-edge .music-edge__toggle:hover { transform:translateY(-2px); border-color:#e4c387; box-shadow:0 6px 16px #170b0740,inset 0 0 0 3px #d7b57c44; }
+ .music-edge[data-playing="true"] .music-edge__toggle { border-color:#e2bd76; }
+}

@@ -22,13 +22,13 @@
   peek.addEventListener('click', () => { expand(true); toggle.focus({preventScroll:true}); });
   document.addEventListener('pointerdown', event => { if (!dock.contains(event.target)) expand(false); });
   dock.addEventListener('keydown', event => { if (event.key === 'Escape') { expand(false); peek.focus({preventScroll:true}); } });
-  const audio = new Audio('assets/audio/satie-gymnopedie-1-stream.m4a');
+  const audio = document.getElementById('gramophoneAudio') || new Audio('assets/audio/satie-gymnopedie-1-ready.m4a');
   audio.id = 'gramophoneAudio';
   audio.preload = 'auto';
   audio.loop = true;
   audio.volume = .9;
   audio.hidden = true;
-  document.body.append(audio);
+  if (!audio.isConnected) document.body.append(audio);
   let pending = false, buffering = false, generation = 0;
   let wasIntro = document.body.classList.contains('is-intro');
   function sync() {
