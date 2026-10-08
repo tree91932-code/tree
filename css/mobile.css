@@ -428,9 +428,16 @@
 }
 
 /* Download only the current phone intro scene. */
+.phone-intro-photo { display:none; }
 @media(max-width:900px) {
+ .intro { background-image:var(--phone-intro-preview); background-size:cover; background-position:left top; }
+ .intro .study-scene,.intro .study-day-scene,.intro .study-overhead { z-index:0; }
+ .intro .study-haze { z-index:1; }
+ .intro .study-papers,.intro .intro__hint,.intro .intro__skip,.intro .study-back,.intro .study-heading { z-index:2; }
+ .phone-intro-photo { display:block; position:absolute; inset:0; }
+ .phone-intro-photo img { display:block; width:100%; height:100%; max-width:none; object-fit:cover; object-position:left top; }
  .intro .study-scene { background-image:url('../assets/intro/study-sunset-pendant-mobile.webp'); background-position:left top; }
- .intro .study-day-scene { background-image:url('../assets/intro/study-daylight-pendant-mobile.webp'); background-position:left top; }
+ .intro .study-day-scene { background-image:none; }
  .intro .study-overhead { background-image:radial-gradient(ellipse at 15% 15%,#efc58018,transparent 60%),linear-gradient(#24160a18,#120d0938),url('../assets/intro/study-tabletop-overhead-mobile.webp'); }
 }
 
@@ -492,7 +499,7 @@
 /* Use symmetric fades and small composited transforms for the phone camera. */
 @media (max-width:900px) {
   .intro .study-papers { transition:transform .85s cubic-bezier(.4,0,.2,1),left .85s cubic-bezier(.4,0,.2,1),top .85s cubic-bezier(.4,0,.2,1),width .85s cubic-bezier(.4,0,.2,1); }
-  .intro .study-scene,.intro .study-day-scene { transform:translate3d(0,0,0) scale(1); transition:transform .85s cubic-bezier(.4,0,.2,1),opacity .55s ease; }
+  .intro .study-scene,.intro .study-day-scene { transform:none; transition:transform .85s cubic-bezier(.4,0,.2,1),opacity .55s ease; }
   .intro.is-overhead .study-scene,.intro.is-overhead .study-day-scene { transform:translate3d(0,-2%,0) scale(1.08); opacity:0; filter:none; }
   .intro .study-overhead { transform:translate3d(0,2%,0) scale(1.06); opacity:0; filter:none; transition:transform .85s cubic-bezier(.4,0,.2,1),opacity .55s ease; }
   .intro.is-overhead .study-overhead { transform:translate3d(0,0,0) scale(1); opacity:1; }
