@@ -148,10 +148,9 @@
   .study-papers { left: 50%; top: 74%; width: min(320px, 82vw, 45svh); transform: translate(-50%, -50%) perspective(1400px) rotateX(64deg) rotateZ(-4deg) scale(.82); transform-origin: center; }
   .intro.is-overhead .study-papers { left: 50%; top: 48%; width: min(420px, 88vw, 70svh); transform: translate(-50%, -50%) perspective(1400px) rotateX(0deg) rotateZ(-3deg); }
   .intro .intro__hint, .intro.is-overhead .intro__hint { left: 50%; bottom: 17%; width: calc(100% - 40px); white-space: normal; font-size: 12px; }
-  .study-music { left: 16px; bottom: max(16px, env(safe-area-inset-bottom)); padding: 10px 12px; min-height: 44px; }
-  .intro:not(.is-overhead) .study-music { left: auto; right: 4%; top: 50%; bottom: auto; min-height: 44px; padding: 6px 10px; gap: 6px; border-radius: 999px; font-size: 11px; letter-spacing: .06em; background: #291b11b8; border-color: #d6b88655; box-shadow: 0 3px 10px #24140826; }
-  .intro:not(.is-overhead) .study-music .study-record { width: 18px; height: 18px; }
-  .intro:not(.is-overhead) .study-music .study-record::after { inset: 5px; border-width: 1px; }
+  .intro .study-music { left: 16px; bottom: max(16px, env(safe-area-inset-bottom)); padding: 10px 12px; min-height: 44px; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; text-shadow: 0 1px 3px #241408b3, 0 2px 8px #24140880; }
+  .intro:not(.is-overhead) .study-music { left: auto; right: 4%; top: 50%; bottom: auto; min-height: 44px; padding: 6px 10px; font-size: 11px; letter-spacing: .06em; }
+  .intro .study-music .study-record { display: none; }
   .intro .intro__skip { right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); min-height: 44px; font-size: 12px; color: var(--cream); }
   .study-back { left: 16px; bottom: 76px; min-height: 44px; }
   .intro .study-lamp-mobile { display: flex; align-items: flex-end; justify-content: center; left: 4%; top: max(8%, env(safe-area-inset-top)); width: 34%; height: 21%; min-height: 44px; padding: 0 0 5px; border: 0; background: none; border-radius: 16px; color: #f3dfba; font-size: 11px; letter-spacing: .15em; text-shadow: 0 1px 5px #100903b3; z-index: 3; }
@@ -474,6 +473,9 @@
   .cinema__list button { flex:0 0 72px; width:72px; height:80px; aspect-ratio:auto; }
   .cinema__close { z-index:5; }
 }
+
+/* Hide the room's lamp control when the camera is above the folder. */
+.intro.is-overhead .study-lamp-mobile { display: none; }
 
 /* Two compact character cards per row on phones. */
 @media (max-width:900px) {
