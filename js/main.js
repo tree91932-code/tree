@@ -966,7 +966,7 @@
     const overheadImage = new Image();
     overheadImage.fetchPriority = "low";
     const phoneIntro = matchMedia("(max-width:900px)").matches;
-    if (phoneIntro) overheadImage.src = "assets/intro/study-tabletop-overhead-mobile.webp";
+    if (phoneIntro) overheadImage.src = "assets/intro/study-tabletop-original-phone.webp";
     const overheadReady = phoneIntro ? overheadImage.decode().catch(() => {}) : Promise.resolve();
     const setStage = (value) => {
       stage = value;
