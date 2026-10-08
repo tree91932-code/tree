@@ -485,15 +485,14 @@
   #projects .char__d { margin:0; font-size:11px; line-height:1.45; min-height:0; overflow-y:auto; }
 }
 
-/* A light wooden desktop for the phone video details. */
+/* Phone video details share the project sheet paper background. */
 @media (max-width:900px) {
   .cinema {
-    --phone-desk-surface:radial-gradient(ellipse at 15% 0%,#fff9e9b3,transparent 65%),repeating-linear-gradient(2deg,#a77b4510 0 1px,transparent 1px 9px),linear-gradient(110deg,#ead4b0,#f6e8cf 48%,#e7cca6);
-    background:#efddbd;
-    background-image:var(--phone-desk-surface);
+    background:url("../assets/tex/paper.webp"),var(--paper); background-blend-mode:multiply;
+
     color:#493323;
   }
-  .cinema__backdrop { background:#efddbd; background-image:var(--phone-desk-surface); }
+  .cinema__backdrop { background:url("../assets/tex/paper.webp"),var(--paper); background-blend-mode:multiply; }
   .cinema__info, .cinema__info h3 { color:#493323; }
   .cinema__kicker { color:#8d5738; }
   .cinema__note { color:#67503b; }
