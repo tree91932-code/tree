@@ -484,26 +484,3 @@
   #projects .char__n small { margin-left:0; font-size:9px; overflow-wrap:anywhere; }
   #projects .char__d { margin:0; font-size:11px; line-height:1.45; min-height:0; overflow-y:auto; }
 }
-
-/* Phone video details share the project sheet paper background. */
-@media (max-width:900px) {
-  .cinema {
-    background:url("../assets/tex/paper.webp"),var(--paper); background-blend-mode:multiply;
-
-    color:#493323;
-  }
-  .cinema__backdrop { background:url("../assets/tex/paper.webp"),var(--paper); background-blend-mode:multiply; }
-  .cinema__info, .cinema__info h3 { color:#493323; }
-  .cinema__kicker { color:#8d5738; }
-  .cinema__note { color:#67503b; }
-  .cinema__tags span { color:#6b4d32; border-color:#9d79514d; background:#fffaf066; }
-  .cinema__tags span.is-award { color:#513716; background:linear-gradient(135deg,#ffe6a3,#e7bd68); border:0; }
-  .cinema__links a, .cinema__links button { color:#573d28; border-color:#a7845b66; background:#fffaf080; box-shadow:0 2px 5px #68441b0a; }
-  .cinema__links a:hover, .cinema__links button:hover { color:#fff8e9; background:#9a5b3e; border-color:#9a5b3e; }
-  .cinema__nav, .cinema__nav button { color:#62452e; }
-  .cinema__nav button:hover:not(:disabled) { color:#a54b32; }
-  .cinema__close { color:#63472e; background:#fff8e7eb; border:1px solid #b89b744d; box-shadow:0 3px 12px #79502b1a; }
-  .cinema.is-h .cinema__screen { box-shadow:0 0 0 1px #82613d30,0 12px 28px #69401b26; }
-  .cinema.is-v .cinema__screen { box-shadow:0 0 0 2px #80654c40,0 12px 28px #69401b26; }
-  .cinema__list button.is-current { outline-color:#a9683e; }
-}
