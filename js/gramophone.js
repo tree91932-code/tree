@@ -21,30 +21,31 @@
   peek.addEventListener('click', () => { expand(true); toggle.focus({preventScroll:true}); });
   document.addEventListener('pointerdown', event => { if (!dock.contains(event.target)) expand(false); });
   dock.addEventListener('keydown', event => { if (event.key === 'Escape') { expand(false); peek.focus({preventScroll:true}); } });
-  const audio = new Audio('assets/audio/satie-gymnopedie-1.ogg');
+  const audio = new Audio('assets/audio/satie-gymnopedie-1-stream.m4a');
   audio.id = 'gramophoneAudio';
-  audio.preload = 'none';
+  audio.preload = 'auto';
   audio.loop = true;
   audio.volume = .9;
   audio.hidden = true;
   document.body.append(audio);
-  let pending = false, generation = 0;
+  let pending = false, buffering = false, generation = 0;
   let wasIntro = document.body.classList.contains('is-intro');
   function sync() {
     const on = !audio.paused;
     button.setAttribute('aria-pressed', String(on));
     button.setAttribute('aria-label', on ? '暂停书房音乐' : '播放书房音乐');
     button.title = '萨蒂 · 第一号吉姆诺佩蒂 / 钢琴：Robin Alciatore / Musopen';
-    label.textContent = on ? '暂停音乐' : '播放音乐';
+    label.textContent = pending || buffering ? '音乐加载中…' : (on ? '暂停音乐' : '播放音乐');
     toggle.setAttribute('aria-pressed',String(on));
     toggle.setAttribute('aria-label',on ? '暂停背景音乐' : '播放背景音乐');
     dock.dataset.playing = String(on);
   }
-  function stop() { generation++; pending = false; audio.pause(); sync(); }
+  function stop() { generation++; pending = false; buffering = false; audio.pause(); sync(); }
   async function toggleMusic() {
     if (!audio.paused || pending) return stop();
     const token = ++generation;
     pending = true;
+    sync();
     try {
       await audio.play();
       if (token !== generation || document.hidden) {
@@ -57,12 +58,14 @@
         label.textContent = '点击重试';
         toggle.setAttribute('aria-label','音乐加载失败，点击重试');
       }
-    } finally { if (token === generation) pending = false; }
+    } finally { if (token === generation) { pending = false; if (label.textContent !== '点击重试') sync(); } }
   }
   button.addEventListener('click',toggleMusic);
   toggle.addEventListener('click',() => { toggleMusic(); expand(true); });
   audio.addEventListener('pause',sync);
   audio.addEventListener('play',sync);
+  audio.addEventListener('waiting', () => { buffering = true; sync(); });
+  audio.addEventListener('playing', () => { buffering = false; sync(); });
   new MutationObserver(() => {
     const intro = document.body.classList.contains('is-intro');
     if (document.body.classList.contains('is-watching')) stop();
