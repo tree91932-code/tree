@@ -110,3 +110,20 @@
 body.is-intro #siteMusic, body.is-locked #siteMusic { display:none; }
 .music-credit { font-size:11px; opacity:.75; }
 .music-credit a { color:inherit; }
+/* A small phone music tab peeks out from the upper-right edge. */
+.music-edge { display:none; }
+@media(max-width:900px) {
+ .music-edge { display:block; position:fixed; top:calc(env(safe-area-inset-top,0px) + 118px); right:0; z-index:85; width:36px; height:36px; transform:translateX(20px); transition:transform .2s ease; }
+ .music-edge[data-expanded="true"] { transform:translateX(-4px); }
+ .music-edge button { display:grid; place-items:center; width:36px; height:36px; padding:5px; border-radius:50%; color:#e2c28e; background:#38271deb; border:1px solid #d1ad704d; box-shadow:0 2px 6px #140b0720; }
+ .music-edge svg { width:25px; height:25px; fill:none; stroke:currentColor; stroke-width:1.6; }
+ .music-edge .music-edge__toggle, .music-edge[data-expanded="true"] .music-edge__peek { display:none; }
+ .music-edge[data-expanded="true"] .music-edge__toggle { display:grid; }
+ .music-edge__play { fill:currentColor; stroke:none; }
+ .music-edge__pause { display:none; stroke-width:3; }
+ .music-edge[data-playing="true"] .music-edge__play { display:none; }
+ .music-edge[data-playing="true"] .music-edge__pause { display:block; }
+ body.is-intro .music-edge, body.is-locked .music-edge { display:none; }
+ .music-edge button:focus-visible { outline:2px solid #cdaa72; outline-offset:2px; }
+}
+@media(prefers-reduced-motion:reduce) { .music-edge { transition:none; } }
