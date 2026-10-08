@@ -10,6 +10,56 @@
   const peek = dock.querySelector('.music-edge__peek');
   const toggle = dock.querySelector('.music-edge__toggle');
   let collapseTimer;
+  // Distinguish a drag from a normal play/pause click.
+  let musicDrag = null, suppressMusicClickUntil = 0;
+  function placeMusicDock(x, y) {
+    const width = dock.offsetWidth, height = dock.offsetHeight;
+    dock.dataset.positioned = 'true';
+    dock.style.left = Math.max(0, Math.min(innerWidth - width, x)) + 'px';
+    dock.style.top = Math.max(0, Math.min(innerHeight - height, y)) + 'px';
+    dock.style.right = 'auto';
+  }
+  dock.addEventListener('pointerdown', event => {
+    if (event.isPrimary === false || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    const rect = dock.getBoundingClientRect();
+    musicDrag = {id:event.pointerId, x:event.clientX, y:event.clientY, left:rect.left, top:rect.top, moved:false};
+  });
+  window.addEventListener('pointermove', event => {
+    if (!musicDrag || event.pointerId !== musicDrag.id) return;
+    const dx = event.clientX - musicDrag.x, dy = event.clientY - musicDrag.y;
+    if (!musicDrag.moved && Math.hypot(dx, dy) < 6) return;
+    if (!musicDrag.moved) {
+      musicDrag.moved = true;
+      clearTimeout(collapseTimer);
+      dock.dataset.dragging = 'true';
+      try { dock.setPointerCapture(event.pointerId); } catch {}
+    }
+    event.preventDefault();
+    placeMusicDock(musicDrag.left + dx, musicDrag.top + dy);
+  }, {passive:false});
+  const finishMusicDrag = event => {
+    if (!musicDrag || event.pointerId !== musicDrag.id) return;
+    const moved = musicDrag.moved;
+    musicDrag = null;
+    delete dock.dataset.dragging;
+    if (moved) {
+      suppressMusicClickUntil = Date.now() + 500;
+      try { dock.releasePointerCapture(event.pointerId); } catch {}
+      if (dock.dataset.expanded === 'true') expand(true);
+    }
+  };
+  window.addEventListener('pointerup', finishMusicDrag);
+  window.addEventListener('pointercancel', finishMusicDrag);
+  dock.addEventListener('click', event => {
+    if (event.detail !== 0 && Date.now() < suppressMusicClickUntil) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+  }, true);
+  window.addEventListener('resize', () => {
+    if (dock.dataset.positioned !== 'true') return;
+    placeMusicDock(parseFloat(dock.style.left), parseFloat(dock.style.top));
+  });
   function expand(on) {
     dock.dataset.expanded = String(on);
     peek.setAttribute('aria-expanded',String(on));

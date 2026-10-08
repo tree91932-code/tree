@@ -158,3 +158,9 @@ body.is-intro #siteMusic, body.is-locked #siteMusic { display:none; }
  .music-edge .music-edge__toggle:hover { transform:translateY(-2px); border-color:#e4c387; box-shadow:0 6px 16px #170b0740,inset 0 0 0 3px #d7b57c44; }
  .music-edge[data-playing="true"] .music-edge__toggle { border-color:#e2bd76; }
 }
+/* Dragging is shared by the desktop and phone music controls. */
+.music-edge, .music-edge button { touch-action:none; user-select:none; -webkit-user-select:none; }
+.music-edge button { cursor:grab; }
+.music-edge[data-dragging="true"], .music-edge[data-dragging="true"] button { cursor:grabbing; }
+.music-edge[data-positioned="true"], .music-edge[data-positioned="true"][data-expanded="true"] { transform:none; transition:none; }
+.music-edge[data-dragging="true"] .music-edge__toggle:hover { transform:none; }
