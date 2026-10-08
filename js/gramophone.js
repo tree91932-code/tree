@@ -74,7 +74,7 @@
   dock.addEventListener('keydown', event => { if (event.key === 'Escape') { expand(false); peek.focus({preventScroll:true}); } });
   const audio = document.getElementById('gramophoneAudio') || new Audio('assets/audio/satie-gymnopedie-1-ready.m4a');
   audio.id = 'gramophoneAudio';
-  audio.preload = matchMedia('(max-width:900px)').matches ? 'none' : 'auto';
+  audio.preload = 'auto';
   audio.loop = true;
   audio.volume = .9;
   audio.hidden = true;
