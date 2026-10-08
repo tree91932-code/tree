@@ -13,11 +13,12 @@
   function expand(on) {
     dock.dataset.expanded = String(on);
     peek.setAttribute('aria-expanded',String(on));
-    peek.tabIndex = on ? -1 : 0;
-    toggle.tabIndex = on ? 0 : -1;
+    peek.tabIndex = on || !matchMedia('(max-width:900px)').matches ? -1 : 0;
+    toggle.tabIndex = on || !matchMedia('(max-width:900px)').matches ? 0 : -1;
     clearTimeout(collapseTimer);
     if (on) collapseTimer = setTimeout(() => expand(false), 4500);
   }
+  expand(false);
   peek.addEventListener('click', () => { expand(true); toggle.focus({preventScroll:true}); });
   document.addEventListener('pointerdown', event => { if (!dock.contains(event.target)) expand(false); });
   dock.addEventListener('keydown', event => { if (event.key === 'Escape') { expand(false); peek.focus({preventScroll:true}); } });
