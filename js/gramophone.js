@@ -5,7 +5,7 @@
   const dock = document.createElement('div');
   dock.className = 'music-edge';
   dock.dataset.expanded = 'false';
-  dock.innerHTML = '<button type="button" class="music-edge__peek" aria-label="展开音乐控制" aria-expanded="false"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="5"/><circle cx="16" cy="16" r="1"/></svg></button><button type="button" class="music-edge__toggle" aria-label="播放背景音乐" aria-pressed="false" tabindex="-1"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path class="music-edge__play" d="M14 11l8 5-8 5z"/><path class="music-edge__pause" d="M13 11v10m6-10v10"/></svg></button>';
+  dock.innerHTML = '<button type="button" class="music-edge__peek" aria-label="展开音乐控制" aria-expanded="false"><svg class="music-edge__notes" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 18V5l12-3v13M8 9l12-3"/><ellipse cx="5.5" cy="18" rx="2.5" ry="1.8"/><ellipse cx="17.5" cy="15" rx="2.5" ry="1.8"/></svg></button><button type="button" class="music-edge__toggle" aria-label="播放背景音乐" aria-pressed="false" tabindex="-1"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path class="music-edge__play" d="M14 11l8 5-8 5z"/><path class="music-edge__pause" d="M13 11v10m6-10v10"/></svg></button>';
   document.body.append(dock);
   const peek = dock.querySelector('.music-edge__peek');
   const toggle = dock.querySelector('.music-edge__toggle');
@@ -25,7 +25,7 @@
   audio.id = 'gramophoneAudio';
   audio.preload = 'none';
   audio.loop = true;
-  audio.volume = .8;
+  audio.volume = .9;
   audio.hidden = true;
   document.body.append(audio);
   let pending = false, generation = 0;

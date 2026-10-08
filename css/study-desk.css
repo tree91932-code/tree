@@ -127,3 +127,11 @@ body.is-intro #siteMusic, body.is-locked #siteMusic { display:none; }
  .music-edge button:focus-visible { outline:2px solid #cdaa72; outline-offset:2px; }
 }
 @media(prefers-reduced-motion:reduce) { .music-edge { transition:none; } }
+/* Keep the complete musical notes in the exposed half of the phone tab. */
+@media(max-width:900px) {
+ .music-edge { width:44px; height:40px; transform:translateX(16px); }
+ .music-edge button { position:relative; width:44px; height:40px; border-radius:22px; color:#74512c; background:linear-gradient(135deg,#fff3d5,#e8cea2); border-color:#b38b565c; box-shadow:0 2px 8px #2b170f26; }
+ .music-edge .music-edge__notes { position:absolute; left:4px; top:8px; width:21px; height:24px; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; }
+ .music-edge__notes ellipse { fill:currentColor; stroke:none; }
+ .music-edge[data-expanded="true"] { transform:translateX(-4px); }
+}
