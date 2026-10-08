@@ -145,10 +145,13 @@
 @media (max-width: 700px) {
   .intro { height: 100svh; padding: 0; overflow: hidden; }
   .study-day-scene, .study-scene { background-position: 59% center; }
-  .study-papers { left: 50%; top: 69%; width: min(380px, 84vw, 66svh); transform: translate(-50%, -50%) perspective(1400px) rotateX(61deg) rotateZ(-5deg); transform-origin: center; }
+  .study-papers { left: 50%; top: 74%; width: min(320px, 82vw, 45svh); transform: translate(-50%, -50%) perspective(1400px) rotateX(64deg) rotateZ(-4deg) scale(.82); transform-origin: center; }
   .intro.is-overhead .study-papers { left: 50%; top: 48%; width: min(420px, 88vw, 70svh); transform: translate(-50%, -50%) perspective(1400px) rotateX(0deg) rotateZ(-3deg); }
   .intro .intro__hint, .intro.is-overhead .intro__hint { left: 50%; bottom: 17%; width: calc(100% - 40px); white-space: normal; font-size: 12px; }
   .study-music { left: 16px; bottom: max(16px, env(safe-area-inset-bottom)); padding: 10px 12px; min-height: 44px; }
+  .intro:not(.is-overhead) .study-music { left: auto; right: 4%; top: 50%; bottom: auto; min-height: 44px; padding: 6px 10px; gap: 6px; border-radius: 999px; font-size: 11px; letter-spacing: .06em; background: #291b11b8; border-color: #d6b88655; box-shadow: 0 3px 10px #24140826; }
+  .intro:not(.is-overhead) .study-music .study-record { width: 18px; height: 18px; }
+  .intro:not(.is-overhead) .study-music .study-record::after { inset: 5px; border-width: 1px; }
   .intro .intro__skip { right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); min-height: 44px; font-size: 12px; color: var(--cream); }
   .study-back { left: 16px; bottom: 76px; min-height: 44px; }
   .intro .study-lamp-mobile { display: flex; align-items: flex-end; justify-content: center; left: 4%; top: max(8%, env(safe-area-inset-top)); width: 34%; height: 21%; min-height: 44px; padding: 0 0 5px; border: 0; background: none; border-radius: 16px; color: #f3dfba; font-size: 11px; letter-spacing: .15em; text-shadow: 0 1px 5px #100903b3; z-index: 3; }
