@@ -9,9 +9,12 @@
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const ESC_MAP = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ESC_MAP[c]);
-  const phoneThumbnail = path => matchMedia("(max-width:900px)").matches && ["assets/campus/outfit/02-real-s.webp","assets/campus/outfit/03-real-s.webp","assets/campus/outfit/04-real-s.webp","assets/campus/outfit/05-ai-s.webp","assets/campus/pixel/01-real-s.webp","assets/campus/pixel/02-real-s.webp","assets/campus/pixel/11-real-s.webp","assets/campus/snow/00-real-s.webp","assets/campus/snow/02-ai-s.webp","assets/campus/snow/03-real-s.webp","assets/campus/snow/05-real-s.webp","assets/campus/snow/06-real-s.webp","assets/campus/snow/x01-s.webp","assets/sijia/doc-00-s.webp","assets/youyou/party-05-s.webp","assets/youyou/party-06-s.webp"].includes(path) ? path.replace(/\.webp$/, "-mobile.webp") : path;
-  const PREVIEW_IMAGES = {"assets/video/e_lanju/poster.webp":"assets/video/e_lanju/poster-preview.webp","assets/video/e_nestle/poster.webp":"assets/video/e_nestle/poster-preview.webp","assets/video/e_reno/poster-phone.webp":"assets/video/e_reno/poster-phone-preview.webp","assets/video/news40/poster.webp":"assets/video/news40/poster-preview.webp","assets/video/oppo2/poster.webp":"assets/video/oppo2/poster-preview.webp","assets/video/oppo6/poster.webp":"assets/video/oppo6/poster-preview.webp","assets/video/pixel/poster.webp":"assets/video/pixel/poster-preview.webp","assets/video/sj1/poster.webp":"assets/video/sj1/poster-preview.webp","assets/video/sj2/poster.webp":"assets/video/sj2/poster-preview.webp","assets/video/sj3/poster.webp":"assets/video/sj3/poster-preview.webp","assets/video/wl1/poster.webp":"assets/video/wl1/poster-preview.webp","assets/video/wl28/poster.webp":"assets/video/wl28/poster-preview.webp","assets/video/wl3/poster.webp":"assets/video/wl3/poster-preview.webp","assets/video/wl4/poster.webp":"assets/video/wl4/poster-preview.webp","assets/video/wl5/poster.webp":"assets/video/wl5/poster-preview.webp","assets/video/wl6/poster.webp":"assets/video/wl6/poster-preview.webp","assets/video/wl7/poster.webp":"assets/video/wl7/poster-preview.webp","assets/video/wlsummer/poster.webp":"assets/video/wlsummer/poster-preview.webp","assets/video/w_fish/poster.webp":"assets/video/w_fish/poster-preview.webp","assets/video/w_jz/poster.webp":"assets/video/w_jz/poster-preview.webp","assets/video/w_lei/poster.webp":"assets/video/w_lei/poster-preview.webp","assets/video/w_street/poster.webp":"assets/video/w_street/poster-preview.webp","assets/video/w_xc/poster.webp":"assets/video/w_xc/poster-preview.webp","assets/video/yy4/poster.webp":"assets/video/yy4/poster-preview.webp"};
-  const previewThumbnail = path => PREVIEW_IMAGES[path] || phoneThumbnail(path);
+  const previewThumbnail = path => {
+    if (!/(?:-s|poster(?:-phone)?)\.webp$/.test(path)) return path;
+    const suffix = matchMedia("(max-width:900px)").matches ? "-phone-cover.webp" : "-web-cover.webp";
+    return path.replace(/\.webp$/, suffix);
+  };
+  const STREAMING_VIDEOS = {"oppo1":"assets/stream/oppo1.mp4?v=20261010-stream","oppo4":"assets/stream/oppo4.mp4?v=20261010-stream","oppo5":"assets/stream/oppo5.mp4?v=20261010-stream","news40":"assets/stream/news40.mp4?v=20261010-stream","pixel":"assets/stream/pixel.mp4?v=20261010-stream","yy2":"assets/stream/yy2.mp4?v=20261010-stream","yy3":"assets/stream/yy3.mp4?v=20261010-stream","yy4":"assets/stream/yy4.mp4?v=20261010-stream","yysum":"assets/stream/yysum.mp4?v=20261010-stream","sj1":"assets/stream/sj1.mp4?v=20261010-stream","sj3":"assets/stream/sj3.mp4?v=20261010-stream","sj4":"assets/stream/sj4.mp4?v=20261010-stream","wl3":"assets/stream/wl3.mp4?v=20261010-stream","wl4":"assets/stream/wl4.mp4?v=20261010-stream","wl5":"assets/stream/wl5.mp4?v=20261010-stream","wl6":"assets/stream/wl6.mp4?v=20261010-stream","wl7":"assets/stream/wl7.mp4?v=20261010-stream","w_tie":"assets/stream/w_tie.mp4?v=20261010-stream","w_1999":"assets/stream/w_1999.mp4?v=20261010-stream","w_wife":"assets/stream/w_wife.mp4?v=20261010-stream","w_fire":"assets/stream/w_fire.mp4?v=20261010-stream","w_ny":"assets/stream/w_ny.mp4?v=20261010-stream","w_sea":"assets/stream/w_sea.mp4?v=20261010-stream","w_chuan":"assets/stream/w_chuan.mp4?v=20261010-stream","w_lei":"assets/stream/w_lei.mp4?v=20261010-stream","w_street":"assets/stream/w_street.mp4?v=20261010-stream","w_sijia":"assets/stream/w_sijia.mp4?v=20261010-stream","w_xc":"assets/stream/w_xc.mp4?v=20261010-stream","w_jz":"assets/stream/w_jz.mp4?v=20261010-stream","w_chef":"assets/stream/w_chef.mp4?v=20261010-stream","e_trip":"assets/stream/e_trip.mp4?v=20261010-stream","e_reno":"assets/stream/e_reno.mp4?v=20261010-stream","e_nestle":"assets/stream/e_nestle.mp4?v=20261010-stream","e_lanju":"assets/stream/e_lanju.mp4?v=20261010-stream"};
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   let activeDialog = null;
@@ -58,7 +61,12 @@
       return M.images[group][name];
     });
 
-  const vinfo = (id) => { const v = { id, ...M.videos[id], ...D.VIDEO_INFO[id] }; v.poster = matchMedia("(max-width:900px)").matches ? v.poster.replace(/\.webp$/, "-mobile.webp") : previewThumbnail(v.poster); return v; };
+  const vinfo = (id) => {
+    const v = { id, ...M.videos[id], ...D.VIDEO_INFO[id] };
+    v.poster = previewThumbnail(v.poster);
+    v.playbackSrc = STREAMING_VIDEOS[id] || v.src;
+    return v;
+  };
   const isVertical = (v) => v.h > v.w;
 
   /* video playlists, keyed by name → [video ids] */
@@ -165,8 +173,8 @@
         <p class="campus__desc"><span id="campusDesc"></span><a id="campusLink" target="_blank" rel="noopener"></a></p>
         <div class="campus__grid">
           <div class="ba" id="ba" role="slider" tabindex="0" aria-label="实拍与 AI 图片对比" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-            <img class="ba__real" id="baReal" alt="实拍原图" />
-            <div class="ba__ai"><img id="baAi" alt="AI 生成图" /></div>
+            <img class="ba__real" id="baReal" alt="实拍原图" loading="lazy" decoding="async" />
+            <div class="ba__ai"><img id="baAi" alt="AI 生成图" loading="lazy" decoding="async" /></div>
             <span class="ba__handle"></span>
             <span class="ba__label ba__label--l">实拍 ORIGINAL</span>
             <span class="ba__label ba__label--r">AI 生成</span>
@@ -325,8 +333,8 @@
       this.pairIdx = i;
       const ba = $("#ba");
       ba.style.aspectRatio = `${p.ai.w} / ${p.ai.h}`;
-      $("#baReal").src = p.real.l;
-      $("#baAi").src = p.ai.l;
+      $("#baReal").src = previewThumbnail(p.real.s);
+      $("#baAi").src = previewThumbnail(p.ai.s);
       $$("#baThumbs button").forEach((b, k) => b.classList.toggle("is-active", k === i));
       const active = $(`#baThumbs button[data-pair="${i}"]`);
       if (active) active.scrollIntoView({ block: "nearest", inline: "nearest" });
@@ -341,11 +349,11 @@
         more.innerHTML = `
           <div class="campus__pixel">
             <div class="pixel-tv">
-              <video data-preview-src="${v.src}" poster="${v.poster}" muted loop playsinline preload="none"></video>
+              <video data-preview-src="${v.playbackSrc}" poster="${v.poster}" muted loop playsinline preload="none"></video>
               <button class="pixel-tv__btn" data-vid="pixel" data-list="campus-pixel" data-idx="0">▶ 有声观看成片 · ${fmtDur(v.dur)}</button>
             </div>
             <div class="gameboy">
-              <div class="gameboy__screen"><video data-preview-src="${lb.src}" poster="${lb.poster}" muted loop playsinline preload="none"></video></div>
+              <div class="gameboy__screen"><video data-preview-src="${lb.playbackSrc}" poster="${lb.poster}" muted loop playsinline preload="none"></video></div>
               <p><b>LONG BAO</b><br />像素吉祥物 · 龙宝<br />行走动画 5s LOOP</p>
             </div>
           </div>`;
@@ -356,7 +364,7 @@
             ${moduleHead("更多 AI 冰雪校园", `${data.extras.length} 张`)}
             <div class="polas stagger is-in">
               ${data.extras
-                .map((e, i) => `<button class="pola" style="--i:${i}" data-campus-extra="${i}"><span class="pola__img"><img src="${e.s}" alt="" loading="lazy" decoding="async" /></span></button>`)
+                .map((e, i) => `<button class="pola" style="--i:${i}" data-campus-extra="${i}"><span class="pola__img"><img src="${previewThumbnail(e.s)}" alt="" loading="lazy" decoding="async" /></span></button>`)
                 .join("")}
             </div>
           </div>`;
@@ -524,7 +532,7 @@
     $("#designBoard").innerHTML = `
       <div class="projector" data-reveal>
         <div class="projector__screen" id="projScreen" role="button" tabindex="0" aria-label="查看大图">
-          ${slides.map((s, i) => `<img src="${previewThumbnail(s.s)}" alt="《你的魔法书包》第 ${i + 1} 页" ${i ? 'loading="lazy"' : ""} decoding="async" class="${i ? "" : "is-on"}" />`).join("")}
+          ${slides.map((s, i) => `<img src="${previewThumbnail(s.s)}" alt="《你的魔法书包》第 ${i + 1} 页" loading="lazy" decoding="async" class="${i ? "" : "is-on"}" />`).join("")}
           <span class="projector__progress" id="projProgress"></span>
         </div>
         <div class="projector__info">
@@ -738,7 +746,7 @@
       this.el.hidden = false;
       body.classList.add("is-watching", "is-locked");
       $("#cinemaList").innerHTML = this.list
-        .map((id, i) => `<button data-i="${i}" aria-label="${esc(vinfo(id).title)}"><img src="${vinfo(id).poster}" alt="" /></button>`)
+        .map((id, i) => `<button data-i="${i}" aria-label="${esc(vinfo(id).title)}"><img src="${vinfo(id).poster}" alt="" loading="lazy" decoding="async" /></button>`)
         .join("");
       $("#cinemaList").hidden = this.list.length < 2;
       requestAnimationFrame(() => requestAnimationFrame(() => this.el.classList.add("is-open")));
@@ -757,7 +765,7 @@
       const video = this.video;
       video.pause();
       video.poster = v.poster;
-      video.src = v.src;
+      video.src = v.playbackSrc;
       video.load();
       clearTimeout(this.playTimer);
       this.playTimer = setTimeout(() => video.play().catch(() => {}), delay);
@@ -836,7 +844,7 @@
     lb.title = title;
     lb.el.hidden = false;
     body.classList.add("is-locked");
-    $("#lbThumbs").innerHTML = list.map((it, i) => `<button data-i="${i}"><img src="${it.s}" alt="" loading="lazy" /></button>`).join("");
+    $("#lbThumbs").innerHTML = list.map((it, i) => `<button data-i="${i}"><img src="${previewThumbnail(it.s)}" alt="" loading="lazy" /></button>`).join("");
     $("#lbThumbs").hidden = list.length < 2;
     $("#lbPrev").hidden = $("#lbNext").hidden = list.length < 2;
     if (matchMedia("(min-width:901px)").matches) {
@@ -847,7 +855,7 @@
     } else {
       const image = $("#lbImg");
       image.onload = null;
-      image.src = list[idx].s;
+      image.src = previewThumbnail(list[idx].s);
       image.alt = title + " · 第 " + (idx + 1) + " 张";
       image.style.opacity = "1";
     }

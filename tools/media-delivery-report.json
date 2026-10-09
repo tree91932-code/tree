@@ -1,0 +1,1160 @@
+{
+  "images": {
+    "assets/about/photo-s.webp": {
+      "old": 10746,
+      "new": 9554,
+      "phone": 8668
+    },
+    "assets/campus/longbao-s.webp": {
+      "old": 11618,
+      "new": 10792,
+      "phone": 9936
+    },
+    "assets/design/drama-00-s.webp": {
+      "old": 21438,
+      "new": 20436,
+      "phone": 18918
+    },
+    "assets/design/drama-01-s.webp": {
+      "old": 16392,
+      "new": 15526,
+      "phone": 14422
+    },
+    "assets/design/drama-02-s.webp": {
+      "old": 21512,
+      "new": 20696,
+      "phone": 18994
+    },
+    "assets/design/drama-03-s.webp": {
+      "old": 17098,
+      "new": 16486,
+      "phone": 15218
+    },
+    "assets/design/festival-00-s.webp": {
+      "old": 20468,
+      "new": 19016,
+      "phone": 17560
+    },
+    "assets/design/festival-01-s.webp": {
+      "old": 27204,
+      "new": 25588,
+      "phone": 23634
+    },
+    "assets/design/festival-02-s.webp": {
+      "old": 31222,
+      "new": 29426,
+      "phone": 27290
+    },
+    "assets/design/gaokao-00-s.webp": {
+      "old": 22006,
+      "new": 20796,
+      "phone": 19266
+    },
+    "assets/design/gaokao-01-s.webp": {
+      "old": 33176,
+      "new": 31428,
+      "phone": 28990
+    },
+    "assets/design/gaokao-02-s.webp": {
+      "old": 34636,
+      "new": 33120,
+      "phone": 30652
+    },
+    "assets/design/gaokao-03-s.webp": {
+      "old": 24530,
+      "new": 22824,
+      "phone": 21014
+    },
+    "assets/design/hlju83-00-s.webp": {
+      "old": 24530,
+      "new": 22932,
+      "phone": 21068
+    },
+    "assets/design/hlju83-01-s.webp": {
+      "old": 13696,
+      "new": 12566,
+      "phone": 11516
+    },
+    "assets/design/langsheng-00-s.webp": {
+      "old": 11528,
+      "new": 10962,
+      "phone": 10118
+    },
+    "assets/design/langsheng-01-s.webp": {
+      "old": 7696,
+      "new": 7260,
+      "phone": 6738
+    },
+    "assets/design/langsheng-02-s.webp": {
+      "old": 8120,
+      "new": 7920,
+      "phone": 7312
+    },
+    "assets/design/magic-00-s.webp": {
+      "old": 12978,
+      "new": 12072,
+      "phone": 8744
+    },
+    "assets/design/magic-01-s.webp": {
+      "old": 14430,
+      "new": 13490,
+      "phone": 9486
+    },
+    "assets/design/magic-02-s.webp": {
+      "old": 16612,
+      "new": 15798,
+      "phone": 11694
+    },
+    "assets/design/magic-03-s.webp": {
+      "old": 10890,
+      "new": 9666,
+      "phone": 6566
+    },
+    "assets/design/magic-04-s.webp": {
+      "old": 10484,
+      "new": 9634,
+      "phone": 7294
+    },
+    "assets/design/magic-05-s.webp": {
+      "old": 17206,
+      "new": 16438,
+      "phone": 11110
+    },
+    "assets/design/magic-06-s.webp": {
+      "old": 16252,
+      "new": 15498,
+      "phone": 11234
+    },
+    "assets/design/magic-07-s.webp": {
+      "old": 20230,
+      "new": 19516,
+      "phone": 13688
+    },
+    "assets/design/magic-08-s.webp": {
+      "old": 12794,
+      "new": 11934,
+      "phone": 8204
+    },
+    "assets/design/magic-09-s.webp": {
+      "old": 14440,
+      "new": 13550,
+      "phone": 9436
+    },
+    "assets/design/magic-10-s.webp": {
+      "old": 19742,
+      "new": 18952,
+      "phone": 13418
+    },
+    "assets/design/magic-11-s.webp": {
+      "old": 18714,
+      "new": 18038,
+      "phone": 12836
+    },
+    "assets/design/magic-12-s.webp": {
+      "old": 18540,
+      "new": 17870,
+      "phone": 12648
+    },
+    "assets/design/magic-13-s.webp": {
+      "old": 12774,
+      "new": 12298,
+      "phone": 9144
+    },
+    "assets/design/magic-14-s.webp": {
+      "old": 15684,
+      "new": 15390,
+      "phone": 11368
+    },
+    "assets/design/magic-15-s.webp": {
+      "old": 14394,
+      "new": 13306,
+      "phone": 9636
+    },
+    "assets/design/sports-00-s.webp": {
+      "old": 27542,
+      "new": 26108,
+      "phone": 24362
+    },
+    "assets/design/sports-01-s.webp": {
+      "old": 19038,
+      "new": 17522,
+      "phone": 16100
+    },
+    "assets/design/xinxiangyin-00-s.webp": {
+      "old": 36844,
+      "new": 34704,
+      "phone": 31962
+    },
+    "assets/design/xinxiangyin-01-s.webp": {
+      "old": 35508,
+      "new": 33640,
+      "phone": 31144
+    },
+    "assets/design/xinxiangyin-02-s.webp": {
+      "old": 37548,
+      "new": 35692,
+      "phone": 33274
+    },
+    "assets/sijia/benben-00-s.webp": {
+      "old": 13336,
+      "new": 12726,
+      "phone": 8872
+    },
+    "assets/sijia/diaoge-00-s.webp": {
+      "old": 21512,
+      "new": 20814,
+      "phone": 14904
+    },
+    "assets/sijia/doc-00-s.webp": {
+      "old": 43586,
+      "new": 41828,
+      "phone": 28918
+    },
+    "assets/sijia/emoji-00-s.webp": {
+      "old": 12334,
+      "new": 11838,
+      "phone": 8670
+    },
+    "assets/sijia/emoji-01-s.webp": {
+      "old": 18996,
+      "new": 17984,
+      "phone": 16802
+    },
+    "assets/sijia/home-00-s.webp": {
+      "old": 22634,
+      "new": 21126,
+      "phone": 14194
+    },
+    "assets/sijia/home-01-s.webp": {
+      "old": 24210,
+      "new": 22562,
+      "phone": 15866
+    },
+    "assets/sijia/home-02-s.webp": {
+      "old": 26250,
+      "new": 24600,
+      "phone": 17480
+    },
+    "assets/sijia/home-03-s.webp": {
+      "old": 21520,
+      "new": 20400,
+      "phone": 14332
+    },
+    "assets/sijia/home-04-s.webp": {
+      "old": 20266,
+      "new": 18832,
+      "phone": 13242
+    },
+    "assets/sijia/manman-00-s.webp": {
+      "old": 12402,
+      "new": 11526,
+      "phone": 8154
+    },
+    "assets/sijia/shenmi-00-s.webp": {
+      "old": 10312,
+      "new": 9618,
+      "phone": 6520
+    },
+    "assets/sijia/sijia-00-s.webp": {
+      "old": 16198,
+      "new": 15188,
+      "phone": 10904
+    },
+    "assets/sijia/sijia-01-s.webp": {
+      "old": 21348,
+      "new": 20124,
+      "phone": 14470
+    },
+    "assets/sijia/sijia-02-s.webp": {
+      "old": 11272,
+      "new": 10576,
+      "phone": 7936
+    },
+    "assets/sijia/sijia-03-s.webp": {
+      "old": 15940,
+      "new": 15168,
+      "phone": 11032
+    },
+    "assets/sijia/sijia-04-s.webp": {
+      "old": 10724,
+      "new": 10106,
+      "phone": 7238
+    },
+    "assets/sijia/sijia-05-s.webp": {
+      "old": 12376,
+      "new": 11722,
+      "phone": 8244
+    },
+    "assets/sijia/sijia-06-s.webp": {
+      "old": 14512,
+      "new": 13668,
+      "phone": 9760
+    },
+    "assets/sijia/sijia-07-s.webp": {
+      "old": 10728,
+      "new": 10006,
+      "phone": 7008
+    },
+    "assets/sijia/sijia-08-s.webp": {
+      "old": 11204,
+      "new": 10614,
+      "phone": 7598
+    },
+    "assets/sijia/sijia-09-s.webp": {
+      "old": 11564,
+      "new": 10774,
+      "phone": 7920
+    },
+    "assets/sijia/sijia-10-s.webp": {
+      "old": 11260,
+      "new": 10798,
+      "phone": 7998
+    },
+    "assets/sijia/sijia-11-s.webp": {
+      "old": 9600,
+      "new": 8790,
+      "phone": 6644
+    },
+    "assets/sijia/tuzi-00-s.webp": {
+      "old": 3656,
+      "new": 3308,
+      "phone": 2388
+    },
+    "assets/sijia/zoo-00-s.webp": {
+      "old": 25296,
+      "new": 23608,
+      "phone": 15850
+    },
+    "assets/youyou/kv-00-s.webp": {
+      "old": 14200,
+      "new": 13214,
+      "phone": 10038
+    },
+    "assets/youyou/kv-01-s.webp": {
+      "old": 21990,
+      "new": 20658,
+      "phone": 14750
+    },
+    "assets/youyou/party-00-s.webp": {
+      "old": 27740,
+      "new": 26390,
+      "phone": 19080
+    },
+    "assets/youyou/party-01-s.webp": {
+      "old": 18656,
+      "new": 17708,
+      "phone": 12950
+    },
+    "assets/youyou/party-02-s.webp": {
+      "old": 36100,
+      "new": 34744,
+      "phone": 32462
+    },
+    "assets/youyou/party-03-s.webp": {
+      "old": 22232,
+      "new": 20902,
+      "phone": 15692
+    },
+    "assets/youyou/party-04-s.webp": {
+      "old": 27984,
+      "new": 26810,
+      "phone": 20024
+    },
+    "assets/youyou/party-05-s.webp": {
+      "old": 50294,
+      "new": 47856,
+      "phone": 33806
+    },
+    "assets/youyou/party-06-s.webp": {
+      "old": 42978,
+      "new": 40768,
+      "phone": 28034
+    },
+    "assets/youyou/sticker-00-s.webp": {
+      "old": 18824,
+      "new": 17668,
+      "phone": 12978
+    },
+    "assets/youyou/sticker-01-s.webp": {
+      "old": 18154,
+      "new": 17426,
+      "phone": 12848
+    },
+    "assets/youyou/sticker-02-s.webp": {
+      "old": 15378,
+      "new": 14632,
+      "phone": 13492
+    },
+    "assets/youyou/sticker-03-s.webp": {
+      "old": 24544,
+      "new": 23358,
+      "phone": 17406
+    },
+    "assets/youyou/sticker-04-s.webp": {
+      "old": 25526,
+      "new": 24028,
+      "phone": 17832
+    },
+    "assets/campus/outfit/00-ai-s.webp": {
+      "old": 29498,
+      "new": 27240,
+      "phone": 15018
+    },
+    "assets/campus/outfit/00-real-s.webp": {
+      "old": 24640,
+      "new": 23050,
+      "phone": 13448
+    },
+    "assets/campus/outfit/01-ai-s.webp": {
+      "old": 25320,
+      "new": 22110,
+      "phone": 11382
+    },
+    "assets/campus/outfit/01-real-s.webp": {
+      "old": 24286,
+      "new": 23000,
+      "phone": 12476
+    },
+    "assets/campus/outfit/02-ai-s.webp": {
+      "old": 28850,
+      "new": 25538,
+      "phone": 13284
+    },
+    "assets/campus/outfit/02-real-s.webp": {
+      "old": 58698,
+      "new": 55400,
+      "phone": 28620
+    },
+    "assets/campus/outfit/03-ai-s.webp": {
+      "old": 27968,
+      "new": 25498,
+      "phone": 13460
+    },
+    "assets/campus/outfit/03-real-s.webp": {
+      "old": 69698,
+      "new": 64666,
+      "phone": 33756
+    },
+    "assets/campus/outfit/04-ai-s.webp": {
+      "old": 25908,
+      "new": 20456,
+      "phone": 10414
+    },
+    "assets/campus/outfit/04-real-s.webp": {
+      "old": 77118,
+      "new": 72806,
+      "phone": 36168
+    },
+    "assets/campus/outfit/05-ai-s.webp": {
+      "old": 48366,
+      "new": 45924,
+      "phone": 24516
+    },
+    "assets/campus/outfit/05-real-s.webp": {
+      "old": 34330,
+      "new": 30846,
+      "phone": 16080
+    },
+    "assets/campus/outfit/06-ai-s.webp": {
+      "old": 28594,
+      "new": 26640,
+      "phone": 14738
+    },
+    "assets/campus/outfit/06-real-s.webp": {
+      "old": 31384,
+      "new": 29918,
+      "phone": 16554
+    },
+    "assets/campus/outfit/07-ai-s.webp": {
+      "old": 33478,
+      "new": 31446,
+      "phone": 17008
+    },
+    "assets/campus/outfit/07-real-s.webp": {
+      "old": 22868,
+      "new": 22054,
+      "phone": 12680
+    },
+    "assets/campus/outfit/08-ai-s.webp": {
+      "old": 26202,
+      "new": 23650,
+      "phone": 12634
+    },
+    "assets/campus/outfit/08-real-s.webp": {
+      "old": 24564,
+      "new": 22780,
+      "phone": 13042
+    },
+    "assets/campus/outfit/09-ai-s.webp": {
+      "old": 31272,
+      "new": 29494,
+      "phone": 15870
+    },
+    "assets/campus/outfit/09-real-s.webp": {
+      "old": 14038,
+      "new": 12678,
+      "phone": 6972
+    },
+    "assets/campus/outfit/10-ai-s.webp": {
+      "old": 33870,
+      "new": 31944,
+      "phone": 16732
+    },
+    "assets/campus/outfit/10-real-s.webp": {
+      "old": 34248,
+      "new": 32028,
+      "phone": 17840
+    },
+    "assets/campus/pixel/00-ai-s.webp": {
+      "old": 30270,
+      "new": 28462,
+      "phone": 17168
+    },
+    "assets/campus/pixel/00-real-s.webp": {
+      "old": 31282,
+      "new": 29462,
+      "phone": 16458
+    },
+    "assets/campus/pixel/01-ai-s.webp": {
+      "old": 31726,
+      "new": 29694,
+      "phone": 17636
+    },
+    "assets/campus/pixel/01-real-s.webp": {
+      "old": 51272,
+      "new": 48050,
+      "phone": 24476
+    },
+    "assets/campus/pixel/02-ai-s.webp": {
+      "old": 33714,
+      "new": 31210,
+      "phone": 18290
+    },
+    "assets/campus/pixel/02-real-s.webp": {
+      "old": 48474,
+      "new": 45028,
+      "phone": 23692
+    },
+    "assets/campus/pixel/03-ai-s.webp": {
+      "old": 20994,
+      "new": 18466,
+      "phone": 11300
+    },
+    "assets/campus/pixel/03-real-s.webp": {
+      "old": 32244,
+      "new": 30650,
+      "phone": 17032
+    },
+    "assets/campus/pixel/04-ai-s.webp": {
+      "old": 28708,
+      "new": 26434,
+      "phone": 15820
+    },
+    "assets/campus/pixel/04-real-s.webp": {
+      "old": 35950,
+      "new": 34514,
+      "phone": 15944
+    },
+    "assets/campus/pixel/05-ai-s.webp": {
+      "old": 31980,
+      "new": 30478,
+      "phone": 18372
+    },
+    "assets/campus/pixel/05-real-s.webp": {
+      "old": 34248,
+      "new": 32028,
+      "phone": 17840
+    },
+    "assets/campus/pixel/06-ai-s.webp": {
+      "old": 19972,
+      "new": 18032,
+      "phone": 10516
+    },
+    "assets/campus/pixel/06-real-s.webp": {
+      "old": 16852,
+      "new": 15082,
+      "phone": 8324
+    },
+    "assets/campus/pixel/07-ai-s.webp": {
+      "old": 18114,
+      "new": 16516,
+      "phone": 9984
+    },
+    "assets/campus/pixel/07-real-s.webp": {
+      "old": 34122,
+      "new": 32268,
+      "phone": 17870
+    },
+    "assets/campus/pixel/08-ai-s.webp": {
+      "old": 33388,
+      "new": 31472,
+      "phone": 18668
+    },
+    "assets/campus/pixel/08-real-s.webp": {
+      "old": 35152,
+      "new": 33220,
+      "phone": 17328
+    },
+    "assets/campus/pixel/09-ai-s.webp": {
+      "old": 31930,
+      "new": 29464,
+      "phone": 17378
+    },
+    "assets/campus/pixel/09-real-s.webp": {
+      "old": 37704,
+      "new": 34370,
+      "phone": 18516
+    },
+    "assets/campus/pixel/10-ai-s.webp": {
+      "old": 35296,
+      "new": 33418,
+      "phone": 20330
+    },
+    "assets/campus/pixel/10-real-s.webp": {
+      "old": 39162,
+      "new": 36164,
+      "phone": 19294
+    },
+    "assets/campus/pixel/11-ai-s.webp": {
+      "old": 27614,
+      "new": 25314,
+      "phone": 15286
+    },
+    "assets/campus/pixel/11-real-s.webp": {
+      "old": 61770,
+      "new": 58506,
+      "phone": 29798
+    },
+    "assets/campus/snow/00-ai-s.webp": {
+      "old": 35580,
+      "new": 32660,
+      "phone": 17560
+    },
+    "assets/campus/snow/00-real-s.webp": {
+      "old": 54298,
+      "new": 51262,
+      "phone": 29538
+    },
+    "assets/campus/snow/01-ai-s.webp": {
+      "old": 33658,
+      "new": 30310,
+      "phone": 16124
+    },
+    "assets/campus/snow/01-real-s.webp": {
+      "old": 36312,
+      "new": 33668,
+      "phone": 18048
+    },
+    "assets/campus/snow/02-ai-s.webp": {
+      "old": 41504,
+      "new": 38278,
+      "phone": 20066
+    },
+    "assets/campus/snow/02-real-s.webp": {
+      "old": 40228,
+      "new": 37992,
+      "phone": 19834
+    },
+    "assets/campus/snow/03-ai-s.webp": {
+      "old": 31804,
+      "new": 29416,
+      "phone": 15344
+    },
+    "assets/campus/snow/03-real-s.webp": {
+      "old": 49432,
+      "new": 47030,
+      "phone": 23928
+    },
+    "assets/campus/snow/04-ai-s.webp": {
+      "old": 30698,
+      "new": 27842,
+      "phone": 14692
+    },
+    "assets/campus/snow/04-real-s.webp": {
+      "old": 39310,
+      "new": 36246,
+      "phone": 18976
+    },
+    "assets/campus/snow/05-ai-s.webp": {
+      "old": 33726,
+      "new": 31374,
+      "phone": 16136
+    },
+    "assets/campus/snow/05-real-s.webp": {
+      "old": 57662,
+      "new": 54444,
+      "phone": 28702
+    },
+    "assets/campus/snow/06-ai-s.webp": {
+      "old": 19144,
+      "new": 17930,
+      "phone": 9766
+    },
+    "assets/campus/snow/06-real-s.webp": {
+      "old": 41012,
+      "new": 38148,
+      "phone": 19780
+    },
+    "assets/campus/snow/07-ai-s.webp": {
+      "old": 36004,
+      "new": 34150,
+      "phone": 18320
+    },
+    "assets/campus/snow/07-real-s.webp": {
+      "old": 34330,
+      "new": 30846,
+      "phone": 16080
+    },
+    "assets/campus/snow/08-ai-s.webp": {
+      "old": 31056,
+      "new": 28394,
+      "phone": 15226
+    },
+    "assets/campus/snow/08-real-s.webp": {
+      "old": 34248,
+      "new": 32028,
+      "phone": 17840
+    },
+    "assets/campus/snow/x00-s.webp": {
+      "old": 35810,
+      "new": 33824,
+      "phone": 18828
+    },
+    "assets/campus/snow/x01-s.webp": {
+      "old": 46716,
+      "new": 43672,
+      "phone": 22428
+    },
+    "assets/campus/snow/x02-s.webp": {
+      "old": 30260,
+      "new": 26558,
+      "phone": 14362
+    },
+    "assets/campus/snow/x03-s.webp": {
+      "old": 26446,
+      "new": 24764,
+      "phone": 13358
+    },
+    "assets/campus/snow/x04-s.webp": {
+      "old": 33870,
+      "new": 31944,
+      "phone": 16732
+    },
+    "assets/video/e_lanju/poster.webp": {
+      "old": 57236,
+      "new": 29256,
+      "phone": 13654
+    },
+    "assets/video/e_nestle/poster.webp": {
+      "old": 22304,
+      "new": 9838,
+      "phone": 4878
+    },
+    "assets/video/e_reno/poster-phone.webp": {
+      "old": 110838,
+      "new": 59638,
+      "phone": 36508
+    },
+    "assets/video/e_reno/poster.webp": {
+      "old": 45514,
+      "new": 44298,
+      "phone": 27564
+    },
+    "assets/video/e_trip/poster.webp": {
+      "old": 50844,
+      "new": 47150,
+      "phone": 25402
+    },
+    "assets/video/longbao/poster.webp": {
+      "old": 25192,
+      "new": 20228,
+      "phone": 12346
+    },
+    "assets/video/news40/poster.webp": {
+      "old": 89198,
+      "new": 38240,
+      "phone": 15432
+    },
+    "assets/video/oppo1/poster.webp": {
+      "old": 27116,
+      "new": 21618,
+      "phone": 12554
+    },
+    "assets/video/oppo2/poster.webp": {
+      "old": 103624,
+      "new": 79522,
+      "phone": 37500
+    },
+    "assets/video/oppo3/poster.webp": {
+      "old": 47620,
+      "new": 37666,
+      "phone": 20544
+    },
+    "assets/video/oppo4/poster.webp": {
+      "old": 27076,
+      "new": 21286,
+      "phone": 12194
+    },
+    "assets/video/oppo5/poster.webp": {
+      "old": 64920,
+      "new": 50586,
+      "phone": 29832
+    },
+    "assets/video/oppo6/poster.webp": {
+      "old": 32456,
+      "new": 14322,
+      "phone": 6776
+    },
+    "assets/video/pixel/poster.webp": {
+      "old": 67894,
+      "new": 36288,
+      "phone": 17820
+    },
+    "assets/video/sj1/poster.webp": {
+      "old": 36978,
+      "new": 16204,
+      "phone": 7424
+    },
+    "assets/video/sj2/poster.webp": {
+      "old": 97160,
+      "new": 74302,
+      "phone": 35786
+    },
+    "assets/video/sj3/poster.webp": {
+      "old": 72594,
+      "new": 53862,
+      "phone": 28812
+    },
+    "assets/video/sj4/poster.webp": {
+      "old": 30864,
+      "new": 23688,
+      "phone": 14000
+    },
+    "assets/video/wl1/poster.webp": {
+      "old": 84892,
+      "new": 39572,
+      "phone": 16566
+    },
+    "assets/video/wl2/poster.webp": {
+      "old": 48056,
+      "new": 38454,
+      "phone": 21824
+    },
+    "assets/video/wl28/poster.webp": {
+      "old": 91684,
+      "new": 37970,
+      "phone": 14918
+    },
+    "assets/video/wl3/poster.webp": {
+      "old": 102338,
+      "new": 39248,
+      "phone": 14580
+    },
+    "assets/video/wl4/poster.webp": {
+      "old": 46496,
+      "new": 24256,
+      "phone": 12162
+    },
+    "assets/video/wl5/poster.webp": {
+      "old": 81236,
+      "new": 37776,
+      "phone": 19010
+    },
+    "assets/video/wl6/poster.webp": {
+      "old": 57594,
+      "new": 24934,
+      "phone": 10488
+    },
+    "assets/video/wl7/poster.webp": {
+      "old": 76272,
+      "new": 38596,
+      "phone": 18378
+    },
+    "assets/video/wlsummer/poster.webp": {
+      "old": 107584,
+      "new": 51198,
+      "phone": 20630
+    },
+    "assets/video/w_1999/poster.webp": {
+      "old": 36684,
+      "new": 30606,
+      "phone": 18352
+    },
+    "assets/video/w_chef/poster.webp": {
+      "old": 50644,
+      "new": 48434,
+      "phone": 28008
+    },
+    "assets/video/w_chuan/poster.webp": {
+      "old": 18546,
+      "new": 14432,
+      "phone": 8406
+    },
+    "assets/video/w_fire/poster.webp": {
+      "old": 29524,
+      "new": 24918,
+      "phone": 14926
+    },
+    "assets/video/w_fish/poster.webp": {
+      "old": 61536,
+      "new": 45974,
+      "phone": 22740
+    },
+    "assets/video/w_jz/poster.webp": {
+      "old": 65082,
+      "new": 32394,
+      "phone": 15408
+    },
+    "assets/video/w_lei/poster.webp": {
+      "old": 47434,
+      "new": 24060,
+      "phone": 11710
+    },
+    "assets/video/w_ny/poster.webp": {
+      "old": 40212,
+      "new": 32444,
+      "phone": 19348
+    },
+    "assets/video/w_sea/poster.webp": {
+      "old": 55674,
+      "new": 44396,
+      "phone": 25394
+    },
+    "assets/video/w_sijia/poster.webp": {
+      "old": 48950,
+      "new": 40446,
+      "phone": 23752
+    },
+    "assets/video/w_street/poster.webp": {
+      "old": 35944,
+      "new": 18196,
+      "phone": 8456
+    },
+    "assets/video/w_tie/poster.webp": {
+      "old": 26012,
+      "new": 20462,
+      "phone": 11834
+    },
+    "assets/video/w_wife/poster.webp": {
+      "old": 29488,
+      "new": 23514,
+      "phone": 13884
+    },
+    "assets/video/w_xc/poster.webp": {
+      "old": 62596,
+      "new": 33828,
+      "phone": 16328
+    },
+    "assets/video/yy1/poster.webp": {
+      "old": 51622,
+      "new": 42672,
+      "phone": 24448
+    },
+    "assets/video/yy2/poster.webp": {
+      "old": 40910,
+      "new": 32370,
+      "phone": 18782
+    },
+    "assets/video/yy3/poster.webp": {
+      "old": 54680,
+      "new": 45634,
+      "phone": 26106
+    },
+    "assets/video/yy4/poster.webp": {
+      "old": 80988,
+      "new": 61992,
+      "phone": 32458
+    },
+    "assets/video/yysum/poster.webp": {
+      "old": 72294,
+      "new": 56538,
+      "phone": 31026
+    }
+  },
+  "videos": {
+    "oppo1": {
+      "src": "assets/stream/oppo1.mp4?v=20261010-stream",
+      "old": 11259205,
+      "new": 5271631
+    },
+    "oppo4": {
+      "src": "assets/stream/oppo4.mp4?v=20261010-stream",
+      "old": 7525248,
+      "new": 4354003
+    },
+    "oppo5": {
+      "src": "assets/stream/oppo5.mp4?v=20261010-stream",
+      "old": 11829378,
+      "new": 7726619
+    },
+    "news40": {
+      "src": "assets/stream/news40.mp4?v=20261010-stream",
+      "old": 63546639,
+      "new": 40997186
+    },
+    "pixel": {
+      "src": "assets/stream/pixel.mp4?v=20261010-stream",
+      "old": 8702271,
+      "new": 4608886
+    },
+    "yy2": {
+      "src": "assets/stream/yy2.mp4?v=20261010-stream",
+      "old": 9498139,
+      "new": 6091920
+    },
+    "yy3": {
+      "src": "assets/stream/yy3.mp4?v=20261010-stream",
+      "old": 10338813,
+      "new": 5211126
+    },
+    "yy4": {
+      "src": "assets/stream/yy4.mp4?v=20261010-stream",
+      "old": 7578431,
+      "new": 3984121
+    },
+    "yysum": {
+      "src": "assets/stream/yysum.mp4?v=20261010-stream",
+      "old": 41867970,
+      "new": 25995489
+    },
+    "sj1": {
+      "src": "assets/stream/sj1.mp4?v=20261010-stream",
+      "old": 73391840,
+      "new": 42235753
+    },
+    "sj3": {
+      "src": "assets/stream/sj3.mp4?v=20261010-stream",
+      "old": 18407827,
+      "new": 8134901
+    },
+    "sj4": {
+      "src": "assets/stream/sj4.mp4?v=20261010-stream",
+      "old": 22380038,
+      "new": 9630050
+    },
+    "wl3": {
+      "src": "assets/stream/wl3.mp4?v=20261010-stream",
+      "old": 9704400,
+      "new": 6381102
+    },
+    "wl4": {
+      "src": "assets/stream/wl4.mp4?v=20261010-stream",
+      "old": 10053629,
+      "new": 6051941
+    },
+    "wl5": {
+      "src": "assets/stream/wl5.mp4?v=20261010-stream",
+      "old": 10291045,
+      "new": 5078595
+    },
+    "wl6": {
+      "src": "assets/stream/wl6.mp4?v=20261010-stream",
+      "old": 18139464,
+      "new": 8728910
+    },
+    "wl7": {
+      "src": "assets/stream/wl7.mp4?v=20261010-stream",
+      "old": 12331549,
+      "new": 8073537
+    },
+    "w_tie": {
+      "src": "assets/stream/w_tie.mp4?v=20261010-stream",
+      "old": 19858127,
+      "new": 8983241
+    },
+    "w_1999": {
+      "src": "assets/stream/w_1999.mp4?v=20261010-stream",
+      "old": 22938417,
+      "new": 11586333
+    },
+    "w_wife": {
+      "src": "assets/stream/w_wife.mp4?v=20261010-stream",
+      "old": 22001378,
+      "new": 8442336
+    },
+    "w_fire": {
+      "src": "assets/stream/w_fire.mp4?v=20261010-stream",
+      "old": 19447657,
+      "new": 7241854
+    },
+    "w_ny": {
+      "src": "assets/stream/w_ny.mp4?v=20261010-stream",
+      "old": 9739916,
+      "new": 5534945
+    },
+    "w_sea": {
+      "src": "assets/stream/w_sea.mp4?v=20261010-stream",
+      "old": 19401470,
+      "new": 9316357
+    },
+    "w_chuan": {
+      "src": "assets/stream/w_chuan.mp4?v=20261010-stream",
+      "old": 19292059,
+      "new": 13020171
+    },
+    "w_lei": {
+      "src": "assets/stream/w_lei.mp4?v=20261010-stream",
+      "old": 59487820,
+      "new": 38058296
+    },
+    "w_street": {
+      "src": "assets/stream/w_street.mp4?v=20261010-stream",
+      "old": 55619766,
+      "new": 25660307
+    },
+    "w_sijia": {
+      "src": "assets/stream/w_sijia.mp4?v=20261010-stream",
+      "old": 19779645,
+      "new": 10987595
+    },
+    "w_xc": {
+      "src": "assets/stream/w_xc.mp4?v=20261010-stream",
+      "old": 18460556,
+      "new": 8954185
+    },
+    "w_jz": {
+      "src": "assets/stream/w_jz.mp4?v=20261010-stream",
+      "old": 8285887,
+      "new": 3406950
+    },
+    "w_chef": {
+      "src": "assets/stream/w_chef.mp4?v=20261010-stream",
+      "old": 29186520,
+      "new": 15458331
+    },
+    "e_trip": {
+      "src": "assets/stream/e_trip.mp4?v=20261010-stream",
+      "old": 8336993,
+      "new": 5721053
+    },
+    "e_reno": {
+      "src": "assets/stream/e_reno.mp4?v=20261010-stream",
+      "old": 8727971,
+      "new": 3374798
+    },
+    "e_nestle": {
+      "src": "assets/stream/e_nestle.mp4?v=20261010-stream",
+      "old": 11179803,
+      "new": 6231760
+    },
+    "e_lanju": {
+      "src": "assets/stream/e_lanju.mp4?v=20261010-stream",
+      "old": 6120887,
+      "new": 2804530
+    }
+  },
+  "backgrounds": {
+    "study-daylight": {
+      "old": 1402270,
+      "new": 166356
+    },
+    "study-sunset": {
+      "old": 1304076,
+      "new": 140952
+    },
+    "study-tabletop-overhead": {
+      "old": 1823326,
+      "new": 280338
+    }
+  }
+}
