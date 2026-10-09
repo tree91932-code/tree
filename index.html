@@ -548,13 +548,334 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 
+
+  <!-- Opening interactions must not wait for gallery scripts. -->
+  <script id="intro-controller">
+(() => {
+  "use strict";
+  const $ = (s, r = document) => r.querySelector(s);
+  const body = document.body;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function syncBackground() {
+    const locked = body.classList.contains("is-intro");
+    $(".layout").inert = locked;
+    $(".topbar").inert = locked;
+    if ($(".mobile-nav")) $(".mobile-nav").inert = locked;
+    $("#idx").inert = locked || (matchMedia("(max-width:900px)").matches && !body.classList.contains("is-menu"));
+  }
+  function setMenu(on) {
+    body.classList.toggle("is-menu", on);
+    $("#menuBtn").setAttribute("aria-expanded", String(on));
+    $("#menuBtn").setAttribute("aria-label", on ? "关闭目录" : "打开目录");
+  }
+  function initIntro() {
+    const intro = $("#intro");
+    const folder = $("#folder");
+    const lamp = $(".lamp--intro");
+    const hint = $(".intro__hint span", intro);
+    let stage = "desk";
+    let stageTimer;
+    let pendingOpen = false;
+    const overheadImage = new Image();
+    overheadImage.fetchPriority = "low";
+    const phoneIntro = matchMedia("(max-width:900px)").matches;
+    if (phoneIntro) overheadImage.src = "assets/intro/study-tabletop-realistic-phone.webp";
+    const overheadReady = phoneIntro ? overheadImage.decode().catch(() => {}) : Promise.resolve();
+    const setStage = (value) => {
+      stage = value;
+      intro.dataset.stage = value;
+    };
+    const finish = (instant) => {
+      if (!body.classList.contains("is-intro")) return;
+      clearTimeout(stageTimer);
+      pendingOpen = false;
+      setStage("leaving");
+      intro.classList.add("is-leaving");
+      setTimeout(() => {
+        body.classList.remove("is-intro");
+        window.scrollTo({ top: 0, behavior: "instant" });
+        syncBackground();
+        if (intro.contains(document.activeElement)) $(".hero__cta a").focus({ preventScroll: true });
+        document.dispatchEvent(new Event("study-intro-exit"));
+      }, instant ? 0 : 700);
+    };
+    const play = () => {
+      const returningToDesk = phoneIntro && intro.classList.contains("is-overhead");
+      clearTimeout(stageTimer);
+      pendingOpen = false;
+      setStage(returningToDesk ? "moving" : "desk");
+      hint.textContent = returningToDesk ? "镜头返回书桌…" : "点击档案袋";
+      folder.setAttribute("aria-label", "点击档案袋，转到正上方");
+      intro.classList.remove("is-leaving");
+      intro.classList.remove("is-overhead");
+      intro.classList.add("is-daytime");
+      intro.dispatchEvent(new Event("study-lamp-reset"));
+      folder.classList.remove("is-open");
+      if (returningToDesk) {
+        stageTimer = setTimeout(() => {
+          setStage("desk");
+          hint.textContent = "点击档案袋";
+        }, reduced ? 0 : 850);
+      }
+      lamp.classList.add("is-off");
+      lamp.classList.remove("is-flicker");
+      setTimeout(() => {
+        lamp.classList.remove("is-off");
+        lamp.classList.add("is-flicker");
+      }, 600);
+    };
+
+    if (location.hash && location.hash.length > 1) {
+      body.classList.remove("is-intro");
+      syncBackground();
+      document.dispatchEvent(new Event("study-intro-exit"));
+    } else {
+      play();
+    }
+
+    folder.addEventListener("click", async () => {
+      if (stage === "preparing" || stage === "moving") {
+        if (stage === "preparing" || intro.classList.contains("is-overhead")) pendingOpen = true;
+        return;
+      }
+      if (stage === "opening" || stage === "leaving") return;
+      if (stage === "desk") {
+        if (phoneIntro) {
+          setStage("preparing");
+          hint.textContent = "正在准备桌面…";
+          await Promise.race([overheadReady, new Promise(resolve => setTimeout(resolve, 120))]);
+          if (stage !== "preparing") return;
+        }
+        setStage("moving");
+        intro.classList.add("is-overhead");
+        hint.textContent = "镜头移向档案袋…";
+        stageTimer = setTimeout(() => {
+          setStage("overhead");
+          hint.textContent = "再次点击档案袋，打开作品集";
+          folder.setAttribute("aria-label", "再次点击档案袋，打开作品集");
+          if (pendingOpen) { pendingOpen = false; folder.click(); }
+        }, reduced ? 0 : phoneIntro ? 850 : 2800);
+        return;
+      }
+      setStage("opening");
+      folder.classList.add("is-open");
+      hint.textContent = "正在打开作品集…";
+      stageTimer = setTimeout(() => finish(false), reduced ? 0 : 1000);
+    });
+    $("#introSkip").addEventListener("click", () => finish(true));
+    $("#studyBack").addEventListener("click", () => {
+      if ((phoneIntro && stage === "moving") || stage === "opening" || stage === "leaving") return;
+      play();
+      folder.focus({ preventScroll: true });
+    });
+    $("#replayIntro").addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "auto" });
+      setMenu(false);
+      body.classList.add("is-intro");
+      syncBackground();
+      document.dispatchEvent(new Event("study-intro-replay"));
+      play();
+      folder.focus({ preventScroll: true });
+    });
+    syncBackground();
+    window.__introControlsReady = true;
+    const pendingControl = window.__introPendingControl;
+    delete window.__introPendingControl;
+    if (pendingControl) requestAnimationFrame(() => {
+      if (body.classList.contains("is-intro")) document.getElementById(pendingControl)?.click();
+    });
+  }
+
+  initIntro();
+})();
+  </script>
+  <script id="early-gramophone">
+(() => {
+  'use strict';
+  const button = document.getElementById('studyMusic');
+  const label = document.getElementById('studyMusicLabel');
+  const dock = document.createElement('div');
+  dock.className = 'music-edge';
+  dock.dataset.expanded = 'false';
+  dock.innerHTML = '<button type="button" class="music-edge__peek" aria-label="展开音乐控制" aria-expanded="false"><svg class="music-edge__notes" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 18V5l12-3v13M8 9l12-3"/><ellipse cx="5.5" cy="18" rx="2.5" ry="1.8"/><ellipse cx="17.5" cy="15" rx="2.5" ry="1.8"/></svg></button><button type="button" class="music-edge__toggle" aria-label="播放背景音乐" aria-pressed="false" tabindex="-1"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path class="music-edge__play" d="M14 11l8 5-8 5z"/><path class="music-edge__pause" d="M13 11v10m6-10v10"/></svg></button>';
+  document.body.append(dock);
+  const peek = dock.querySelector('.music-edge__peek');
+  const toggle = dock.querySelector('.music-edge__toggle');
+  let collapseTimer;
+  // Distinguish a drag from a normal play/pause click.
+  let musicDrag = null, suppressMusicClickUntil = 0;
+  function placeMusicDock(x, y) {
+    const width = dock.offsetWidth, height = dock.offsetHeight;
+    dock.dataset.positioned = 'true';
+    dock.style.left = Math.max(0, Math.min(innerWidth - width, x)) + 'px';
+    dock.style.top = Math.max(0, Math.min(innerHeight - height, y)) + 'px';
+    dock.style.right = 'auto';
+  }
+  dock.addEventListener('pointerdown', event => {
+    if (event.isPrimary === false || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    const rect = dock.getBoundingClientRect();
+    musicDrag = {id:event.pointerId, x:event.clientX, y:event.clientY, left:rect.left, top:rect.top, moved:false};
+  });
+  window.addEventListener('pointermove', event => {
+    if (!musicDrag || event.pointerId !== musicDrag.id) return;
+    const dx = event.clientX - musicDrag.x, dy = event.clientY - musicDrag.y;
+    if (!musicDrag.moved && Math.hypot(dx, dy) < 6) return;
+    if (!musicDrag.moved) {
+      musicDrag.moved = true;
+      clearTimeout(collapseTimer);
+      dock.dataset.dragging = 'true';
+      try { dock.setPointerCapture(event.pointerId); } catch {}
+    }
+    event.preventDefault();
+    placeMusicDock(musicDrag.left + dx, musicDrag.top + dy);
+  }, {passive:false});
+  const finishMusicDrag = event => {
+    if (!musicDrag || event.pointerId !== musicDrag.id) return;
+    const moved = musicDrag.moved;
+    musicDrag = null;
+    delete dock.dataset.dragging;
+    if (moved) {
+      suppressMusicClickUntil = Date.now() + 500;
+      try { dock.releasePointerCapture(event.pointerId); } catch {}
+      if (dock.dataset.expanded === 'true') expand(true);
+    }
+  };
+  window.addEventListener('pointerup', finishMusicDrag);
+  window.addEventListener('pointercancel', finishMusicDrag);
+  dock.addEventListener('click', event => {
+    if (event.detail !== 0 && Date.now() < suppressMusicClickUntil) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+  }, true);
+  window.addEventListener('resize', () => {
+    if (dock.dataset.positioned !== 'true') return;
+    placeMusicDock(parseFloat(dock.style.left), parseFloat(dock.style.top));
+  });
+  function expand(on) {
+    dock.dataset.expanded = String(on);
+    peek.setAttribute('aria-expanded',String(on));
+    peek.tabIndex = on || !matchMedia('(max-width:900px)').matches ? -1 : 0;
+    toggle.tabIndex = on || !matchMedia('(max-width:900px)').matches ? 0 : -1;
+    clearTimeout(collapseTimer);
+    if (on) collapseTimer = setTimeout(() => expand(false), 4500);
+  }
+  expand(false);
+  peek.addEventListener('click', () => { expand(true); toggle.focus({preventScroll:true}); });
+  document.addEventListener('pointerdown', event => { if (!dock.contains(event.target)) expand(false); });
+  dock.addEventListener('keydown', event => { if (event.key === 'Escape') { expand(false); peek.focus({preventScroll:true}); } });
+  const audio = document.getElementById('gramophoneAudio') || new Audio('assets/audio/satie-gymnopedie-1-ready.m4a');
+  audio.id = 'gramophoneAudio';
+  audio.preload = 'none';
+  audio.loop = true;
+  audio.volume = .9;
+  audio.hidden = true;
+  if (!audio.isConnected) document.body.append(audio);
+  let pending = false, buffering = false, generation = 0;
+  let wasIntro = document.body.classList.contains('is-intro');
+  function sync() {
+    const on = !audio.paused;
+    button.setAttribute('aria-pressed', String(on));
+    button.setAttribute('aria-label', on ? '暂停书房音乐' : '播放书房音乐');
+    button.title = '萨蒂 · 第一号吉姆诺佩蒂 / 钢琴：Robin Alciatore / Musopen';
+    label.textContent = pending || buffering ? '音乐加载中…' : (on ? '暂停音乐' : '播放音乐');
+    toggle.setAttribute('aria-pressed',String(on));
+    toggle.setAttribute('aria-label',on ? '暂停背景音乐' : '播放背景音乐');
+    dock.dataset.playing = String(on);
+  }
+  function stop() { generation++; pending = false; buffering = false; audio.pause(); sync(); }
+  async function toggleMusic() {
+    if (!audio.paused || pending) return stop();
+    const token = ++generation;
+    pending = true;
+    sync();
+    try {
+      await audio.play();
+      if (token !== generation || document.hidden) {
+        if (token === generation) stop();
+        return;
+      }
+      sync();
+    } catch (error) {
+      if (token === generation && error.name !== 'AbortError') {
+        label.textContent = '点击重试';
+        toggle.setAttribute('aria-label','音乐加载失败，点击重试');
+      }
+    } finally { if (token === generation) { pending = false; if (label.textContent !== '点击重试') sync(); } }
+  }
+  button.addEventListener('click',toggleMusic);
+  toggle.addEventListener('click',() => { toggleMusic(); expand(true); });
+  audio.addEventListener('pause',sync);
+  audio.addEventListener('play',sync);
+  audio.addEventListener('waiting', () => { buffering = true; sync(); });
+  audio.addEventListener('playing', () => { buffering = false; sync(); });
+  new MutationObserver(() => {
+    const intro = document.body.classList.contains('is-intro');
+    if (document.body.classList.contains('is-watching')) stop();
+    wasIntro = intro;
+  }).observe(document.body,{attributes:true,attributeFilter:['class']});
+  document.addEventListener('visibilitychange',() => { if (document.hidden) stop(); });
+  window.addEventListener('pagehide',stop);
+  sync();
+})();
+
+  </script>
+  <script id="early-study-desk">
+(() => {
+  'use strict';
+  const intro = document.getElementById('intro');
+  const lamp = document.getElementById('deskLampSwitch');
+  const mobileLamp = document.getElementById('mobileLampSwitch');
+  let lightOn = false;
+  function setLampState(on) {
+    lightOn = on;
+    intro.classList.toggle('is-daytime', !lightOn);
+    [lamp, mobileLamp].forEach(el => {
+      el.setAttribute('aria-pressed', String(lightOn));
+      el.setAttribute('aria-label', lightOn ? '开灯，切换白天' : '关灯，切换日落');
+    });
+    lamp.querySelector('span').textContent = lightOn ? '开灯' : '关灯';
+    mobileLamp.textContent = lightOn ? '开灯' : '关灯';
+  }
+  let switchingLamp = false;
+  const lampImages = new Map();
+  async function toggleLamp() {
+    if (switchingLamp) return;
+    const nextState = !lightOn;
+    if (matchMedia('(max-width:900px)').matches) {
+      switchingLamp = true;
+      const url = nextState ? 'assets/intro/study-sunset-pendant-mobile.webp' : 'assets/intro/study-daylight-pendant-phone-fast.webp';
+      if (!lampImages.has(url)) {
+        const image = new Image();
+        image.src = url;
+        lampImages.set(url, image.decode().then(() => true, () => false));
+      }
+      const ready = await lampImages.get(url);
+      switchingLamp = false;
+      if (!ready) { lampImages.delete(url); return; }
+    }
+    setLampState(nextState);
+  }
+  intro.addEventListener('study-lamp-reset', () => setLampState(false));
+  setLampState(false);
+  lamp.addEventListener('click',toggleLamp);
+  mobileLamp.addEventListener('click',toggleLamp);
+  const music = document.getElementById('studyMusic');
+  const dialog = document.getElementById('studyNoteDialog');
+  document.getElementById('deskNote').addEventListener('click', () => dialog.showModal());
+  document.getElementById('studyNoteClose').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', e => { if (e.target === dialog) { const r = dialog.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close(); } });
+  // In the close-up, leave room for the file and remove the off-camera props from keyboard navigation.
+  const props = document.querySelector('.study-props');
+  new MutationObserver(() => { props.inert = intro.classList.contains('is-overhead') || intro.classList.contains('is-leaving'); }).observe(intro,{attributes:true,attributeFilter:['class']});
+})();
+
+  </script>
   <script defer src="js/manifest.js?v=20261007-hq"></script>
   <script defer src="js/data.js"></script>
-  <script defer src="js/main.js?v=20261009-responsive-loading"></script>
+  <script defer src="js/main.js?v=20261009-instant-intro"></script>
   <script defer src="js/honors-order.js"></script>
   <script defer src="js/mobile-pages.js?v=20261007-nav-single-5"></script>
-  <script defer src="js/gramophone.js?v=20261009-responsive-loading"></script>
-  <script defer src="js/study-desk.js?v=20261008-mobile-instant-bg"></script>
   <script defer src="js/text-editor.js"></script>
 </body>
 </html>

@@ -957,120 +957,14 @@
      --------------------------------------------------------- */
   let revealStarted = false;
   function initIntro() {
-    const intro = $("#intro");
-    const folder = $("#folder");
-    const lamp = $(".lamp--intro");
-    const hint = $(".intro__hint span", intro);
-    let stage = "desk";
-    let stageTimer;
-    let pendingOpen = false;
-    const overheadImage = new Image();
-    overheadImage.fetchPriority = "low";
-    const phoneIntro = matchMedia("(max-width:900px)").matches;
-    if (phoneIntro) overheadImage.src = "assets/intro/study-tabletop-realistic-phone.webp";
-    const overheadReady = phoneIntro ? overheadImage.decode().catch(() => {}) : Promise.resolve();
-    const setStage = (value) => {
-      stage = value;
-      intro.dataset.stage = value;
-    };
-    const finish = (instant) => {
-      if (!body.classList.contains("is-intro")) return;
-      clearTimeout(stageTimer);
-      pendingOpen = false;
-      setStage("leaving");
-      intro.classList.add("is-leaving");
-      setTimeout(() => {
-        body.classList.remove("is-intro");
-        window.scrollTo({ top: 0, behavior: "instant" });
-        syncBackground();
-        if (intro.contains(document.activeElement)) $(".hero__cta a").focus({ preventScroll: true });
-        startReveal();
-      }, instant ? 0 : 700);
-    };
-    const play = () => {
-      const returningToDesk = phoneIntro && intro.classList.contains("is-overhead");
-      clearTimeout(stageTimer);
-      pendingOpen = false;
-      setStage(returningToDesk ? "moving" : "desk");
-      hint.textContent = returningToDesk ? "镜头返回书桌…" : "点击档案袋";
-      folder.setAttribute("aria-label", "点击档案袋，转到正上方");
-      intro.classList.remove("is-leaving");
-      intro.classList.remove("is-overhead");
-      intro.classList.add("is-daytime");
-      intro.dispatchEvent(new Event("study-lamp-reset"));
-      folder.classList.remove("is-open");
-      if (returningToDesk) {
-        stageTimer = setTimeout(() => {
-          setStage("desk");
-          hint.textContent = "点击档案袋";
-        }, reduced ? 0 : 850);
-      }
-      lamp.classList.add("is-off");
-      lamp.classList.remove("is-flicker");
-      setTimeout(() => {
-        lamp.classList.remove("is-off");
-        lamp.classList.add("is-flicker");
-      }, 600);
-    };
-
-    if (location.hash && location.hash.length > 1) {
-      body.classList.remove("is-intro");
+    // The opening controls run with the HTML, independently of gallery downloads.
+    document.addEventListener("study-intro-exit", () => {
       syncBackground();
       startReveal();
-    } else {
-      play();
-    }
-
-    folder.addEventListener("click", async () => {
-      if (stage === "preparing" || stage === "moving") {
-        if (stage === "preparing" || intro.classList.contains("is-overhead")) pendingOpen = true;
-        return;
-      }
-      if (stage === "opening" || stage === "leaving") return;
-      if (stage === "desk") {
-        if (phoneIntro) {
-          setStage("preparing");
-          hint.textContent = "正在准备桌面…";
-          await Promise.race([overheadReady, new Promise(resolve => setTimeout(resolve, 120))]);
-          if (stage !== "preparing") return;
-        }
-        setStage("moving");
-        intro.classList.add("is-overhead");
-        hint.textContent = "镜头移向档案袋…";
-        stageTimer = setTimeout(() => {
-          setStage("overhead");
-          hint.textContent = "再次点击档案袋，打开作品集";
-          folder.setAttribute("aria-label", "再次点击档案袋，打开作品集");
-          if (pendingOpen) { pendingOpen = false; folder.click(); }
-        }, reduced ? 0 : phoneIntro ? 850 : 2800);
-        return;
-      }
-      setStage("opening");
-      folder.classList.add("is-open");
-      hint.textContent = "正在打开作品集…";
-      stageTimer = setTimeout(() => finish(false), reduced ? 0 : 1000);
     });
-    $("#introSkip").addEventListener("click", () => finish(true));
-    $("#studyBack").addEventListener("click", () => {
-      if ((phoneIntro && stage === "moving") || stage === "opening" || stage === "leaving") return;
-      play();
-      folder.focus({ preventScroll: true });
-    });
-    $("#replayIntro").addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "auto" });
-      setMenu(false);
-      body.classList.add("is-intro");
-      syncBackground();
-      play();
-      folder.focus({ preventScroll: true });
-    });
+    document.addEventListener("study-intro-replay", syncBackground);
     syncBackground();
-    window.__introControlsReady = true;
-    const pendingControl = window.__introPendingControl;
-    delete window.__introPendingControl;
-    if (pendingControl) requestAnimationFrame(() => {
-      if (body.classList.contains("is-intro")) document.getElementById(pendingControl)?.click();
-    });
+    if (!body.classList.contains("is-intro")) startReveal();
   }
 
   /* ---------------------------------------------------------
@@ -1301,7 +1195,6 @@
   /* ---------------------------------------------------------
      Boot
      --------------------------------------------------------- */
-  if (!location.hash || location.hash.length <= 1) initIntro();
   renderFilmstrip();
   renderProjects();
   renderWorks();
@@ -1319,7 +1212,7 @@
   initBeforeAfter();
   selectCase(D.PROJECTS[0].id, false);
   initScrollSpy();
-  if (location.hash && location.hash.length > 1) initIntro();
+  initIntro();
   addEventListener("resize", syncBackground);
 })();
 
