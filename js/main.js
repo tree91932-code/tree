@@ -966,7 +966,7 @@
     const overheadImage = new Image();
     overheadImage.fetchPriority = "low";
     const phoneIntro = matchMedia("(max-width:900px)").matches;
-    if (phoneIntro) overheadImage.src = "assets/intro/study-tabletop-original-phone.webp";
+    if (phoneIntro) overheadImage.src = "assets/intro/study-tabletop-realistic-phone.webp";
     const overheadReady = phoneIntro ? overheadImage.decode().catch(() => {}) : Promise.resolve();
     const setStage = (value) => {
       stage = value;
@@ -1024,7 +1024,7 @@
         if (phoneIntro) {
           setStage("preparing");
           hint.textContent = "正在准备桌面…";
-          await overheadReady;
+          await Promise.race([overheadReady, new Promise(resolve => setTimeout(resolve, 120))]);
           if (stage !== "preparing") return;
         }
         setStage("moving");
