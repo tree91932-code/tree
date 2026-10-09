@@ -400,7 +400,7 @@ body:not(.is-intro) .intro { display: none; }
 
 /* main reveal after intro */
 .layout { transition: opacity 1s 0.15s var(--ease), transform 1.2s 0.15s var(--ease); }
-body.is-intro .layout { opacity: 0; transform: scale(0.97); pointer-events: none; }
+body.is-intro .layout { opacity: 0; transform: scale(0.97); pointer-events: none; content-visibility: hidden; }
 body.is-intro { overflow: hidden; }
 
 /* =========================================================

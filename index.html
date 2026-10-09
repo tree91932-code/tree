@@ -2,6 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
+  <script id="intro-input-buffer">document.addEventListener("click",function(e){if(window.__introControlsReady||!document.body?.classList.contains("is-intro"))return;var b=e.target.closest("#folder,#introSkip");if(!b)return;window.__introPendingControl=b.id;e.preventDefault();e.stopImmediatePropagation();},true);</script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>冯翠芝 · 个人档案室 | AI 视频创作者 · 视频剪辑</title>
   <meta name="description" content="冯翠芝的个人作品集：AI 视频创作、视频剪辑、文旅 IP 项目与设计作品。" />
@@ -11,10 +12,11 @@
   <link rel="preload" as="image" href="assets/intro/study-tabletop-realistic-phone.webp" media="(max-width:900px)" fetchpriority="low" />
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/archive-note-hand.woff2" crossorigin />
   <style id="archive-note-hand-font">@font-face{font-family:"Archive Note Hand";font-style:normal;font-weight:400;font-display:swap;src:url("assets/fonts/archive-note-hand.woff2") format("woff2");}</style>
+  <link rel="preload" as="image" href="assets/intro/study-daylight-efficient.webp" media="(min-width:901px)" fetchpriority="high" />
   <link rel="stylesheet" href="assets/fonts/fonts.css" />
-  <link rel="stylesheet" href="css/style.css?v=20261008-desktop-home-quote" />
-  <link rel="stylesheet" href="css/intro-scene.css?v=20261008-desktop-restored" />
-  <link rel="stylesheet" href="css/study-desk.css?v=20261008-draggable-music" />
+  <link rel="stylesheet" href="css/style.css?v=20261009-responsive-loading" />
+  <link rel="stylesheet" href="css/intro-scene.css?v=20261009-responsive-loading" />
+  <link rel="stylesheet" href="css/study-desk.css?v=20261009-responsive-loading" />
   <link rel="stylesheet" href="css/text-editor.css" />
   <style id="archive-decor-styles">
 /* Small keepsakes around the illuminated archive sign. */
@@ -72,7 +74,7 @@
 
 </head>
 <body class="is-intro">
-  <audio id="gramophoneAudio" src="assets/audio/satie-gymnopedie-1-ready.m4a" preload="auto" loop hidden></audio>
+  <audio id="gramophoneAudio" src="assets/audio/satie-gymnopedie-1-ready.m4a" preload="none" loop hidden></audio>
   <div class="desk" aria-hidden="true"></div>
   <div class="ambient" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
@@ -260,7 +262,7 @@
               </div>
               <figure class="profile__photo">
                 <span class="clip" aria-hidden="true"></span>
-                <img src="assets/about/photo-l.webp" alt="冯翠芝证件照" width="420" height="588" />
+                <img src="assets/about/photo-l.webp" alt="冯翠芝证件照" width="420" height="588" loading="lazy" decoding="async" />
                 <figcaption>FENG CUIZHI</figcaption>
               </figure>
             </div>
@@ -546,13 +548,13 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 
-  <script src="js/manifest.js?v=20261007-hq"></script>
-  <script src="js/data.js"></script>
-  <script src="js/main.js?v=20261009-realistic-phone-table"></script>
-  <script src="js/honors-order.js"></script>
-  <script src="js/mobile-pages.js?v=20261007-nav-single-5"></script>
-  <script src="js/gramophone.js?v=20261008-draggable-music"></script>
-  <script src="js/study-desk.js?v=20261008-mobile-instant-bg"></script>
-  <script src="js/text-editor.js"></script>
+  <script defer src="js/manifest.js?v=20261007-hq"></script>
+  <script defer src="js/data.js"></script>
+  <script defer src="js/main.js?v=20261009-responsive-loading"></script>
+  <script defer src="js/honors-order.js"></script>
+  <script defer src="js/mobile-pages.js?v=20261007-nav-single-5"></script>
+  <script defer src="js/gramophone.js?v=20261009-responsive-loading"></script>
+  <script defer src="js/study-desk.js?v=20261008-mobile-instant-bg"></script>
+  <script defer src="js/text-editor.js"></script>
 </body>
 </html>

@@ -275,7 +275,7 @@
   function selectCase(id, scroll) {
     if (id === currentCase && !scroll) return;
     currentCase = id;
-    if (matchMedia("(max-width:900px)").matches) $$(`.case[data-case="${id}"] img`).slice(0, 4).forEach(im => { im.loading = "eager"; });
+    if (matchMedia("(max-width:900px)").matches && !body.classList.contains("is-intro") && $("#projects").classList.contains("is-mobile-active")) $$(`.case[data-case="${id}"] img`).slice(0, 4).forEach(im => { im.loading = "eager"; });
     $$(".case-tab").forEach((t) => {
       const on = t.dataset.case === id;
       t.classList.toggle("is-active", on);
@@ -341,11 +341,11 @@
         more.innerHTML = `
           <div class="campus__pixel">
             <div class="pixel-tv">
-              <video src="${v.src}" poster="${v.poster}" muted loop playsinline autoplay preload="metadata"></video>
+              <video data-preview-src="${v.src}" poster="${v.poster}" muted loop playsinline preload="none"></video>
               <button class="pixel-tv__btn" data-vid="pixel" data-list="campus-pixel" data-idx="0">▶ 有声观看成片 · ${fmtDur(v.dur)}</button>
             </div>
             <div class="gameboy">
-              <div class="gameboy__screen"><video src="${lb.src}" poster="${lb.poster}" muted loop playsinline autoplay preload="metadata"></video></div>
+              <div class="gameboy__screen"><video data-preview-src="${lb.src}" poster="${lb.poster}" muted loop playsinline preload="none"></video></div>
               <p><b>LONG BAO</b><br />像素吉祥物 · 龙宝<br />行走动画 5s LOOP</p>
             </div>
           </div>`;
@@ -477,13 +477,13 @@
       const layout = () => {
         cancelAnimationFrame(frame);
         frame = requestAnimationFrame(() => {
-          grid.querySelectorAll('.vcard').forEach(card => {
-            if (matchMedia('(max-width: 900px)').matches) {
-              card.style.removeProperty('grid-row-end');
-              return;
-            }
-            card.style.gridRowEnd = 'span ' + Math.ceil((card.getBoundingClientRect().height + 12) / 20);
-          });
+          const cards = [...grid.querySelectorAll('.vcard')];
+          if (matchMedia('(max-width: 900px)').matches) {
+            cards.forEach(card => { if (card.style.gridRowEnd) card.style.removeProperty('grid-row-end'); });
+            return;
+          }
+          const spans = cards.map(card => 'span ' + Math.ceil((card.getBoundingClientRect().height + 12) / 20));
+          cards.forEach((card,i) => { if (card.style.gridRowEnd !== spans[i]) card.style.gridRowEnd = spans[i]; });
         });
       };
       const observer = new ResizeObserver(layout);
@@ -963,6 +963,7 @@
     const hint = $(".intro__hint span", intro);
     let stage = "desk";
     let stageTimer;
+    let pendingOpen = false;
     const overheadImage = new Image();
     overheadImage.fetchPriority = "low";
     const phoneIntro = matchMedia("(max-width:900px)").matches;
@@ -975,6 +976,7 @@
     const finish = (instant) => {
       if (!body.classList.contains("is-intro")) return;
       clearTimeout(stageTimer);
+      pendingOpen = false;
       setStage("leaving");
       intro.classList.add("is-leaving");
       setTimeout(() => {
@@ -988,6 +990,7 @@
     const play = () => {
       const returningToDesk = phoneIntro && intro.classList.contains("is-overhead");
       clearTimeout(stageTimer);
+      pendingOpen = false;
       setStage(returningToDesk ? "moving" : "desk");
       hint.textContent = returningToDesk ? "镜头返回书桌…" : "点击档案袋";
       folder.setAttribute("aria-label", "点击档案袋，转到正上方");
@@ -1019,7 +1022,11 @@
     }
 
     folder.addEventListener("click", async () => {
-      if (stage === "preparing" || stage === "moving" || stage === "opening" || stage === "leaving") return;
+      if (stage === "preparing" || stage === "moving") {
+        if (stage === "preparing" || intro.classList.contains("is-overhead")) pendingOpen = true;
+        return;
+      }
+      if (stage === "opening" || stage === "leaving") return;
       if (stage === "desk") {
         if (phoneIntro) {
           setStage("preparing");
@@ -1034,6 +1041,7 @@
           setStage("overhead");
           hint.textContent = "再次点击档案袋，打开作品集";
           folder.setAttribute("aria-label", "再次点击档案袋，打开作品集");
+          if (pendingOpen) { pendingOpen = false; folder.click(); }
         }, reduced ? 0 : phoneIntro ? 850 : 2800);
         return;
       }
@@ -1057,6 +1065,12 @@
       folder.focus({ preventScroll: true });
     });
     syncBackground();
+    window.__introControlsReady = true;
+    const pendingControl = window.__introPendingControl;
+    delete window.__introPendingControl;
+    if (pendingControl) requestAnimationFrame(() => {
+      if (body.classList.contains("is-intro")) document.getElementById(pendingControl)?.click();
+    });
   }
 
   /* ---------------------------------------------------------
@@ -1187,6 +1201,7 @@
   function initGlobalEvents() {
     let raf = 0;
     addEventListener("pointermove", (e) => {
+      if (e.pointerType !== "mouse") return;
       if (raf) return;
       raf = requestAnimationFrame(() => {
         raf = 0;
@@ -1286,6 +1301,7 @@
   /* ---------------------------------------------------------
      Boot
      --------------------------------------------------------- */
+  if (!location.hash || location.hash.length <= 1) initIntro();
   renderFilmstrip();
   renderProjects();
   renderWorks();
@@ -1303,20 +1319,24 @@
   initBeforeAfter();
   selectCase(D.PROJECTS[0].id, false);
   initScrollSpy();
-  initIntro();
+  if (location.hash && location.hash.length > 1) initIntro();
   addEventListener("resize", syncBackground);
 })();
 
 /* Load nearby previews and anticipate the destination without fetching every gallery. */
 (() => {
- const visible = image => image.getClientRects().length > 0;
+ const visible = image => {
+  if (!image.getClientRects().length) return false;
+  const rect = image.getBoundingClientRect();
+  return rect.bottom > -120 && rect.top < innerHeight + 400 && rect.right > 0 && rect.left < innerWidth;
+ };
  const warm = (panel, anticipate = false) => {
-  if (!panel) return;
+  if (!panel || document.body.classList.contains('is-intro')) return;
   const candidates = [...panel.querySelectorAll('img[loading="lazy"]')].filter(image => anticipate || visible(image));
   candidates.slice(0, 6).forEach(image => { image.fetchPriority = 'auto'; image.loading = 'eager'; });
  };
  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-  if (!entry.isIntersecting) return;
+  if (!entry.isIntersecting || document.body.classList.contains('is-intro')) return;
   entry.target.loading = 'eager';
   observer.unobserve(entry.target);
  }), {rootMargin:'400px 0px', threshold:0});
@@ -1327,15 +1347,50 @@
  };
  document.addEventListener('pointerover', event => {
   const control = event.target.closest('.case-tab, .mobile-nav button, a[href^="#"]');
-  if (control) warm(destination(control), true);
+  if (control && event.pointerType === 'mouse') warm(destination(control), true);
  }, {passive:true});
  document.addEventListener('focusin', event => {
   const control = event.target.closest('.case-tab, .mobile-nav button, a[href^="#"]');
   if (control) warm(destination(control), true);
  });
+ const panels = new Set();
+ let warmFrame = 0;
  const changes = new MutationObserver(entries => {
-  const panels = new Set(entries.map(entry => entry.target.closest('.sec, .hero')));
-  requestAnimationFrame(() => panels.forEach(panel => warm(panel)));
+  if (document.body.classList.contains('is-intro')) return;
+  entries.forEach(entry => panels.add(entry.target.closest('.sec, .hero')));
+  if (warmFrame) return;
+  warmFrame = requestAnimationFrame(() => { warmFrame = 0; panels.forEach(panel => warm(panel)); panels.clear(); });
  });
+ const previewVideos = new Set();
+ const syncPreview = video => {
+  const canPlay = video.isConnected && video._previewVisible && !document.hidden && !document.body.classList.contains('is-intro') && !document.body.classList.contains('is-locked');
+  if (!canPlay) { video.pause(); return; }
+  if (!video.hasAttribute('src')) video.src = video.dataset.previewSrc;
+  if (video.paused) video.play().catch(() => {});
+ };
+ const videoObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+  entry.target._previewVisible = entry.isIntersecting;
+  syncPreview(entry.target);
+ }), {threshold:.01});
+ const watchPreviews = () => {
+  previewVideos.forEach(video => {
+   if (video.isConnected) return;
+   video.pause(); videoObserver.unobserve(video); previewVideos.delete(video);
+  });
+  document.querySelectorAll('video[data-preview-src]').forEach(video => {
+   if (previewVideos.has(video)) return;
+   previewVideos.add(video); videoObserver.observe(video);
+  });
+ };
+ watchPreviews();
+ const campusPreviews = document.getElementById('campusMore');
+ if (campusPreviews) new MutationObserver(watchPreviews).observe(campusPreviews,{childList:true});
+ document.addEventListener('visibilitychange',() => previewVideos.forEach(syncPreview));
+ const introState = new MutationObserver(() => {
+  previewVideos.forEach(syncPreview);
+  if (document.body.classList.contains('is-intro')) return;
+  document.querySelectorAll('img[loading="lazy"]').forEach(image => observer.observe(image));
+ });
+ introState.observe(document.body,{attributes:true,attributeFilter:['class']});
  document.querySelectorAll('main.content > .sec, .case, .work-row, .pins, .projector').forEach(panel => changes.observe(panel,{subtree:true,attributes:true,attributeFilter:['class','hidden']}));
 })();
