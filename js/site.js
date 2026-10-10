@@ -2527,9 +2527,8 @@ window.MANIFEST = {
                 <div>
                   <small>${esc(h.year)}</small>
                   <h4>${esc(h.prize)}</h4>
-                  ${g.levels[0] === "province" ? "" : `<p>${esc(h.title)}${h.note ? `<br /><i>${esc(h.note)}</i>` : ""}</p>`}
+                  <p>${esc(h.title)}${h.note ? `<br /><i>${esc(h.note)}</i>` : ""}</p>
                 </div>
-                ${g.levels[0] === "province" ? `<p class="award__description"><span class="award__competition">${esc(h.title)}</span>${h.note ? `<i class="award__work">${esc(h.note)}</i>` : ""}</p>` : ""}
               </article>`
               )
               .join("")}
@@ -2545,30 +2544,6 @@ window.MANIFEST = {
         <div style="--c:#d99a66"><b data-text-edit-locked data-honor-count="school" data-count="${count(["school", "cert"])}">0</b><span>项校级荣誉与证书</span></div>
       </div>
       <div class="honors__cols">${cols}</div>`;
-    // Fit complete names after their cards become visible and after fonts load.
-    const names = $$("#honor-group-province .award__competition");
-    const measuring = document.createElement("canvas").getContext("2d");
-    let fitFrame = 0;
-    const fitNames = () => {
-      fitFrame = 0;
-      if (!measuring) return;
-      const baseSize = matchMedia("(max-width:900px)").matches ? 11 : 12;
-      names.forEach(name => {
-        const width = name.clientWidth;
-        if (!width) return;
-        measuring.font = `${baseSize}px ${getComputedStyle(name).fontFamily}`;
-        const natural = measuring.measureText(name.textContent).width;
-        const size = Math.min(baseSize, Math.floor((width - 1) / Math.max(1, natural) * baseSize * 10) / 10);
-        name.style.fontSize = `${size}px`;
-      });
-    };
-    const scheduleFit = () => {
-      if (!fitFrame) fitFrame = requestAnimationFrame(fitNames);
-    };
-    const sizing = new ResizeObserver(scheduleFit);
-    names.forEach(name => sizing.observe(name.parentElement));
-    document.fonts?.ready.then(scheduleFit);
-    scheduleFit();
   }
 
   /* ---------------------------------------------------------
