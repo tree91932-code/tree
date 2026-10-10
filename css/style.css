@@ -1542,7 +1542,8 @@ body.is-watching .lamp .lamp__cone, body.is-watching .lamp .lamp__bulb { opacity
  .hero__scroll { font-family:var(--f-serif); font-size:14px; letter-spacing:.08em; line-height:1.6; color:rgba(246,236,216,.75); max-width:calc(100% - 64px); text-align:center; }
 }
 
-/* Eight provincial awards: two balanced columns with four rows. */
+/* Two-column provincial awards apply only to desktop screens. */
+@media (min-width: 901px) {
 #honor-group-province > .stagger {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1559,18 +1560,5 @@ body.is-watching .lamp .lamp__cone, body.is-watching .lamp .lamp__bulb { opacity
 #honor-group-province .award__medal { width: 32px; height: 32px; }
 #honor-group-province .award__medal::before,
 #honor-group-province .award__medal::after { top: 25px; width: 9px; height: 14px; }
-@media (min-width: 901px) {
   .honors__cols { grid-template-columns: minmax(0, 1fr) minmax(0, 2.1fr) minmax(0, 1fr); gap: 18px; }
-}
-@media (max-width: 900px) {
-  #honor-group-province > .stagger { gap: 10px; }
-  #honor-group-province .award { grid-template-columns: 24px minmax(0, 1fr); gap: 7px; padding: 12px 9px; }
-  #honor-group-province .award__medal { width: 24px; height: 24px; font-size: 10px; }
-  #honor-group-province .award__medal::before,
-  #honor-group-province .award__medal::after { top: 18px; width: 7px; height: 11px; }
-  #honor-group-province .award__medal::before { left: 5px; }
-  #honor-group-province .award__medal::after { right: 5px; }
-  #honor-group-province .award h4 { font-size: 13px; }
-  #honor-group-province .award p { font-size: 11px; line-height: 1.55; overflow-wrap: anywhere; }
-  #honor-group-province .award small { font-size: 9px; }
 }
