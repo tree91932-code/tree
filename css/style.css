@@ -1574,3 +1574,9 @@ body.is-watching .lamp .lamp__cone, body.is-watching .lamp .lamp__bulb { opacity
   #honor-group-province .award p { font-size: 11px; line-height: 1.55; overflow-wrap: anywhere; }
   #honor-group-province .award small { font-size: 9px; }
 }
+
+/* Give the complete competition name the full width of its provincial card. */
+#honor-group-province .award { row-gap: 7px; align-content: start; }
+#honor-group-province .award__description { grid-column: 1 / -1; min-width: 0; }
+#honor-group-province .award__competition { display: block; width: 100%; white-space: nowrap; font-size: 12px; letter-spacing: 0; }
+#honor-group-province .award__work { display: block; margin-top: 3px; }
