@@ -1757,7 +1757,7 @@ window.MANIFEST = {
         { title: "生日会 · 线下物料", key: "youyou.party" },
         { title: "足球表情贴纸", key: "youyou.sticker" },
       ],
-      reels: [{ title: "AI 漫剧 & 短视频", sub: "竖屏 · 视频号 / 抖音", videos: ["yysum", "yy1", "yy2", "yy3", "yy4"] }],
+      reels: [{ title: "AI 漫剧 & 短视频（代表作）", sub: "竖屏 · 视频号 / 抖音", videos: ["yysum", "yy1", "yy2", "yy3", "yy4"] }],
     },
     {
       id: "sijia",
@@ -1800,7 +1800,7 @@ window.MANIFEST = {
         { title: "节日海报", key: "design.festival" },
       ],
       reels: [
-        { title: "纪录片 & 宣传短片", sub: "横屏纪录片 + 竖屏短视频", videos: ["sj1", "w_sijia", "sj2", "sj3", "sj4"] },
+        { title: "纪录片 & 宣传短片（代表作）", sub: "横屏纪录片 + 竖屏短视频", videos: ["sj1", "w_sijia", "sj2", "sj3", "sj4"] },
       ],
     },
     {
@@ -1820,8 +1820,8 @@ window.MANIFEST = {
       tags: ["文旅宣传", "AI 文旅", "拍摄剪辑"],
       color: "#2a6f86",
       reels: [
-        { title: "2025 秋季营 · AI 创意视频", sub: "横屏为主 · 含雪乡新势力创作营作品", videos: ["wl1", "wl2", "wl3", "wl4", "wl5", "wl6", "wl7", "wl28"] },
-        { title: "2024 夏季营 · 总结视频", sub: "独立拍摄 + 剪辑", videos: ["wlsummer"] },
+        { title: "2025 秋季营 · AI 创意视频（代表作）", sub: "横屏为主 · 含雪乡新势力创作营作品", videos: ["wl1", "wl2", "wl3", "wl4", "wl5", "wl6", "wl7", "wl28"] },
+        { title: "2024 夏季营 · 总结视频（代表作）", sub: "独立拍摄 + 剪辑", videos: ["wlsummer"] },
       ],
     },
   ];
